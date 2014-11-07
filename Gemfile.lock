@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/rails-sqlserver/activerecord-sqlserver-adapter.git
+  revision: ab3e4a6b048f0e3664adf2d7a86aec84bfd5e2d6
+  specs:
+    activerecord-sqlserver-adapter (4.1.0)
+      activerecord (~> 4.1.0)
+      arel
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -21,9 +29,6 @@ GEM
       activemodel (= 4.1.6)
       activesupport (= 4.1.6)
       arel (~> 5.0.0)
-    activerecord-sqlserver-adapter (4.1.0)
-      activerecord (~> 4.1.0)
-      arel
     activesupport (4.1.6)
       i18n (~> 0.6, >= 0.6.9)
       json (~> 1.7, >= 1.7.7)
@@ -94,7 +99,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-sqlserver-adapter
+  activerecord-sqlserver-adapter!
   composite_primary_keys
   dotenv-rails
   pg
