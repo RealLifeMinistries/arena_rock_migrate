@@ -6,7 +6,6 @@
 #  IsSystem                :boolean
 #  FieldTypeId             :integer
 #  Order                   :integer
-#  Category                :string
 #  Name                    :string
 #  Description             :string
 #  Guid                    :uuid
@@ -16,6 +15,7 @@
 #  ModifiedByPersonAliasId :integer
 #  ForeignId               :integer
 #  HelpText                :text
+#  CategoryId              :integer
 #
 
 class RockDefinedType < ActiveRecord::Base

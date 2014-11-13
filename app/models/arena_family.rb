@@ -14,4 +14,7 @@
 
 class ArenaFamily < ActiveRecord::Base
   self.primary_key = :family_id
+
+  has_many :family_memberships, foreign_key: :family_id, class: ArenaFamilyMember
+  has_many :members, through: :family_memberships, class: ArenaPerson, foreign_key: :person_id
 end

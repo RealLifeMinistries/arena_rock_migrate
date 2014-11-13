@@ -16,4 +16,6 @@
 
 class ArenaPersonAttribute < ActiveRecord::Base
   self.primary_keys = :person_id, :attribute_id
+  belongs_to :arena_attribute, class: ArenaAttribute, foreign_key: :attribute_id
+  belongs_to :person, class: ArenaPerson
 end

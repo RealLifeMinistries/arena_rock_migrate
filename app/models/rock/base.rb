@@ -3,16 +3,13 @@ class Rock::Base < ActiveRecord::Base
   self.primary_key = 'Id'
   establish_connection :development_rock 
 
-  def readonly?
-    true
+  # Geography data type not compatible yet with rails, postgresql
+  def GeoPoint=d
+    d
   end
 
-  def destroy
-    false
-  end
-
-  def delete
-    false
+  def GeoFence=d
+    d
   end
 
 end

@@ -158,6 +158,18 @@ namespace :migrate do
         end
       end
 
+      task :locations => :environment do 
+        Rock::Location.find_each do |record|
+          location = RockLocation.find_or_initialize_by(Id: record.Id)
+          location.attributes = record.attributes
+
+          if location.changes.any?
+            location.save!
+            puts "Downloaded #{record.class_name}/#{record.Id}"
+          end
+        end
+      end
+
       task :people => :environment do
         Rock::Person.find_each do |record|
           person = RockPerson.find_or_initialize_by(Id: record.Id)
