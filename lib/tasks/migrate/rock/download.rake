@@ -1,6 +1,25 @@
 namespace :migrate do
   namespace :rock do
     namespace :download do
+      task :all => %w{
+        attendance
+        attributes
+        attribute_categories
+        attribute_values
+        campuses
+        categories 
+        defined_types
+        defined_values
+        entity_types
+        field_types
+        groups
+        group_members
+        group_types
+        group_type_roles
+        locations
+        people
+        person_aliases
+      }
 
       task :attendance => :environment do
         Rock::Attendance.find_each do |record|
@@ -98,6 +117,18 @@ namespace :migrate do
         end
       end
 
+      task :entity_types => :environment do
+        Rock::EntityType.find_each do |record|
+          entity_type = RockEntityType.find_or_initialize_by(Id: record.Id)
+          entity_type.attributes = record.attributes
+          
+          if entity_type.changes.any?
+            entity_type.save!
+            puts "Downloaded #{record.class.name}/#{record.Id}"
+          end
+        end
+      end
+
       task :field_types => :environment do
         Rock::FieldType.find_each do |record|
           field_type = RockFieldType.find_or_initialize_by(Id: record.Id)
@@ -165,7 +196,7 @@ namespace :migrate do
 
           if location.changes.any?
             location.save!
-            puts "Downloaded #{record.class_name}/#{record.Id}"
+            puts "Downloaded #{record.class.name}/#{record.Id}"
           end
         end
       end
@@ -177,6 +208,18 @@ namespace :migrate do
 
           if person.changes.any?
             person.save!
+            puts "Downloaded #{record.class.name}/#{record.Id}"
+          end
+        end
+      end
+
+      task :person_aliases => :environment do
+        Rock::PersonAlias.find_each do |record|
+          palias = RockPersonAlias.find_or_initialize_by(Id: record.Id)
+          palias.attributes = record.attributes
+
+          if palias.changes.any?
+            palias.save!
             puts "Downloaded #{record.class.name}/#{record.Id}"
           end
         end

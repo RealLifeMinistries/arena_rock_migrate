@@ -43,4 +43,7 @@
 
 class ArenaOccurrenceType < ActiveRecord::Base
   self.primary_key = 'occurrence_type_id'
+  belongs_to :profile_source, class: ArenaLookup, foreign_key: :profile_source_luid
+  belongs_to :profile_status, class: ArenaLookup, foreign_key: :profile_status_luid
+  belongs_to :leader_profile, class: ArenaProfile
 end

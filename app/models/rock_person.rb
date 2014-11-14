@@ -44,4 +44,17 @@
 
 class RockPerson < ActiveRecord::Base
   self.primary_key = :Id
+  belongs_to :record_type, class: RockDefinedValue, foreign_key: 'RecordTypeValueId', primary_key: 'Id'
+  belongs_to :record_status, class: RockDefinedValue, foreign_key: 'RecordStatusValueId', primary_key: 'Id'
+  belongs_to :record_status_reason, class: RockDefinedValue, foreign_key: 'RecordStatusReasonValueId', primary_key: 'Id'
+  belongs_to :connection_status, class: RockDefinedValue, foreign_key: 'ConnectionStatusValueId', primary_key: 'Id'
+  belongs_to :review_reason, class: RockDefinedValue, foreign_key: 'ReviewReasonValueId', primary_key: 'Id'
+  belongs_to :title, class: RockDefinedValue, foreign_key: 'TitleValueId', primary_key: 'Id'
+  belongs_to :suffix, class: RockDefinedValue, foreign_key: 'SuffixValueId', primary_key: 'Id'
+  belongs_to :marital_status, class: RockDefinedValue, foreign_key: 'MaritalStatusValueId', primary_key: 'Id'
+
+  has_many :attribute_values, class: RockAttributeValue, foreign_key: 'EntityId'
+
+  has_one :mapping, as: :rock_record
+  has_one :arena_record, through: :mapping
 end

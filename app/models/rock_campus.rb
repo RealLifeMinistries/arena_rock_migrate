@@ -23,4 +23,5 @@
 
 class RockCampus < ActiveRecord::Base
   self.primary_key = :Id
+  belongs_to :location, class: RockLocation, foreign_key: 'LocationId', primary_key: 'Id'
 end

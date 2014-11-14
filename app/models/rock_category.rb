@@ -23,5 +23,5 @@
 
 class RockCategory < ActiveRecord::Base
   self.primary_key = :Id
-
+  belongs_to :entity_type, class: RockEntityType, foreign_key: 'EntityTypeId', primary_key: 'Id'
 end

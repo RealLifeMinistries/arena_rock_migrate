@@ -20,5 +20,7 @@
 
 class RockDefinedType < ActiveRecord::Base
   self.primary_key = "Id"
-  has_many :defined_values, class_name: "RockDefinedValue", foreign_key: 'DefinedTypeId', primary_key: 'Id'
+  has_many :defined_values, class: RockDefinedValue, foreign_key: 'DefinedTypeId', primary_key: 'Id'
+  belongs_to :field_type, class: RockFieldType, foreign_key: 'FieldTypeId', primary_key: 'Id'
+  belongs_to :category, class: RockCategory, foreign_key: 'CategoryId', primary_key: 'Id'
 end

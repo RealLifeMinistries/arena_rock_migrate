@@ -21,4 +21,5 @@
 
 class RockGroupTypeRole < ActiveRecord::Base
   self.primary_key = :Id
+  belongs_to :group_type, class: RockGroupType, foreign_key: 'GroupTypeId', primary_key: 'Id'
 end

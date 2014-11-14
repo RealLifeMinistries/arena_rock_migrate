@@ -18,5 +18,5 @@
 
 class RockDefinedValue < ActiveRecord::Base
   self.primary_key = "Id"
-  belongs_to :defined_type, class_name: "RockDefinedType", foreign_key: 'DefinedTypeId', primary_key: 'Id'
+  belongs_to :defined_type, class: RockDefinedType, foreign_key: 'DefinedTypeId', primary_key: 'Id'
 end

@@ -22,5 +22,5 @@ class ArenaProfileMember < ActiveRecord::Base
   belongs_to :person, class: ArenaPerson
   belongs_to :profile, class: ArenaProfile
   belongs_to :source, class: ArenaLookup, foreign_key: :source_luid
-  belongs_to :status_luid, class: ArenaLookup, foreign_key: :status_luid
+  belongs_to :status, class: ArenaLookup, foreign_key: :status_luid
 end

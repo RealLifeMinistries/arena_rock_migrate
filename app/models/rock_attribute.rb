@@ -28,5 +28,9 @@
 class RockAttribute < ActiveRecord::Base
   self.primary_key = :Id
 
-  belongs_to :field_type, class_name: 'RockFieldType', primary_key: 'Id', foreign_key: 'FieldTypeId'
+  belongs_to :field_type, class: RockFieldType, primary_key: 'Id', foreign_key: 'FieldTypeId'
+  belongs_to :entity_type, class: RockEntityType, primary_key: 'Id', foreign_key: 'EntityTypeId'
+
+  has_one :mapping, as: :rock_record
+  has_one :arena_record, through: :mapping
 end

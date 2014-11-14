@@ -15,6 +15,6 @@
 #
 
 class Arena::RelationshipType < Arena::Base
-  self.primary_key = :relationship_type_id
+  self.primary_key = 'relationship_type_id'
   self.table_name = 'core_relationship_type'
 end
