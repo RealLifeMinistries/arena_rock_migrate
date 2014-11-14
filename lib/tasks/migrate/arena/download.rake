@@ -22,6 +22,10 @@ namespace :migrate do
         profile_members        
         relationship_types
         relationships
+        small_groups
+        small_group_clusters
+        small_group_members
+        small_group_occurrences
       }
 
       task :addresses => :environment do
@@ -237,6 +241,59 @@ namespace :migrate do
           if rel.changes.any?
             rel.save!
             puts "Synchonrized #{record.class.name}/#{record.relationship_id}"
+          end
+        end
+      end
+
+      task :small_groups => :environment do
+        Arena::SmallGroup.find_each do |record|
+          sg = ArenaSmallGroup.find_or_initialize_by({
+            group_id: record.group_id
+          })
+          sg.attributes = record.attributes
+          if sg.changes.any?
+            sg.save!
+            puts "Synchronized #{record.class.name}/#{record.group_id}"
+          end
+        end
+      end
+
+      task :small_group_clusters => :environment do
+        Arena::SmallGroupCluster.find_each do |record|
+          sgc = ArenaSmallGroupCluster.find_or_initialize_by({
+            group_cluster_id: record.group_cluster_id
+          })
+          sgc.attributes = record.attributes
+          if sgc.changes.any?
+            sgc.save!
+            puts "Synchronized #{record.class.name}/#{record.group_cluster_id}"
+          end
+        end
+      end
+
+      task :small_group_members => :environment do 
+        Arena::SmallGroupMember.find_each do |record|
+          sgm = ArenaSmallGroupMember.find_or_initialize_by({
+            group_id: record.group_id,
+            person_id: record.person_id
+          })
+          sgm.attributes = record.attributes
+          if sgm.changes.any?
+            sgm.save!
+            puts "Synchronized #{record.class.name}/#{record.group_id}:#{record.person_id}"
+          end
+        end
+      end
+
+      task :small_group_occurrences => :environment do
+        Arena::SmallGroupOccurrence.find_each do |record|
+          sgo = ArenaSmallGroupOccurrence.find_or_initialize_by({
+            group_id: record.group_id,
+            occurrence_id: record.occurrence_id
+          })
+          if sgo.changes.any?
+            sgo.save!
+            puts "Synchronized #{record.class.name}/#{record.group_id}:#{record.occurrence_id}"
           end
         end
       end
