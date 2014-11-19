@@ -9,6 +9,6 @@ gem 'tiny_tds'
 gem 'activerecord-sqlserver-adapter', github: 'rails-sqlserver/activerecord-sqlserver-adapter'
 gem 'composite_primary_keys'
 gem 'safe_attributes'
-
+gem 'annotate'
 gem 'spring',        group: :development
 

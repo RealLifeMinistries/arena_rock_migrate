@@ -48,7 +48,7 @@
 class ArenaPerson < ActiveRecord::Base
   self.table_name = 'arena_people'
   self.primary_key = 'person_id'
-  
+  has_rock_mapping  
   belongs_to :member_status_record, foreign_key: :member_status, class: ArenaLookup 
   belongs_to :marital_status_record, foreign_key: :marital_status, class: ArenaLookup
   belongs_to :gender_record, foreign_key: :gender, class: ArenaGender

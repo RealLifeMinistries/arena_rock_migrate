@@ -44,6 +44,7 @@
 
 class RockPerson < ActiveRecord::Base
   self.primary_key = :Id
+  has_arena_mapping
   belongs_to :record_type, class: RockDefinedValue, foreign_key: 'RecordTypeValueId', primary_key: 'Id'
   belongs_to :record_status, class: RockDefinedValue, foreign_key: 'RecordStatusValueId', primary_key: 'Id'
   belongs_to :record_status_reason, class: RockDefinedValue, foreign_key: 'RecordStatusReasonValueId', primary_key: 'Id'
