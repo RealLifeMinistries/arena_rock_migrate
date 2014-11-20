@@ -48,12 +48,14 @@
 class ArenaPerson < ActiveRecord::Base
   self.table_name = 'arena_people'
   self.primary_key = 'person_id'
-  has_rock_mapping  
+  has_rock_mapping
+  
   belongs_to :member_status_record, foreign_key: :member_status, class: ArenaLookup 
   belongs_to :marital_status_record, foreign_key: :marital_status, class: ArenaLookup
   belongs_to :gender_record, foreign_key: :gender, class: ArenaGender
-  belongs_to :inactive_reason_record, foreign_key: :inactive_reason_luid, class: ArenaLookup
-  belongs_to :title_record, foreign_key: :title_luid, class: ArenaLookup
+  belongs_to :inactive_reason, foreign_key: :inactive_reason_luid, class: ArenaLookup
+  belongs_to :title, foreign_key: :title_luid, class: ArenaLookup
+  belongs_to :suffix, foreign_key: :suffix_luid, class: ArenaLookup
 
   has_many :relationships, class: ArenaRelationship, foreign_key: :person_id
   has_many :family_memberships, foreign_key: :person_id, class: ArenaFamilyMember
@@ -65,4 +67,50 @@ class ArenaPerson < ActiveRecord::Base
   has_many :profiles, through: :profile_memberships, class: ArenaProfile
   has_many :attribute_values, class: ArenaPersonAttribute, foreign_key: :person_id
 
+
+  def sync_to_rock!
+    self.mapping ||= build_mapping
+    rock = mapping.rock_record ||= RockPerson.new
+
+    # @TODO: rock.RecordTypeValueId
+    # @TODO: rock.RecordStatusValueId
+    if member_status
+      rock.RecordStatusValueId = member_status_record.mapped_id
+    end
+    # @TODO: rock.RecordStatusReasonValueId
+    # @TODO: rock.ConnectionStatusValueId
+    # @TODO: rock.IsDeceased
+    if title
+      rock.TitleValueId = title.mapped_id
+    end
+    rock.NickName = nick_name
+    rock.FirstName = first_name
+    rock.LastName = last_name
+    if suffix
+      rock.SuffixValueId = suffix.mapped_id 
+    end
+    # @TODO: rock.PhotoId
+    if birth_date?
+      rock.BirthDay = birth_date.mday 
+      rock.BirthMonth = birth_date.month
+      rock.BirthYear = birth_date.year
+      rock.BirthDate = birth_date
+    end
+    if gender
+      rock.Gender = gender_record.mapped_id
+    end
+    if martial_status
+      rock.MaritalStatusValueId = martial_status_record.mapped_id
+    end
+    rock.AnniversaryDate = anniversary_date
+    rock.GraduationDate = graduation_date
+    # @TODO: rock.GivingGroupId, giving_unit_id
+    # @TODO: rock.Email, rock.EmailNote, rock.IsEmailActive, arena?
+    rock.SystemNote = self.Notes
+    rock.Guid = guid
+    rock.CreatedDateTime = date_created
+    rock.ModifiedDateTime = date_modified
+    rock.save!
+    mapping.save!
+  end
 end

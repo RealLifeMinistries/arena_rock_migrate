@@ -22,6 +22,18 @@
 
 class ArenaLookup < ActiveRecord::Base
   self.primary_key = :lookup_id
-
+  has_rock_mapping
   belongs_to :lookup_type, class_name: "ArenaLookupType", primary_key: 'lookup_type_id'
+
+  def sync_to_rock!
+    self.mapping ||= build_mapping
+    rock = mapping.rock_record ||= RockDefinedValue.new
+    
+    rock.Guid = guid
+    rock.Value = lookup_value
+    rock.Order = lookup_order
+    rock.DefinedTypeId ||= lookup_type.mapped_id  
+    rock.save!
+    mapping.save!
+  end
 end

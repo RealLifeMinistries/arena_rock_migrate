@@ -11,4 +11,4 @@ gem 'composite_primary_keys'
 gem 'safe_attributes'
 gem 'annotate'
 gem 'spring',        group: :development
-
+gem 'byebug'

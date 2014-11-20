@@ -7,5 +7,5 @@
 #
 
 class ArenaGender < ActiveRecord::Base
-
+  has_rock_mapping
 end

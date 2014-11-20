@@ -53,6 +53,7 @@ class RockPerson < ActiveRecord::Base
   belongs_to :title, class: RockDefinedValue, foreign_key: 'TitleValueId', primary_key: 'Id'
   belongs_to :suffix, class: RockDefinedValue, foreign_key: 'SuffixValueId', primary_key: 'Id'
   belongs_to :marital_status, class: RockDefinedValue, foreign_key: 'MaritalStatusValueId', primary_key: 'Id'
+  belongs_to :gender, class: RockGender, foreign_key: 'Gender'
 
   has_many :attribute_values, class: RockAttributeValue, foreign_key: 'EntityId'
 
