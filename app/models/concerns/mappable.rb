@@ -1,6 +1,6 @@
 module Mappable
   def has_arena_mapping
-    has_one :mapping, as: :rock_record
+    has_one :mapping, as: :rock_record, autosave: false
     define_method(:mapped_record) do
       mapping && mapping.arena_record
     end
@@ -18,7 +18,7 @@ module Mappable
   end
 
   def has_rock_mapping
-    has_one :mapping, as: :arena_record
+    has_one :mapping, as: :arena_record, autosave: false
     define_method(:mapped_record) do
       mapping && mapping.rock_record
     end

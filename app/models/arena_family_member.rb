@@ -17,4 +17,5 @@ class ArenaFamilyMember < ActiveRecord::Base
   belongs_to :person, class: ArenaPerson
   belongs_to :family, class: ArenaFamily
   belongs_to :role, class: ArenaLookup, foreign_key: :role_luid
+
 end

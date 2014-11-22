@@ -19,6 +19,7 @@ namespace :migrate do
         locations
         people
         person_aliases
+        phone_numbers
       }
 
       task :attendance => :environment do
@@ -220,6 +221,18 @@ namespace :migrate do
 
           if palias.changes.any?
             palias.save!
+            puts "Downloaded #{record.class.name}/#{record.Id}"
+          end
+        end
+      end
+
+      task :phone_numbers => :environment do
+        Rock::PhoneNumber.find_each do |record|
+          pn = RockPhoneNumber.find_or_initialize_by(Id: record.Id)
+          pn.attributes = record.attributes
+
+          if pn.changes.any?
+            pn.save!
             puts "Downloaded #{record.class.name}/#{record.Id}"
           end
         end

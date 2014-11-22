@@ -56,6 +56,7 @@ class RockPerson < ActiveRecord::Base
   belongs_to :gender, class: RockGender, foreign_key: 'Gender'
 
   has_many :attribute_values, class: RockAttributeValue, foreign_key: 'EntityId'
+  has_many :phone_numbers, class: RockPhoneNumber, foreign_key: 'PersonId'
 
   has_one :mapping, as: :rock_record
   has_one :arena_record, through: :mapping

@@ -56,6 +56,7 @@ class ArenaPerson < ActiveRecord::Base
   belongs_to :inactive_reason, foreign_key: :inactive_reason_luid, class: ArenaLookup
   belongs_to :title, foreign_key: :title_luid, class: ArenaLookup
   belongs_to :suffix, foreign_key: :suffix_luid, class: ArenaLookup
+  belongs_to :record_status_record, foreign_key: :record_status, class: ArenaRecordStatus
 
   has_many :relationships, class: ArenaRelationship, foreign_key: :person_id
   has_many :family_memberships, foreign_key: :person_id, class: ArenaFamilyMember
@@ -69,48 +70,89 @@ class ArenaPerson < ActiveRecord::Base
 
 
   def sync_to_rock!
-    self.mapping ||= build_mapping
-    rock = mapping.rock_record ||= RockPerson.new
+    map = mapping || build_mapping
+    rock = map.rock_record ||= RockPerson.new
 
-    # @TODO: rock.RecordTypeValueId
-    # @TODO: rock.RecordStatusValueId
-    if member_status
-      rock.RecordStatusValueId = member_status_record.mapped_id
+    ###############
+    # Rock RecordType doesn't have a concept in Arena
+    # Rock Person Defined Value is: 1
+    rock.RecordTypeValueId = 1
+
+    if record_status
+      rock.RecordStatusValueId = record_status_record.mapped_id
     end
-    # @TODO: rock.RecordStatusReasonValueId
-    # @TODO: rock.ConnectionStatusValueId
-    # @TODO: rock.IsDeceased
+    
+    if inactive_reason
+      rock.RecordStatusReasonValueId = inactive_reason.mapped_id
+    end
+
+    if member_status
+      rock.ConnectionStatusValueId = member_status_record.mapped_id
+    end
+
+    rock.IsDeceased = is_deceased?
+    
     if title
       rock.TitleValueId = title.mapped_id
     end
+
     rock.NickName = nick_name
     rock.FirstName = first_name
     rock.LastName = last_name
+
     if suffix
       rock.SuffixValueId = suffix.mapped_id 
     end
+
     # @TODO: rock.PhotoId
+
     if birth_date?
       rock.BirthDay = birth_date.mday 
       rock.BirthMonth = birth_date.month
       rock.BirthYear = birth_date.year
       rock.BirthDate = birth_date
     end
+
     if gender
       rock.Gender = gender_record.mapped_id
     end
-    if martial_status
-      rock.MaritalStatusValueId = martial_status_record.mapped_id
+
+    if marital_status
+      rock.MaritalStatusValueId = marital_status_record.mapped_id
     end
+
     rock.AnniversaryDate = anniversary_date
     rock.GraduationDate = graduation_date
+
     # @TODO: rock.GivingGroupId, giving_unit_id
-    # @TODO: rock.Email, rock.EmailNote, rock.IsEmailActive, arena?
+
+    ##########################
+    # ARENA has multiple emails,
+    # Rock has one?
+    arena_email = emails.where(active: true).first 
+    if arena_email
+      rock.Email = arena_email.email  
+      rock.IsEmailActive = true
+      rock.EmailNote = arena_email.notes
+    end
+
     rock.SystemNote = self.Notes
     rock.Guid = guid
     rock.CreatedDateTime = date_created
     rock.ModifiedDateTime = date_modified
+
     rock.save!
+    self.mapping = map
     mapping.save!
+
+    # HasMany
+    # ################
+    phones.each(&:sync_to_rock!)
+  end
+
+  def is_deceased?
+    # Arena's inactive reason for deceased is: 356
+    @is_deceased ||=
+      (inactive_reason_luid.to_i == 356)
   end
 end

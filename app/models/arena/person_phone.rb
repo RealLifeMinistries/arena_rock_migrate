@@ -14,4 +14,5 @@
 class Arena::PersonPhone < Arena::Base
   self.table_name = 'core_person_phone'
   self.primary_key = :person_id,:phone_luid
+
 end
