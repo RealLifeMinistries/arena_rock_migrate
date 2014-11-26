@@ -7,5 +7,7 @@
 #
 
 class RockGroupMemberStatus < ActiveRecord::Base
-  
+  INACTIVE = 0
+  ACTIVE = 1  
+  PENDING = 2
 end

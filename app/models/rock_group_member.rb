@@ -23,4 +23,6 @@ class RockGroupMember < ActiveRecord::Base
   belongs_to :person, class: RockPerson, foreign_key: 'PersonId', primary_key: 'Id'
   belongs_to :role, class: RockGroupTypeRole, foreign_key: 'GroupRoleId', primary_key: 'Id'
   belongs_to :status, class: RockGroupMemberStatus, foreign_key: 'GroupMemberStatus'  
+
+
 end
