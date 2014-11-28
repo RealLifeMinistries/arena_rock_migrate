@@ -5,6 +5,7 @@ namespace :migrate do
         attendance
         attributes
         attribute_categories
+        attribute_qualifiers
         attribute_values
         campuses
         categories 
@@ -65,6 +66,18 @@ namespace :migrate do
 
           if attribute_value.changes.any?
             attribute_value.save!
+            puts "Downloaded #{record.class.name}/#{record.Id}"
+          end
+        end
+      end
+
+      task :attribute_qualifiers => :environment do
+        Rock::AttributeQualifier.find_each do |record|
+          attribute_qualifier = RockAttributeQualifier.find_or_initialize_by(Id: record.Id)
+          attribute_qualifier.attributes = record.attributes
+
+          if attribute_qualifier.changes.any?
+            attribute_qualifier.save!
             puts "Downloaded #{record.class.name}/#{record.Id}"
           end
         end

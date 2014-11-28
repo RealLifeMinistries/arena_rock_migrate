@@ -7,12 +7,6 @@
 #  type :string
 #
 
-class ArenaAttributeType < ActiveRecord::Base
-  has_rock_mapping
-
-  def handle_qualifiers_for!(attr)
-    # Nothing at base level
-  end
-
+class ArenaAttributeTypes::Document < ArenaAttributeType
 
 end

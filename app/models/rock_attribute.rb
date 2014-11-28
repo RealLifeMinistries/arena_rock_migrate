@@ -30,7 +30,17 @@ class RockAttribute < ActiveRecord::Base
 
   belongs_to :field_type, class: RockFieldType, primary_key: 'Id', foreign_key: 'FieldTypeId'
   belongs_to :entity_type, class: RockEntityType, primary_key: 'Id', foreign_key: 'EntityTypeId'
+  has_many :category_assignments, class: RockAttributeCategory, foreign_key: 'AttributeId'
 
-  has_one :mapping, as: :rock_record
-  has_one :arena_record, through: :mapping
+  has_many :qualifiers, class: RockAttributeQualifier, foreign_key: 'AttributeId'
+
+  has_arena_mapping
+
+  def categories
+    category_assignments.collect(&:category).flatten
+  end
+
+  def in_category?(cat)
+    categories.include?(cat)
+  end
 end

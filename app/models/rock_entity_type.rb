@@ -19,4 +19,7 @@ class RockEntityType <  ActiveRecord::Base
   self.primary_key = :Id
   belongs_to :single_value_field_type, class: RockFieldType, foreign_key: :SingleValueFieldTypeId, primary_key: :Id
   belongs_to :multi_value_field_type, class: RockFieldType, foreign_key: :SingleValueFieldTypeId, primary_key: :Id
+
+  PERSON = 15
+  ATTRIBUTE = 49
 end

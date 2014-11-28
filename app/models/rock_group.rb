@@ -3,16 +3,16 @@
 # Table name: rock_groups
 #
 #  Id                      :integer          not null, primary key
-#  IsSystem                :boolean
+#  IsSystem                :boolean          not null
 #  ParentGroupId           :integer
-#  GroupTypeId             :integer
+#  GroupTypeId             :integer          not null
 #  CampusId                :integer
-#  Name                    :string
+#  Name                    :string           not null
 #  Description             :string
-#  IsSecurityRole          :boolean
-#  IsActive                :boolean
-#  Order                   :integer
-#  Guid                    :uuid
+#  IsSecurityRole          :boolean          not null
+#  IsActive                :boolean          not null
+#  Order                   :integer          not null
+#  Guid                    :uuid             not null
 #  CreatedDateTime         :datetime
 #  ModifiedDateTime        :datetime
 #  CreatedByPersonAliasId  :integer
