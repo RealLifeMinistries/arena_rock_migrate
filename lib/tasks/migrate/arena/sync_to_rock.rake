@@ -15,8 +15,8 @@ namespace :migrate do
       end
 
       task :attributes => :environment do
-        ArenaAttribute.find_each do |arena_attribute|
-          arena_attribute.sync_to_rock!
+        ArenaPersonAttribute.find_each do |attribute|
+          attribute.sync_to_rock!
         end
       end
 

@@ -29,7 +29,6 @@ class ArenaAttribute < ActiveRecord::Base
 
   def sync_to_rock!
     unless does_not_transfer?
-
       map = mapping || build_mapping
       rock = map.rock_record ||= RockAttribute.new
       rock.FieldTypeId = attribute_type_record.mapped_id
@@ -68,6 +67,10 @@ class ArenaAttribute < ActiveRecord::Base
     # read only attributes, and documents are not transfering
     attribute_type_record.is_a?(ArenaAttributeTypes::Readonly) ||
     attribute_type_record.is_a?(ArenaAttributeTypes::Document)
+  end
+
+  def set_rock_value(rock,arena)
+    attribute_type_record.set_rock_attribute_value(rock,arena)
   end
 
 end

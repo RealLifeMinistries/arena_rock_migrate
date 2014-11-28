@@ -19,6 +19,14 @@ class ArenaAttributeTypes::Dropdown < ArenaAttributeType
     end
   end
 
+  def set_rock_attribute_value(rock,arena)
+    if arena.int_value > 0
+      rock.Value = ArenaLookup.find(arena.int_value).mapped_record.Guid
+    else
+      throw(:skip_attribute)
+    end
+  end
+
   protected
   def create_definedtype_qualifier_for(attr)
     RockAttributeQualifier.create!({

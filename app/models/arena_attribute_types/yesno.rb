@@ -22,10 +22,20 @@ class ArenaAttributeTypes::Yesno < ArenaAttributeType
 
   end
 
+  def set_rock_attribute_value(rock,arena)
+    if arena.int_value == 0
+      rock.Value = 'False'
+    elsif arena.int_value > 0
+      rock.Value = 'True'
+    else
+      throw(:skip_attribute)
+    end
+  end
+
   protected
   def create_truetext_qualifier_for(attr)
     RockAttributeQualifier.create!({
-      Guid: SecureText.uuid, 
+      Guid: SecureRandom.uuid, 
       IsSystem: false,
       AttributeId: attr.Id,
       Key: 'truetext',
@@ -35,7 +45,7 @@ class ArenaAttributeTypes::Yesno < ArenaAttributeType
 
   def create_falsetext_qualifier_for(attr)
     RockAttributeQualifier.create!({
-      Guid: SecureText.uuid, 
+      Guid: SecureRandom.uuid, 
       IsSystem: false,
       AttributeId: attr.Id,
       Key: 'truetext',
