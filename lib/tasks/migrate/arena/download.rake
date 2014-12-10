@@ -14,7 +14,6 @@ namespace :migrate do
         occurrence_attendance
         people
         person_addresses
-        person_aliases
         person_attributes
         person_emails
         person_phones
@@ -29,7 +28,7 @@ namespace :migrate do
       }
 
       task :addresses => :environment do
-        Arena::Address.find_each do |record|
+        Arena::Address.find_each(batch_size:100) do |record|
           address = ArenaAddress.find_or_initialize_by(address_id: record.address_id)
           address.attributes = record.attributes
           if address.changes.any?
@@ -40,7 +39,7 @@ namespace :migrate do
       end
 
       task :areas => :environment do
-        Arena::Area.find_each do |record|
+        Arena::Area.find_each(batch_size:100) do |record|
           area = ArenaArea.find_or_initialize_by(area_id: record.area_id)
           area.attributes = record.attributes
           if area.changes.any?
@@ -51,7 +50,7 @@ namespace :migrate do
       end
 
       task :attributes => :environment do
-        Arena::Attribute.find_each do |record|
+        Arena::Attribute.find_each(batch_size:100) do |record|
           attribute = ArenaAttribute.find_or_initialize_by(attribute_id: record.attribute_id)
           attribute.attributes = record.attributes
           if attribute.changes.any? 
@@ -62,7 +61,7 @@ namespace :migrate do
       end
 
       task :attribute_groups => :environment do
-        Arena::AttributeGroup.find_each do |record|
+        Arena::AttributeGroup.find_each(batch_size:100) do |record|
           attribute_group = ArenaAttributeGroup.find_or_initialize_by(attribute_group_id: record.attribute_group_id)
           attribute_group.attributes = record.attributes
           if attribute_group.changes.any? 
@@ -73,7 +72,7 @@ namespace :migrate do
       end
 
       task :families => :environment do
-        Arena::Family.find_each do |record|
+        Arena::Family.find_each(batch_size:100) do |record|
           family = ArenaFamily.find_or_initialize_by(family_id: record.family_id)
           family.attributes = record.attributes
           if family.changes.any? 
@@ -84,7 +83,7 @@ namespace :migrate do
       end
 
       task :family_members => :environment do
-        Arena::FamilyMember.find_each do |record|
+        Arena::FamilyMember.find_each(batch_size:100) do |record|
           family_member = ArenaFamilyMember.find_or_initialize_by(family_id: record.family_id, person_id: record.person_id)
           family_member.attributes = record.attributes
           if family_member.changes.any? 
@@ -95,7 +94,7 @@ namespace :migrate do
       end
 
       task :lookups => :environment do
-        Arena::Lookup.find_each do |record|
+        Arena::Lookup.find_each(batch_size:100) do |record|
           lookup = ArenaLookup.find_or_initialize_by(lookup_id: record.lookup_id)
           lookup.attributes = record.attributes
           if lookup.changes.any? 
@@ -106,7 +105,7 @@ namespace :migrate do
       end
 
       task :lookup_types => :environment do
-        Arena::LookupType.find_each do |record|
+        Arena::LookupType.find_each(batch_size:100) do |record|
           lookup_type = ArenaLookupType.find_or_initialize_by(lookup_type_id: record.lookup_type_id)
           lookup_type.attributes = record.attributes
           if lookup_type.changes.any? 
@@ -117,7 +116,7 @@ namespace :migrate do
       end
 
       task :occurrences => :environment do
-        Arena::Occurrence.find_each do |record|
+        Arena::Occurrence.find_each(batch_size:100) do |record|
           occ = ArenaOccurrence.find_or_initialize_by(occurrence_id: record.occurrence_id)
           occ.attributes = record.attributes
           if occ.changes.any?
@@ -128,7 +127,7 @@ namespace :migrate do
       end
 
       task :occurrence_attendance => :environment do
-        Arena::OccurrenceAttendance.find_each do |record|
+        Arena::OccurrenceAttendance.find_each(batch_size:100) do |record|
           occ = ArenaOccurrenceAttendance.find_or_initialize_by(occurrence_attendance_id: record.occurrence_attendance_id)
           occ.attributes = record.attributes
           if occ.changes.any?
@@ -139,7 +138,7 @@ namespace :migrate do
       end
 
       task :people => :environment do
-        Arena::Person.find_each do |record|
+        Arena::Person.find_each(batch_size:100) do |record|
           person = ArenaPerson.find_or_initialize_by(person_id: record.person_id)
           person.attributes = record.attributes
           if person.changes.any?
@@ -150,7 +149,7 @@ namespace :migrate do
       end
 
       task :person_addresses => :environment do
-        Arena::PersonAddress.find_each do |record|
+        Arena::PersonAddress.find_each(batch_size:100) do |record|
           address = ArenaPersonAddress.find_or_initialize_by(person_id: record.person_id, address_id: record.address_id, address_type_luid: record.address_type_luid)
           address.attributes = record.attributes
           if address.changes.any?
@@ -161,7 +160,7 @@ namespace :migrate do
       end
 
       task :person_attributes => :environment do
-        Arena::PersonAttribute.find_each do |record|
+        Arena::PersonAttribute.find_each(batch_size:100) do |record|
           person_attr = ArenaPersonAttribute.find_or_initialize_by({
             person_id: record.person_id,
             attribute_id: record.attribute_id 
@@ -175,7 +174,7 @@ namespace :migrate do
       end
 
       task :person_emails => :environment do
-        Arena::PersonEmail.find_each do |record|
+        Arena::PersonEmail.find_each(batch_size:100) do |record|
           email = ArenaPersonEmail.find_or_initialize_by(email_id: record.email_id)
           email.attributes = record.attributes
           if email.changes.any? 
@@ -186,7 +185,7 @@ namespace :migrate do
       end
 
       task :person_phones => :environment do
-        Arena::PersonPhone.find_each do |record|
+        Arena::PersonPhone.find_each(batch_size:100) do |record|
           phone = ArenaPersonPhone.find_or_initialize_by(person_id: record.person_id, phone_luid: record.phone_luid)
           phone.attributes = record.attributes
           if phone.changes.any?
@@ -198,7 +197,7 @@ namespace :migrate do
 
 
       task :profiles => :environment do
-        Arena::Profile.find_each do |record|
+        Arena::Profile.find_each(batch_size:100) do |record|
           profile = ArenaProfile.find_or_initialize_by(profile_id: record.profile_id)
           profile.attributes = record.attributes
           if profile.changes.any?
@@ -209,7 +208,7 @@ namespace :migrate do
       end
 
       task :profile_members => :environment do
-        Arena::ProfileMember.find_each do |record|
+        Arena::ProfileMember.find_each(batch_size:100) do |record|
           profile_member = ArenaProfileMember.find_or_initialize_by(profile_id: record.profile_id, person_id: record.person_id)
           profile_member.attributes = record.attributes
           if profile_member.changes.any?
@@ -220,7 +219,7 @@ namespace :migrate do
       end
 
       task :relationship_types => :environment do
-        Arena::RelationshipType.find_each do |record|
+        Arena::RelationshipType.find_each(batch_size:100) do |record|
           rel_type = ArenaRelationshipType.find_or_initialize_by({
             relationship_type_id: record.relationship_type_id
           })
@@ -233,7 +232,7 @@ namespace :migrate do
       end
 
       task :relationships => :environment do
-        Arena::Relationship.find_each do |record|
+        Arena::Relationship.find_each(batch_size:100) do |record|
           rel = ArenaRelationship.find_or_initialize_by({
             relationship_id: record.relationship_id
           })
@@ -246,7 +245,7 @@ namespace :migrate do
       end
 
       task :small_groups => :environment do
-        Arena::SmallGroup.find_each do |record|
+        Arena::SmallGroup.find_each(batch_size:100) do |record|
           sg = ArenaSmallGroup.find_or_initialize_by({
             group_id: record.group_id
           })
@@ -259,7 +258,7 @@ namespace :migrate do
       end
 
       task :small_group_clusters => :environment do
-        Arena::SmallGroupCluster.find_each do |record|
+        Arena::SmallGroupCluster.find_each(batch_size:100) do |record|
           sgc = ArenaSmallGroupCluster.find_or_initialize_by({
             group_cluster_id: record.group_cluster_id
           })
@@ -272,7 +271,7 @@ namespace :migrate do
       end
 
       task :small_group_members => :environment do 
-        Arena::SmallGroupMember.find_each do |record|
+        Arena::SmallGroupMember.find_each(batch_size:100) do |record|
           sgm = ArenaSmallGroupMember.find_or_initialize_by({
             group_id: record.group_id,
             person_id: record.person_id
@@ -286,7 +285,7 @@ namespace :migrate do
       end
 
       task :small_group_occurrences => :environment do
-        Arena::SmallGroupOccurrence.find_each do |record|
+        Arena::SmallGroupOccurrence.find_each(batch_size:100) do |record|
           sgo = ArenaSmallGroupOccurrence.find_or_initialize_by({
             group_id: record.group_id,
             occurrence_id: record.occurrence_id

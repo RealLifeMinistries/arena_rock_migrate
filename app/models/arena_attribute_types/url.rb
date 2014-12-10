@@ -9,4 +9,11 @@
 
 class ArenaAttributeTypes::Url < ArenaAttributeType
 
+  def set_rock_attribute_value(rock,arena)
+    if arena.varchar_value?
+      rock.Value = arena.varchar_value
+    else
+      throw(:skip_attribute)
+    end
+  end
 end

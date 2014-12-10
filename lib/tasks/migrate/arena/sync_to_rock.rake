@@ -19,6 +19,12 @@ namespace :migrate do
           attribute.sync_to_rock!
         end
       end
+      
+      task :small_groups => :environment do
+        ArenaSmallGroup.find_each do |group|
+          group.sync_to_rock!
+        end
+      end
 
     end
   end

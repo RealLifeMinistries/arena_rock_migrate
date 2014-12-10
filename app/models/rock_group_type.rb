@@ -36,4 +36,6 @@ class RockGroupType < ActiveRecord::Base
   belongs_to :parent_group_type, class: RockGroupType, foreign_key: 'InheritedGroupTypeId', primary_key: 'Id'
 
   FAMILY = 10
+  SMALL_GROUP_CLUSTER = 33
+  SMALL_GROUP = 27
 end

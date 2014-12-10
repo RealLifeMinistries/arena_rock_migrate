@@ -35,7 +35,7 @@ class ArenaAttribute < ActiveRecord::Base
       rock.IsSystem ||= false
       rock.EntityTypeId = RockEntityType::PERSON 
       rock.Name ||= attribute_name
-      rock.Key ||= rock.Name.camelize
+      rock.Key ||= key
       rock.Order ||= attribute_order
       rock.IsGridColumn ||= false
       rock.IsMultiValue ||= false
@@ -61,6 +61,10 @@ class ArenaAttribute < ActiveRecord::Base
         category: rock_attr_category
       )
     end 
+  end
+
+  def key
+    ActionView::Base.full_sanitizer.sanitize(attribute_name).gsub(/[^a-zA-Z0-9\s]/,'').strip.gsub(/[\s]+/,'_').camelize
   end
 
   def does_not_transfer?

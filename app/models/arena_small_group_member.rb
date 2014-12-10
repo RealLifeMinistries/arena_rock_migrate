@@ -20,4 +20,22 @@ class ArenaSmallGroupMember < ActiveRecord::Base
   belongs_to :group, class: ArenaSmallGroup
   belongs_to :person, class: ArenaPerson
   belongs_to :role, class: ArenaLookup, foreign_key: 'role_luid'
+
+  has_rock_mapping
+
+  def sync_to_rock!
+    map = mapping || build_mapping
+    rock = map.rock_record ||= RockGroupMember.new
+    
+    rock.IsSystem ||= false
+    rock.Guid ||= SecureRandom.uuid
+    rock.GroupMemberStatus ||= (active? ? RockGroupMemberStatus::ACTIVE : RockGroupMemberStatus::INACTIVE)
+    rock.GroupId = group.mapped_id
+    rock.PersonId = person.mapped_id
+    rock.GroupRoleId = role.mapped_id
+
+    rock.save!
+    map.save!
+
+  end
 end

@@ -45,4 +45,8 @@
 class Rock::Person < Rock::Base
   self.primary_key = :Id
   self.table_name = 'Person'
+
+  def BirthDate=d
+    # computed column!
+  end
 end

@@ -77,6 +77,7 @@ class ArenaPerson < ActiveRecord::Base
     # Rock RecordType doesn't have a concept in Arena
     # Rock Person Defined Value is: 1
     rock.RecordTypeValueId = 1
+    rock.IsSystem ||= false
 
     if record_status
       rock.RecordStatusValueId = record_status_record.mapped_id
@@ -134,6 +135,7 @@ class ArenaPerson < ActiveRecord::Base
       rock.Email = arena_email.email  
       rock.IsEmailActive = true
       rock.EmailNote = arena_email.notes
+      rock.EmailPreference = 0 # EmailAllowed - What is arena spec?
     end
 
     rock.SystemNote = self.Notes

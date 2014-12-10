@@ -37,7 +37,7 @@ class RockAttribute < ActiveRecord::Base
   has_arena_mapping
 
   def categories
-    category_assignments.collect(&:category).flatten
+    category_assignments.includes(:category).collect(&:category).flatten
   end
 
   def in_category?(cat)

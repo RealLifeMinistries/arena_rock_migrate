@@ -44,4 +44,48 @@ class ArenaSmallGroup < ActiveRecord::Base
   has_many :members, through: :memberships, class: ArenaPerson, source: :person
   has_many :occurrence_instances, class: ArenaSmallGroupOccurrence, foreign_key: 'group_id'
   has_many :occurrences, through: :occurrence_instances, class: ArenaOccurrence
+  has_rock_mapping
+
+  def sync_to_rock!
+    map = mapping || build_mapping
+    rock = map.rock_record ||= RockGroup.new 
+
+    rock.IsSystem ||= false
+    rock.ParentGroupId ||= cluster.mapped_id
+    rock.GroupTypeId ||= RockGroupType::SMALL_GROUP
+    rock.Name ||= group_name
+    rock.Description ||= group_desc
+    rock.IsSecurityRole ||= false
+    rock.IsActive ||= active?
+    rock.Order ||= 0
+    rock.Guid ||= guid
+    rock.CreatedDateTime ||= date_created
+    rock.ModifiedDateTime ||= date_modified
+    
+    rock.save!
+    map.save!
+    sync_roles!
+    sync_memberships!
+  end
+
+  def sync_roles!
+    if leader
+      rock_group = mapped_record
+      leader_role = RockGroupMember.find_or_initialize_by({
+        GroupId: rock_group.Id,
+        PersonId: leader.mapped_id,
+        GroupRoleId: RockGroupTypeRole::SMALL_GROUP_LEADER  
+      })
+
+      leader_role.IsSystem ||= false
+      leader_role.GroupMemberStatus ||= RockGroupMemberStatus::ACTIVE
+      leader_role.Guid ||= SecureRandom.uuid
+       
+      leader_role.save!
+    end
+  end
+
+  def sync_memberships!
+    memberships.each(&:sync_to_rock!)    
+  end
 end

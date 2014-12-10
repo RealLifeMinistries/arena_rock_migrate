@@ -28,9 +28,11 @@ class ArenaLookup < ActiveRecord::Base
   def sync_to_rock!
     map = mapping || build_mapping
     rock = map.rock_record ||= RockDefinedValue.new
-    rock.Guid = guid
+
+    rock.IsSystem ||= false # required
+    rock.Guid ||= guid
     rock.Value = lookup_value
-    rock.Order = lookup_order
+    rock.Order ||= lookup_order
     rock.DefinedTypeId ||= lookup_type.mapped_id  
     rock.save!
     self.mapping = map

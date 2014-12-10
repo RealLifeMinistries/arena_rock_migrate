@@ -33,4 +33,56 @@ class ArenaSmallGroupCluster < ActiveRecord::Base
   belongs_to :area, class: ArenaArea
 
   has_many :groups, class: ArenaSmallGroup, foreign_key: 'group_cluster_id'
+  has_many :child_clusters, class: self, foreign_key: :parent_cluster_id
+
+  has_rock_mapping
+
+  def sync_to_rock!
+    map = mapping || build_mapping
+    rock = map.rock_record ||= RockGroup.new
+
+    rock.IsSystem ||= false
+    rock.GroupTypeId ||= RockGroupType::SMALL_GROUP_CLUSTER
+    rock.ParentGroupId ||= (parent ? parent.mapped_id : RockGroup::HOME_GROUPS)
+    rock.Name ||= cluster_name
+    rock.Description ||= cluster_desc
+    rock.IsSecurityRole ||= false
+    rock.IsActive ||= active?
+    rock.Order ||= 0
+    rock.Guid ||= guid
+    rock.CreatedDateTime ||= date_created
+    rock.ModifiedDateTime ||= date_modified
+
+    rock.save!
+    map.save!
+    sync_roles!
+  end
+
+  def sync_roles!
+    rock_group = mapped_record
+    if leader
+      leader_role = RockGroupMember.find_or_initialize_by({
+        GroupId: rock_group.Id,
+        PersonId: leader_role.mapped_id,
+        GroupRoleId: RockGroupTypeRole::SMALL_GROUP_CLUSTER_LEADER  
+      })
+      leader_role.IsSystem ||= false
+      leader_role.GroupMemberStatus ||= RockGroupMemberStatus::ACTIVE
+      leader_role.Guid ||= SecureRandom.uuid
+      leader_role.save!
+    end
+
+    if admin
+      admin_role = RockGroupMember.find_or_initialize_by({
+        GroupId: rock_group.Id,
+        PersonId: admin.mapped_id,
+        GroupRoleId: RockGroupTypeRole::SMALL_GROUP_CLUSTER_LEADER  
+      })
+      admin_role.IsSystem ||= false
+      admin_role.GroupMemberStatus ||= RockGroupMemberStatus::ACTIVE
+      admin_role.Guid ||= SecureRandom.uuid
+    end
+
+  end
+
 end

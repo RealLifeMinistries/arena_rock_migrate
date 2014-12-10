@@ -31,4 +31,5 @@ class RockGroup < ActiveRecord::Base
 
   has_arena_mapping
 
+  HOME_GROUPS = 711
 end
