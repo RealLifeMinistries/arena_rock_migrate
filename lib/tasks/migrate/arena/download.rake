@@ -1,31 +1,43 @@
 namespace :migrate do
   namespace :arena do
     namespace :download do
-      task :all => %w{
-        addresses 
-        areas
-        attributes
-        attribute_groups
-        families
-        family_members
-        lookups
-        lookup_types
-        occurrences
-        occurrence_attendance
-        people
-        person_addresses
-        person_attributes
-        person_emails
-        person_phones
-        profiles
-        profile_members        
-        relationship_types
-        relationships
-        small_groups
-        small_group_clusters
-        small_group_members
-        small_group_occurrences
-      }
+      task :all do
+        sub_tasks = %w{
+          addresses 
+          areas
+          attributes
+          attribute_groups
+          families
+          family_members
+          lookups
+          lookup_types
+          occurrences
+          occurrence_attendance
+          people
+          person_addresses
+          person_attributes
+          person_emails
+          person_phones
+          profiles
+          profile_members        
+          relationship_types
+          relationships
+          small_groups
+          small_group_clusters
+          small_group_members
+          small_group_occurrences
+        }
+
+        sub_tasks.each do |task|
+          begin
+            Rake::Task["migrate:arena:download:#{task}"].invoke
+          rescue
+            # try again if timed out
+            Rake::Task["migrate:arena:download:#{task}"].invoke
+          end
+        end
+
+      end
 
       task :addresses => :environment do
         Arena::Address.find_each(batch_size:100) do |record|
