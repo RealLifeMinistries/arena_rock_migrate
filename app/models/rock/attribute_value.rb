@@ -20,4 +20,14 @@
 class Rock::AttributeValue < Rock::Base
   self.primary_key = :Id
   self.table_name = 'AttributeValue'
+
+  def ValueAsDateTime=d
+    # computed in sql server
+    d
+  end
+
+  def ValueAsNumeric=n
+    # computed in sql server
+    n
+  end
 end

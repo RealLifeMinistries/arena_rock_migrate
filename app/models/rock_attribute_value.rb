@@ -20,5 +20,6 @@
 class RockAttributeValue < ActiveRecord::Base
   self.primary_key = :Id
   belongs_to :rock_attribute, class: RockAttribute, foreign_key: 'AttributeId', primary_key: 'Id'
+
   
 end
