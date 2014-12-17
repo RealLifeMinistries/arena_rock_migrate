@@ -9,6 +9,8 @@ namespace :migrate do
         categories
         defined_types
         defined_values
+        group_type_roles
+        group_types
         groups
         group_members
         locations
@@ -106,6 +108,42 @@ namespace :migrate do
           end
         end
       end
+
+      task :group_type_roles => :environment do
+        RockGroupTypeRole.find_each do |record|
+          errors = []
+          group_type = Rock::GroupTypeRole.find_or_initialize_by(Id: record.Id)
+          group_type.attributes = record.attributes
+          begin
+            if group_type.changes.any?
+              group_type.save!
+              puts "Uploaded #{record.class.name}/#{record.Id}"
+            end
+          rescue Exception => e
+            errors << e.message
+          end
+          puts errors.join('\n')
+        end
+      end
+
+      task :group_types => :environment do
+        RockGroupType.find_each do |record|
+          errors = []
+          group_type = Rock::GroupType.find_or_initialize_by(Id: record.Id)
+          group_type.attributes = record.attributes
+
+          begin
+            if group_type.changes.any?
+              group_type.save!
+              puts "Uploaded #{record.class.name}/#{record.Id}"
+            end
+          rescue Exception => e
+            errors << e.message
+          end
+          puts errors.join('\n')
+        end
+      end
+
 
       task :groups => :environment do
         RockGroup.find_each do |record|
