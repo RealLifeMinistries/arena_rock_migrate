@@ -131,11 +131,11 @@ class ArenaPerson < ActiveRecord::Base
     # ARENA has multiple emails,
     # Rock has one?
     arena_email = emails.where(active: true).first 
+    rock.EmailPreference ||= 0 # EmailAllowed - What is arena spec?
     if arena_email
       rock.Email = arena_email.email  
       rock.IsEmailActive = true
       rock.EmailNote = arena_email.notes
-      rock.EmailPreference = 0 # EmailAllowed - What is arena spec?
     end
 
     rock.SystemNote = self.Notes

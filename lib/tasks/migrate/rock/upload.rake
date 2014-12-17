@@ -7,6 +7,7 @@ namespace :migrate do
         attribute_qualifiers
         attribute_values
         categories
+        defined_types
         defined_values
         groups
         group_members
@@ -83,6 +84,17 @@ namespace :migrate do
         end
       end
 
+      task :defined_types => :environment do
+        RockDefinedType.find_each do |record|
+          defined_type = Rock::DefinedType.find_or_initialize_by(Id: record.Id)
+          defined_type.attributes = record.attributes
+
+          if defined_type.changes.any?
+            defined_type.save!
+            puts "Uploaded #{record.class.name}/#{record.Id}"
+          end
+        end
+      end
       task :defined_values => :environment do
         RockDefinedValue.find_each do |record|
           defined_value = Rock::DefinedValue.find_or_initialize_by(Id: record.Id)
