@@ -35,7 +35,7 @@ class ArenaAttribute < ActiveRecord::Base
       rock.IsSystem ||= false
       rock.EntityTypeId = RockEntityType::PERSON 
       rock.EntityTypeQualifierColumn = ""
-      rock.EntityTypeQualifierId = ""
+      rock.EntityTypeQualifierValue = ""
       rock.Name ||= attribute_name
       rock.Key ||= key
       rock.Order ||= attribute_order
