@@ -35,4 +35,8 @@
 
 class ArenaAddress < ActiveRecord::Base
   self.primary_key = :address_id
+
+  def full
+    [street_address_1,street_address_2,city,state,postal_code].join(' ')
+  end
 end

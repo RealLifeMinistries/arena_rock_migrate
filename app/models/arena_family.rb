@@ -18,6 +18,8 @@ class ArenaFamily < ActiveRecord::Base
   has_many :memberships, foreign_key: :family_id, class: ArenaFamilyMember
   has_many :members, through: :memberships, class: ArenaPerson, foreign_key: :person_id, source: :person
 
+  HOH_ROLE = 9435
+
   has_rock_mapping
 
   def sync_to_rock!
@@ -39,5 +41,14 @@ class ArenaFamily < ActiveRecord::Base
     map.save!
 
     memberships.each(&:sync_to_rock!)
+  end
+
+  def primary_address
+    return @primary_address if @primary_address
+    hohs = memberships.where(role_luid: HOH_ROLE).collect(&:person).select{|p| !p.is_deceased?}
+    unless hohs.any?
+      raise "No Living Head of Household for #{family_name}"
+    end
+    @primary_address = hohs.min_by(&:birth_date).primary_address
   end
 end

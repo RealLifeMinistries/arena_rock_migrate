@@ -61,7 +61,8 @@ class ArenaPerson < ActiveRecord::Base
   has_many :relationships, class: ArenaRelationship, foreign_key: :person_id
   has_many :family_memberships, foreign_key: :person_id, class: ArenaFamilyMember
   has_many :families, through: :family_memberships, foreign_key: :family_id, class: ArenaFamily
-  has_many :addresses, class: ArenaPersonAddress, foreign_key: :person_id
+  has_many :locations, class: ArenaPersonAddress, foreign_key: :person_id
+  has_many :addresses, through: :locations, class: ArenaAddress
   has_many :phones, class: ArenaPersonPhone, foreign_key: :person_id
   has_many :emails, class: ArenaPersonEmail, foreign_key: :person_id
   has_many :profile_memberships, class: ArenaProfileMember, foreign_key: :person_id
@@ -157,4 +158,9 @@ class ArenaPerson < ActiveRecord::Base
     @is_deceased ||=
       (inactive_reason_luid.to_i == 356)
   end
+
+  def primary_address
+    locations.where(primary_address: true).first.address
+  end
+
 end

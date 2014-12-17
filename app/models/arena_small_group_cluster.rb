@@ -43,7 +43,7 @@ class ArenaSmallGroupCluster < ActiveRecord::Base
 
     rock.IsSystem ||= false
     rock.GroupTypeId ||= RockGroupType::SMALL_GROUP_CLUSTER
-    rock.ParentGroupId ||= (parent ? parent.mapped_id : RockGroup::HOME_GROUPS)
+    rock.ParentGroupId = (parent ? parent.mapped_id : nil ) #RockGroup::HOME_GROUPS)
     rock.Name ||= cluster_name
     rock.Description ||= cluster_desc
     rock.IsSecurityRole ||= false
