@@ -1,6 +1,11 @@
 namespace :migrate do
   namespace :arena do
     namespace :sync_to_rock do
+      task :all do
+        [:people,:families,:attributes,:small_groups].each do |task|
+          Rake::Task["migrate:arena:sync_to_rock:#{task.to_s}"].invoke
+        end
+      end
       
       task :people => :environment do
         ArenaPerson.find_each do |arena_person|
