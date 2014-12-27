@@ -109,10 +109,17 @@ class ArenaPerson < ActiveRecord::Base
     # @TODO: rock.PhotoId
 
     if birth_date?
-      rock.BirthDay = birth_date.mday 
-      rock.BirthMonth = birth_date.month
-      rock.BirthYear = birth_date.year
-      rock.BirthDate = birth_date
+      if birth_date == Time.new(1900)
+        rock.BirthDay = nil 
+        rock.BirthMonth = nil
+        rock.BirthYear = nil
+        rock.BirthDate = nil
+      else
+        rock.BirthDay = birth_date.mday 
+        rock.BirthMonth = birth_date.month
+        rock.BirthYear = birth_date.year
+        rock.BirthDate = birth_date
+      end
     end
 
     if gender
@@ -157,6 +164,16 @@ class ArenaPerson < ActiveRecord::Base
     # Arena's inactive reason for deceased is: 356
     @is_deceased ||=
       (inactive_reason_luid.to_i == 356)
+  end
+
+  def aniversary_date
+    date = read_attribute(:anniversary_date)
+    return (date == Time.new(1900) ? nil : date)
+  end
+
+  def graduation_date
+    date = read_attribute(:graduation_date)
+    return (date == Time.new(1900) ? nil : date)
   end
 
   def primary_address

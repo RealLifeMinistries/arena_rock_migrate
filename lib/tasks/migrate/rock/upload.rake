@@ -2,25 +2,24 @@ namespace :migrate do
   namespace :rock do
     namespace :upload do
       task :all => %w{
+        defined_types
+        defined_values
+        people
+        person_aliases
+        phone_numbers
+        categories
         attributes
         attribute_categories
         attribute_qualifiers
         attribute_values
-        categories
-        defined_types
-        defined_values
         group_type_roles
         group_types
         groups
         group_members
-        locations
-        people
-        person_aliases
-        phone_numbers
       }
 
       task :attributes => :environment do
-        RockAttribute.find_each do |record|
+        RockAttribute.where('"Id" >= 10000').find_each do |record|
           attribute = Rock::Attribute.find_or_initialize_by(Id: record.Id)
           attribute.attributes = record.attributes
 
@@ -33,7 +32,7 @@ namespace :migrate do
 
       task :attribute_categories => :environment do
         # Issues with .find_each and Capitalized fields with multiple primary keys
-        RockAttributeCategory.all.each do |record|
+        RockAttributeCategory.where('"AttributeId" >= 10000').each do |record|
           ac = Rock::AttributeCategory.find_or_initialize_by({
             AttributeId: record.AttributeId,
             CategoryId: record.CategoryId
@@ -51,7 +50,7 @@ namespace :migrate do
       end
 
       task :attribute_values => :environment do
-        RockAttributeValue.find_each do |record|
+        RockAttributeValue.where('"AttributeId" >= 10000').find_each do |record|
           attribute_value = Rock::AttributeValue.find_or_initialize_by(Id: record.Id)
           attribute_value.attributes = record.attributes
 
@@ -63,7 +62,7 @@ namespace :migrate do
       end
 
       task :attribute_qualifiers => :environment do
-        RockAttributeQualifier.find_each do |record|
+        RockAttributeQualifier.where('"AttributeId" >= 10000').find_each do |record|
           attribute_qualifier = Rock::AttributeQualifier.find_or_initialize_by(Id: record.Id)
           attribute_qualifier.attributes = record.attributes
 
@@ -75,7 +74,7 @@ namespace :migrate do
       end
 
       task :categories => :environment do
-        RockCategory.find_each do |record|
+        RockCategory.where('"Id" >= 1000').find_each do |record|
           category = Rock::Category.find_or_initialize_by(Id: record.Id)
           category.attributes = record.attributes
 
@@ -110,8 +109,8 @@ namespace :migrate do
       end
 
       task :group_type_roles => :environment do
+        errors = []
         RockGroupTypeRole.find_each do |record|
-          errors = []
           group_type = Rock::GroupTypeRole.find_or_initialize_by(Id: record.Id)
           group_type.attributes = record.attributes
           begin
@@ -122,13 +121,13 @@ namespace :migrate do
           rescue Exception => e
             errors << e.message
           end
-          puts errors.join('\n')
         end
+        puts errors.join('\n')
       end
 
       task :group_types => :environment do
+        errors = []
         RockGroupType.find_each do |record|
-          errors = []
           group_type = Rock::GroupType.find_or_initialize_by(Id: record.Id)
           group_type.attributes = record.attributes
 
@@ -138,23 +137,31 @@ namespace :migrate do
               puts "Uploaded #{record.class.name}/#{record.Id}"
             end
           rescue Exception => e
+            group_type.DefaultGroupRoleId = nil
+            group_type.save
             errors << e.message
           end
-          puts errors.join('\n')
         end
+        puts errors.join('\n')
       end
 
 
       task :groups => :environment do
+        errors = []
         RockGroup.find_each do |record|
           group = Rock::Group.find_or_initialize_by(Id: record.Id)
           group.attributes = record.attributes
 
           if group.changes.any?
-            group.save!
-            puts "Uploaded #{record.class.name}/#{record.Id}"
+            begin
+              group.save!
+              puts "Uploaded #{record.class.name}/#{record.Id}"
+            rescue Exception => e
+              errors << e.message
+            end
           end
         end
+        puts errors.join('\n')
       end
 
       task :group_members => :environment do
