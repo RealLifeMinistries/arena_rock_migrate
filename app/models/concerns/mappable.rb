@@ -1,6 +1,25 @@
 module Mappable
   def has_arena_mapping
-    has_one :mapping, as: :rock_record, autosave: false
+    define_method(:mapping) do
+      @mapping ||=
+      Mapping.find_by({
+        rock_record_type: self.class.name, 
+        rock_record_id: self.to_param 
+      })
+    end
+    define_method(:mapping=) do |map|
+      if mapping && (mapping != map)
+        mapping.destroy!
+      end 
+      @mapping = map
+    end
+    define_method(:build_mapping) do
+      self.mapping =
+        Mapping.new({
+          rock_record_type: self.class.name, 
+          rock_record_id: self.to_param 
+        })
+    end
     define_method(:mapped_record) do
       unless mapping
         if respond_to?(:sync_to_arena!)
@@ -26,7 +45,26 @@ module Mappable
   end
 
   def has_rock_mapping
-    has_one :mapping, as: :arena_record, autosave: false
+    define_method(:mapping) do
+      @mapping ||=
+      Mapping.find_by({
+        arena_record_type: self.class.name, 
+        arena_record_id: self.to_param 
+      })
+    end
+    define_method(:mapping=) do |map|
+      if mapping && (mapping != map)
+        mapping.destroy!
+      end 
+      @mapping = map
+    end
+    define_method(:build_mapping) do
+      self.mapping =
+        Mapping.new({
+          arena_record_type: self.class.name, 
+          arena_record_id: self.to_param 
+        })
+    end
     define_method(:mapped_record) do
       unless mapping
         if respond_to?(:sync_to_rock!)

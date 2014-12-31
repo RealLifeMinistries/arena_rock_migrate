@@ -14,4 +14,18 @@
 class Mapping < ActiveRecord::Base
   belongs_to :rock_record, polymorphic: true
   belongs_to :arena_record, polymorphic: true
+
+  def rock_record
+    return @rock_record if @rock_record
+    return nil unless rock_record_id
+    pkey = rock_record_id.to_s.include?(",") ? rock_record_id.to_s.split(',') : rock_record_id.to_s
+    @rock_record = rock_record_type.constantize.find(pkey)
+  end
+
+  def arena_record
+    return @arena_record if @rock_record
+    return nil unless arena_record_id
+    pkey = arena_record_id.to_s.include?(",") ? rock_record_id.to_s.split(',') : rock_record_id.to_s
+    @arena_record = rock_record_type.constantize.find(pkey)
+  end
 end
