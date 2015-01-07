@@ -55,9 +55,19 @@ class RockPerson < ActiveRecord::Base
   belongs_to :marital_status, class: RockDefinedValue, foreign_key: 'MaritalStatusValueId', primary_key: 'Id'
   belongs_to :gender, class: RockGender, foreign_key: 'Gender'
 
+
   has_many :attribute_values, class: RockAttributeValue, foreign_key: 'EntityId'
   has_many :phone_numbers, class: RockPhoneNumber, foreign_key: 'PersonId'
 
-  has_one :mapping, as: :rock_record
-  has_one :arena_record, through: :mapping
+  has_one :person_alias, class: RockPersonAlias, foreign_key: 'PersonId'
+
+  def make_alias
+    self.person_alias ||= RockPersonAlias.create({
+      PersonId: self.Id,
+      AliasPersonId: self.Id
+      AliasPersonGuid: self.Guid,
+      Guid: SecureRandom.uuid
+    })
+  end
+
 end

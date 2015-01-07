@@ -13,4 +13,6 @@
 
 class RockPersonAlias < ActiveRecord::Base
   self.primary_key = :Id
+  belongs_to :person, class: RockPerson, foreign_key: 'PersonId'
+  belongs_to :alias_person, class: RockPerson, foreign_key: 'AliasPersonId'
 end

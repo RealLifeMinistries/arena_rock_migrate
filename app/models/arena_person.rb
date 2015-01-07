@@ -155,6 +155,8 @@ class ArenaPerson < ActiveRecord::Base
     self.mapping = map
     mapping.save!
 
+    rock.make_alias
+
     # HasMany
     # ################
     phones.each(&:sync_to_rock!)
