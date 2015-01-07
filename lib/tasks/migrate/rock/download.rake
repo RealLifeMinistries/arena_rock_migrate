@@ -22,6 +22,7 @@ namespace :migrate do
         people
         person_aliases
         phone_numbers
+        schedules
       }
 
       task :attendance => :environment do
@@ -259,6 +260,18 @@ namespace :migrate do
 
           if pn.changes.any?
             pn.save!
+            puts "Downloaded #{record.class.name}/#{record.Id}"
+          end
+        end
+      end
+
+      task :schedules => :environment do
+        Rock::Schedule.find_each do |record|
+          s = RockSchedule.find_or_initialize_by(Id: record.Id)
+          s.attributes = record.attributes
+
+          if s.changes.any?
+            s.save!
             puts "Downloaded #{record.class.name}/#{record.Id}"
           end
         end

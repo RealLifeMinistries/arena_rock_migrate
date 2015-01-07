@@ -1,9 +1,9 @@
 namespace :migrate do
   namespace :arena do
-    namespace :sync_to_rock do
+    namespace :convert do
       task :all do
         [:people,:families,:attributes,:small_groups].each do |task|
-          Rake::Task["migrate:arena:sync_to_rock:#{task.to_s}"].invoke
+          Rake::Task["migrate:arena:convert:#{task.to_s}"].invoke
         end
       end
       
