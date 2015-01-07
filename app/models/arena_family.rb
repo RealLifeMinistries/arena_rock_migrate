@@ -19,6 +19,7 @@ class ArenaFamily < ActiveRecord::Base
   has_many :members, through: :memberships, class: ArenaPerson, foreign_key: :person_id, source: :person
 
   HOH_ROLE = 9435
+  HOH_GUARDIAN_ROLE = 9436
 
   has_rock_mapping
 
@@ -43,9 +44,13 @@ class ArenaFamily < ActiveRecord::Base
     memberships.each(&:sync_to_rock!)
   end
 
+  def sync_location
+
+  end
+
   def primary_address
     return @primary_address if @primary_address
-    hohs = memberships.where(role_luid: HOH_ROLE).collect(&:person).select{|p| !p.is_deceased?}
+    hohs = memberships.where(role_luid: [HOH_ROLE,HOH_GUARDIAN_ROLE]).collect(&:person).select{|p| !p.is_deceased?}
     unless hohs.any?
       raise "No Living Head of Household for #{family_name}"
     end

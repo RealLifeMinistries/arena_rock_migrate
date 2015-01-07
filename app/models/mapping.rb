@@ -4,9 +4,9 @@
 #
 #  id                :integer          not null, primary key
 #  arena_record_type :string           not null
-#  arena_record_id   :integer          not null
+#  arena_record_id   :string           not null
 #  rock_record_type  :string           not null
-#  rock_record_id    :integer          not null
+#  rock_record_id    :string           not null
 #  created_at        :datetime
 #  updated_at        :datetime
 #

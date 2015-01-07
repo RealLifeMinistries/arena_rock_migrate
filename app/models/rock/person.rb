@@ -35,7 +35,7 @@
 #  CreatedByPersonAliasId    :integer
 #  ModifiedByPersonAliasId   :integer
 #  BirthDate                 :date
-#  EmailPreference           :integer          not null
+#  EmailPreference           :integer          default(0), not null
 #  InactiveReasonNote        :string(1000)
 #  ForeignId                 :string(50)
 #  ReviewReasonValueId       :integer

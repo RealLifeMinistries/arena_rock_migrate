@@ -13,6 +13,7 @@ namespace :migrate do
           lookup_types
           occurrences
           occurrence_attendance
+          occurrence_types
           people
           person_addresses
           person_attributes
@@ -145,6 +146,17 @@ namespace :migrate do
           if occ.changes.any?
             occ.save!
             puts "Downloaded #{record.class.name}/#{record.occurrence_attendance_id}"
+          end
+        end
+      end
+
+      task :occurrence_types => :environment do
+        Arena::OccurrenceType.find_each(batch_size:100) do |record|
+          occ = ArenaOccurrenceType.find_or_initialize_by(occurrence_type_id: record.occurrence_type_id)
+          occ.attributes = record.attributes
+          if occ.changes.any?
+            occ.save!
+            puts "Downloaded #{record.class.name}/#{record.occurrence_type_id}"
           end
         end
       end

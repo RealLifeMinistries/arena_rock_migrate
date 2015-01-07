@@ -14,6 +14,7 @@ namespace :migrate do
         entity_types
         field_types
         groups
+        group_locations
         group_members
         group_types
         group_type_roles
@@ -162,6 +163,18 @@ namespace :migrate do
 
           if group.changes.any?
             group.save!
+            puts "Downloaded #{record.class.name}/#{record.Id}"
+          end
+        end
+      end
+
+      task :group_locations => :environment do
+        Rock::GroupLocation.find_each do |record|
+          group_location = RockGroupLocation.find_or_initialize_by(Id: record.Id)
+          group_location.attributes = record.attributes
+
+          if group_location.changes.any?
+            group_location.save!
             puts "Downloaded #{record.class.name}/#{record.Id}"
           end
         end
