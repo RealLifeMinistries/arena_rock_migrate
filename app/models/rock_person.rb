@@ -64,7 +64,7 @@ class RockPerson < ActiveRecord::Base
   def make_alias
     self.person_alias ||= RockPersonAlias.create({
       PersonId: self.Id,
-      AliasPersonId: self.Id
+      AliasPersonId: self.Id,
       AliasPersonGuid: self.Guid,
       Guid: SecureRandom.uuid
     })
