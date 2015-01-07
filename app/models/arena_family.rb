@@ -42,10 +42,20 @@ class ArenaFamily < ActiveRecord::Base
     map.save!
 
     memberships.each(&:sync_to_rock!)
+    sync_location
   end
 
   def sync_location
-
+    rock_group = mapped_record
+    gloc = RockGroupLocation.find_or_initialize_by({
+      GroupId: rock_group.Id
+    })
+    gloc.Guid ||= SecureRandom.uuid
+    gloc.GroupLocationTypeValueId = RockGroupLocation::FAMILY_HOME_TYPE
+    gloc.IsMailingLocation ||= true
+    gloc.IsMappedLocation ||= true
+    gloc.LocationId ||= primary_address.mapped_id
+    gloc.save!
   end
 
   def primary_address

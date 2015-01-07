@@ -35,8 +35,28 @@
 
 class ArenaAddress < ActiveRecord::Base
   self.primary_key = :address_id
+  has_rock_mapping
 
   def full
     [street_address_1,street_address_2,city,state,postal_code].join(' ')
+  end
+
+  def sync_to_rock!
+    map = self.mapping || build_mapping
+    rock = mapping.rock_record ||= RockLocation.new
+
+    rock.Guid ||= SecureRandom.uuid
+    rock.LocationTypeValueId = RockGroupLocation::FAMILY_HOME_TYPE
+    rock.IsActive ||= true
+    rock.Street1 = street_address_1
+    rock.Street2 = street_address_2
+    rock.City = city
+    rock.State = state
+    rock.PostalCode = postal_code
+    rock.Country = country
+    rock.CreatedDateTime = date_created
+    rock.ModifiedDateTime = date_modified
+    rock.save!
+    map.save!
   end
 end

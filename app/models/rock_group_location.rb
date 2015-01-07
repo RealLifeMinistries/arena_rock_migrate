@@ -21,4 +21,6 @@ class RockGroupLocation < ActiveRecord::Base
   self.primary_key = :Id
   belongs_to :group, class: RockGroup, foreign_key: 'GroupId'
   belongs_to :location, class: RockLocation, foreign_key: 'LocationId'
+
+  FAMILY_HOME_TYPE = 19
 end
