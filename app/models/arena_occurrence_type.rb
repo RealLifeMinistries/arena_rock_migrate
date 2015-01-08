@@ -46,4 +46,30 @@ class ArenaOccurrenceType < ActiveRecord::Base
   belongs_to :profile_source, class: ArenaLookup, foreign_key: :profile_source_luid
   belongs_to :profile_status, class: ArenaLookup, foreign_key: :profile_status_luid
   belongs_to :leader_profile, class: ArenaProfile
+  belongs_to :group, class: ArenaSmallGroup
+
+  has_many :occurrences, class: ArenaOccurrence, foreign_key: :occurrence_type
+
+  has_rock_mapping
+
+  def sync_to_rock!
+    map = mapping || build_mapping
+    rock = mapping.rock_record ||= RockSchedule.new
+
+    rock.Name = type_name
+    rock.Description = "Imported from Arena"
+    rock.Guid ||= SecureRandom.uuid
+    rock.CreatedDateTime = date_created
+    rock.ModifiedDateTime = date_modified
+    rock.EffectiveStartDate ||= effective_start_date
+    rock.save!
+    map.save!
+  end
+
+  def effective_start_date
+    sd = occurrences.minimum(:occurrence_start_time)
+    return nil unless sd
+    sd.to_date
+  end
+
 end

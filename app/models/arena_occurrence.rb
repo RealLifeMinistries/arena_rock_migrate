@@ -27,6 +27,7 @@
 
 class ArenaOccurrence < ActiveRecord::Base
   self.primary_key = 'occurrence_id'
-  belongs_to :occurrence_type_record, class: ArenaOccurrenceType, foreign_key: :occurrence_type
+  belongs_to :type_record, class: ArenaOccurrenceType, foreign_key: :occurrence_type
   belongs_to :area, class: ArenaArea
+
 end
