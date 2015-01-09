@@ -1,0 +1,13 @@
+#!/bin/bash
+while :
+  do
+  git pull
+  the_start=`date`
+  bundle exec rake migrate:arena:download_and_convert 2> log/errors.log
+  the_end=`date`
+  echo "Done ---------"
+  echo "Start: $the_start"
+  echo "End: $the_end"
+  sleep 1h
+done
+
