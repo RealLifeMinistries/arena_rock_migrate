@@ -62,7 +62,7 @@ class ArenaFamily < ActiveRecord::Base
     return @primary_address if @primary_address
     hohs = memberships.where(role_luid: [HOH_ROLE,HOH_GUARDIAN_ROLE]).collect(&:person).select{|p| !p.is_deceased?}
     unless hohs.any?
-      raise "No Living Head of Household for #{family_name}"
+      @primary_address = memberships.first.person.primary_address
     end
     @primary_address = hohs.min_by(&:birth_date).primary_address
   end
