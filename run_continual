@@ -2,6 +2,8 @@
 while :
   do
   git pull
+  echo "Backing up DB"
+  pg_dump -h localhost -v -U rlm -Fc -d rock_migrate > rock_migrate.backup
   the_start=`date`
   bundle exec rake migrate:arena:download_and_convert 2> log/errors.log
   the_end=`date`
