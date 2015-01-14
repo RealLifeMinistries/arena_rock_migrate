@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: Attendance
+# Table name: rock_attendance
 #
 #  Id                      :integer          not null, primary key
 #  LocationId              :integer
@@ -10,19 +10,20 @@
 #  SearchTypeValueId       :integer
 #  AttendanceCodeId        :integer
 #  QualifierValueId        :integer
-#  StartDateTime           :datetime         not null
+#  StartDateTime           :datetime
 #  EndDateTime             :datetime
-#  DidAttend               :boolean          not null
-#  Note                    :text
-#  Guid                    :uuid             not null
+#  DidAttend               :boolean
+#  Note                    :string
+#  Guid                    :uuid
 #  CreatedDateTime         :datetime
 #  ModifiedDateTime        :datetime
 #  CreatedByPersonAliasId  :integer
 #  ModifiedByPersonAliasId :integer
-#  ForeignId               :string(50)
+#  ForeignId               :string
 #  CampusId                :integer
 #  PersonAliasId           :integer
 #
+
 class RockAttendance < ActiveRecord::Base
   self.primary_key = :Id
   self.table_name = 'rock_attendance'

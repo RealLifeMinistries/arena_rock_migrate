@@ -30,8 +30,40 @@
 class ArenaProfile < ActiveRecord::Base
   self.primary_key = 'profile_id'
 
-  belongs_to :profile_type_record, class: ArenaLookup, foreign_key: :profile_type
+  belongs_to :profile_type_record, class: ArenaProfileType, foreign_key: :profile_type
   belongs_to :owner, class: ArenaPerson
   belongs_to :parent, class: ArenaProfile, foreign_key: :parent_profile_id
+
+  has_many :memberships, class: ArenaProfileMember, foreign_key: :profile_id
+
+  has_rock_mapping
+
+  def sync_to_rock!
+    if profile_type_record && profile_type_record.mapping # only sync if mapped type
+      map = mapping || build_mapping
+      rock = mapping.rock_record ||= RockGroup.new
+      rock.Guid ||= (guid || SecureRandom.uuid)
+      rock.IsSystem ||= false
+      if parent_profile_id?
+        rock.ParentGroupId = parent.mapped_id
+      end
+      rock.GroupTypeId = profile_type_record.mapped_id
+      rock.Name = profile_name
+      rock.Description = profile_desc
+      rock.IsActive = active?
+      rock.IsSecurityRole = false
+      rock.Order = display_order || 0 
+      rock.CreatedDateTime = date_created
+      rock.ModifiedDateTime = date_modified 
+      rock.save!
+      map.save!
+      # add owner to group
+      sync_members
+    end
+  end
+
+  def sync_members
+    memberships.each(&:sync_to_rock!)
+  end
 
 end
