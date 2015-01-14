@@ -7,6 +7,7 @@ namespace :migrate do
           areas
           attributes
           attribute_groups
+          campuses
           families
           family_members
           lookups
@@ -80,6 +81,17 @@ namespace :migrate do
           if attribute_group.changes.any? 
             attribute_group.save!
             puts "Downloaded #{record.class.name}/#{record.attribute_group_id}"
+          end
+        end
+      end
+
+      task :campuses => :environment do
+        Arena::Campus.find_each do |record|
+          campus = ArenaCampus.find_or_initialize_by(campus_id: record.campus_id)
+          campus = record.attributes
+          if campus.changes.any?
+            campus.save!
+            puts "Downloaded #{record.class.name}/#{record.campus_id}"
           end
         end
       end

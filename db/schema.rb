@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150114183554) do
+ActiveRecord::Schema.define(version: 20150114213706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,6 +103,21 @@ ActiveRecord::Schema.define(version: 20150114183554) do
     t.string   "type_qualifier",     limit: nil
     t.boolean  "readonly"
     t.boolean  "system_flag"
+  end
+
+  create_table "arena_campuses", primary_key: "campus_id", force: true do |t|
+    t.datetime "date_created"
+    t.datetime "date_modified"
+    t.string   "created_by"
+    t.string   "modified_by"
+    t.uuid     "guid"
+    t.integer  "organization_id"
+    t.string   "name"
+    t.string   "url"
+    t.string   "description"
+    t.integer  "leader_person_id"
+    t.integer  "address_id"
+    t.integer  "foreign_key"
   end
 
   create_table "arena_families", primary_key: "family_id", force: true do |t|
@@ -562,6 +577,25 @@ ActiveRecord::Schema.define(version: 20150114183554) do
     t.string   "Description",             limit: nil
     t.boolean  "IsActive"
     t.string   "Url",                     limit: nil
+  end
+
+  create_table "rock_campuses", primary_key: "Id", force: true do |t|
+    t.boolean  "IsSystem",                null: false
+    t.string   "Name",                    null: false
+    t.string   "ShortCode"
+    t.integer  "LocationId"
+    t.uuid     "Guid",                    null: false
+    t.datetime "CreatedDateTime"
+    t.datetime "ModifiedDateTime"
+    t.integer  "CreatedByPersonAliasId"
+    t.integer  "ModifiedByPersonAliasId"
+    t.string   "ForeignId"
+    t.string   "PhoneNumber"
+    t.integer  "LeaderPersonAliasId"
+    t.string   "ServiceTimes"
+    t.string   "Description"
+    t.boolean  "IsActive"
+    t.string   "Url"
   end
 
   create_table "rock_categories", primary_key: "Id", force: true do |t|
