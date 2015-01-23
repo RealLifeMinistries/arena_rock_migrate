@@ -2,7 +2,6 @@ namespace :migrate do
   namespace :rock do
     namespace :upload do
       task :all => %w{
-        attendance
         defined_types
         defined_values
         people
@@ -16,7 +15,20 @@ namespace :migrate do
         group_types
         groups
         group_members
+        schedules
+        attendance
       }
+
+      task :schedules => :environment do
+        RockSchedule.find_each do |record|
+          schedule = Rock::Schedule.find_or_initialize_by(Id: record.Id)
+          schedule.attributes = record.attributes
+          if schedule.changes.any?
+            schedule.save!
+            puts "Uploaded #{record.class.name}/#{record.Id}"
+          end
+        end
+      end
 
       task :attendance => :environment do
         RockAttendance.find_each do |record|
