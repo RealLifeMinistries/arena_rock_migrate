@@ -2,6 +2,7 @@ namespace :migrate do
   namespace :rock do
     namespace :upload do
       task :all => %w{
+        attendance
         defined_types
         defined_values
         people
@@ -16,6 +17,17 @@ namespace :migrate do
         groups
         group_members
       }
+
+      task :attendance => :environment do
+        RockAttendance.find_each do |record|
+          attend = Rock::Attendance.find_or_initialize_by(Id: record.Id)
+          attend.attributes = record.attributes
+          if attend.changes.any?
+            attend.save!
+            puts "Uploaded #{record.class.name}/#{record.Id}"
+          end
+        end
+      end
 
       task :attributes => :environment do
         RockAttribute.where('"Id" >= 10000').find_each do |record|
