@@ -5,6 +5,7 @@ namespace :migrate do
         defined_types
         defined_values
         people
+        person_aliases
         phone_numbers
         categories
         attributes

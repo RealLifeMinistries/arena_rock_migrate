@@ -35,6 +35,7 @@ class ArenaProfileMember < ActiveRecord::Base
     rock.GroupMemberStatus = (status_luid == 316 ? RockGroupMemberStatus::INACTIVE : RockGroupMemberStatus::ACTIVE)
     rock.GroupId = profile.mapped_id
     rock.GroupRoleId = profile.mapped_record.group_type.DefaultGroupRoleId
+    rock.PersonId = person.mapped_id
     
     rock.save!
     map.save!

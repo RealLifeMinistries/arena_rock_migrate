@@ -31,5 +31,9 @@ class RockGroup < ActiveRecord::Base
 
   has_arena_mapping
 
-  HOME_GROUPS = 711
+  SMALL_GROUPS = 711
+  SERVING_MINISTRY = 34241
+  PARTICIPANT_MINISTRY = 34240
+  EVENTS_CLASSES = 34239
+
 end

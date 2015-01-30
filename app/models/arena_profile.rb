@@ -46,6 +46,8 @@ class ArenaProfile < ActiveRecord::Base
       rock.IsSystem ||= false
       if parent_profile_id?
         rock.ParentGroupId = parent.mapped_id
+      else
+        rock.ParentGroupId = profile_type_record.default_rock_parent_group_id
       end
       rock.GroupTypeId = profile_type_record.mapped_id
       rock.Name = profile_name
