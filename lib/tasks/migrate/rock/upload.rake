@@ -45,6 +45,15 @@ namespace :migrate do
       task :attributes => :environment do
         RockAttribute.where('"Id" >= 10000').find_each do |record|
           attribute = Rock::Attribute.find_or_initialize_by(Id: record.Id)
+
+          if attribute.Guid != record.Guid
+            puts "Attribute Mismatch: #{record.inspect}"
+            sleep 0.5
+            record.mapping.destroy if record.mapping
+            record.destroy
+            return
+          end
+
           attribute.attributes = record.attributes
 
           if attribute.changes.any?

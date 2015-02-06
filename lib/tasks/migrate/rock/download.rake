@@ -40,8 +40,16 @@ namespace :migrate do
       task :attributes => :environment do
         Rock::Attribute.find_each do |record|
           attribute = RockAttribute.find_or_initialize_by(Id: record.Id)
-          attribute.attributes = record.attributes
 
+          if attribute.Guid != record.Guid
+            puts "Attribute Mismatch: #{attribute.inspect}"
+            sleep 0.5
+            attribute.mapping.destroy if attribute.mapping
+            attribute.destroy
+            return
+          end
+
+          attribute.attributes = record.attributes
           if attribute.changes.any?
             attribute.save!
             puts "Downloaded #{record.class.name}/#{record.Id}"

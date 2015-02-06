@@ -5,7 +5,7 @@ while :
   echo "Backing up DB"
   pg_dump -h localhost -v -U rlm -Fc -d rock_migrate > rock_migrate.backup
   the_start=`date`
-  bundle exec rake migrate:arena:download_and_convert 2> log/errors.log
+  bundle exec rake migrate:download_and_convert 2> log/errors.log
   the_end=`date`
   echo "Done ---------"
   echo "Start: $the_start"

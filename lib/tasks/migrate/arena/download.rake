@@ -67,6 +67,7 @@ namespace :migrate do
         Arena::Attribute.find_each(batch_size:100) do |record|
           attribute = ArenaAttribute.find_or_initialize_by(attribute_id: record.attribute_id)
           attribute.attributes = record.attributes
+
           if attribute.changes.any? 
             attribute.save!
             puts "Downloaded #{record.class.name}/#{record.attribute_id}"
