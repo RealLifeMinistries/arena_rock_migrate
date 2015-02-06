@@ -41,9 +41,8 @@ namespace :migrate do
         Rock::Attribute.find_each do |record|
           attribute = RockAttribute.find_or_initialize_by(Id: record.Id)
 
-          if attribute.Guid != record.Guid
+          if attribute.persisted? && attribute.Guid != record.Guid
             puts "Attribute Mismatch: #{attribute.inspect}"
-            sleep 0.5
             attribute.mapping.destroy if attribute.mapping
             attribute.destroy
             next
@@ -73,9 +72,8 @@ namespace :migrate do
         Rock::AttributeValue.find_each do |record|
           attribute_value = RockAttributeValue.find_or_initialize_by(Id: record.Id)
 
-          if attribute_value.Guid != record.Guid
+          if attribute_value.persisted? && attribute_value.Guid != record.Guid
             puts "Attribute Value Mismatch: #{attribute_value.inspect}"
-            sleep 0.5
             attribute_value.mapping.destroy if attribute_value.mapping
             attribute_value.destroy
             next
@@ -286,6 +284,7 @@ namespace :migrate do
         Rock::Schedule.find_each do |record|
           s = RockSchedule.find_or_initialize_by(Id: record.Id)
           s.attributes = record.attributes
+            sleep 0.5
 
           if s.changes.any?
             s.save!

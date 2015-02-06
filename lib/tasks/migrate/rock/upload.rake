@@ -46,9 +46,8 @@ namespace :migrate do
         RockAttribute.where('"Id" >= 10000').find_each do |record|
           attribute = Rock::Attribute.find_or_initialize_by(Id: record.Id)
 
-          if attribute.Guid != record.Guid
+          if attribute.persisted? && attribute.Guid != record.Guid
             puts "Attribute Mismatch: #{record.inspect}"
-            sleep 0.5
             record.mapping.destroy if record.mapping
             record.destroy
             next
@@ -86,9 +85,8 @@ namespace :migrate do
         RockAttributeValue.where('"AttributeId" >= 10000').find_each do |record|
           attribute_value = Rock::AttributeValue.find_or_initialize_by(Id: record.Id)
 
-          if attribute_value.Guid != record.Guid
+          if attribute_value.persisted? && attribute_value.Guid != record.Guid
             puts "Attribute Value Mismatch: #{record.inspect}"
-            sleep 0.5
             record.mapping.destroy if record.mapping
             record.destroy
             next
