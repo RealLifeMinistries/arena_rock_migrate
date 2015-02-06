@@ -46,7 +46,7 @@ namespace :migrate do
             sleep 0.5
             attribute.mapping.destroy if attribute.mapping
             attribute.destroy
-            return
+            next
           end
 
           attribute.attributes = record.attributes
@@ -72,6 +72,15 @@ namespace :migrate do
       task :attribute_values => :environment do
         Rock::AttributeValue.find_each do |record|
           attribute_value = RockAttributeValue.find_or_initialize_by(Id: record.Id)
+
+          if attribute_value.Guid != record.Guid
+            puts "Attribute Value Mismatch: #{attribute_value.inspect}"
+            sleep 0.5
+            attribute_value.mapping.destroy if attribute_value.mapping
+            attribute_value.destroy
+            next
+          end
+
           attribute_value.attributes = record.attributes
 
           if attribute_value.changes.any?
