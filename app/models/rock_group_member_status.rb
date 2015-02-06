@@ -6,7 +6,7 @@
 #  name :string
 #
 
-class RockGroupMemberStatus < ActiveRecord::Base
+class RockGroupMemberStatus < RockBase
   INACTIVE = 0
   ACTIVE = 1  
   PENDING = 2

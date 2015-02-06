@@ -6,7 +6,7 @@
 #  name :string           not null
 #
 
-class RockGender < ActiveRecord::Base
+class RockGender < RockBase
 
   has_one :mapping, as: :rock_record
   has_one :arena_record, through: :mapping

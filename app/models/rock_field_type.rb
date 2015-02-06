@@ -16,7 +16,7 @@
 #  ForeignId               :integer
 #
 
-class RockFieldType < ActiveRecord::Base
+class RockFieldType < RockBase
   self.primary_key = "Id"
     
 end

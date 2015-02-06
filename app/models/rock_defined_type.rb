@@ -18,7 +18,7 @@
 #  CategoryId              :integer
 #
 
-class RockDefinedType < ActiveRecord::Base
+class RockDefinedType < RockBase
   self.primary_key = "Id"
   has_arena_mapping
   has_many :defined_values, class: RockDefinedValue, foreign_key: 'DefinedTypeId', primary_key: 'Id'

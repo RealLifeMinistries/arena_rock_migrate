@@ -12,4 +12,12 @@ class Rock::Base < ActiveRecord::Base
     d
   end
 
+  def Guid=g
+    write_attribute :Guid, g.to_s.upcase 
+  end
+
+  def Guid
+    read_attribute(:Guid).to_s.downcase
+  end
+
 end

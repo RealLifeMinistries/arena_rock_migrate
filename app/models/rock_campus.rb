@@ -21,7 +21,7 @@
 #  Url                     :string
 #
 
-class RockCampus < ActiveRecord::Base
+class RockCampus < RockBase
   self.primary_key = :Id
   belongs_to :location, class: RockLocation, foreign_key: 'LocationId', primary_key: 'Id'
 end

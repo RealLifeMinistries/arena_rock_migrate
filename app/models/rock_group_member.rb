@@ -17,7 +17,7 @@
 #  GuestCount              :integer
 #
 
-class RockGroupMember < ActiveRecord::Base
+class RockGroupMember < RockBase
   self.primary_key = :Id
   belongs_to :group, class: RockGroup, foreign_key: 'GroupId', primary_key: 'Id'
   belongs_to :person, class: RockPerson, foreign_key: 'PersonId', primary_key: 'Id'

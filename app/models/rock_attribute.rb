@@ -25,7 +25,7 @@
 #  IconCssClass              :string
 #
 
-class RockAttribute < ActiveRecord::Base
+class RockAttribute < RockBase
   self.primary_key = :Id
 
   belongs_to :field_type, class: RockFieldType, primary_key: 'Id', foreign_key: 'FieldTypeId'

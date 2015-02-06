@@ -17,7 +17,7 @@
 #  ForeignId                :string
 #
 
-class RockGroupLocation < ActiveRecord::Base
+class RockGroupLocation < RockBase
   self.primary_key = :Id
   belongs_to :group, class: RockGroup, foreign_key: 'GroupId'
   belongs_to :location, class: RockLocation, foreign_key: 'LocationId'

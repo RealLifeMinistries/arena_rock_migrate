@@ -21,7 +21,7 @@
 #  HighlightColor            :string
 #
 
-class RockCategory < ActiveRecord::Base
+class RockCategory < RockBase
   self.primary_key = :Id
   belongs_to :entity_type, class: RockEntityType, foreign_key: 'EntityTypeId', primary_key: 'Id'
 end

@@ -19,7 +19,7 @@
 #  ForeignId                 :string
 #
 
-class RockSchedule < ActiveRecord::Base
+class RockSchedule < RockBase
   self.table_name = 'rock_schedules'
   self.primary_key = :Id
 

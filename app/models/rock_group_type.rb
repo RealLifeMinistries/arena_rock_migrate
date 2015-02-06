@@ -29,7 +29,7 @@
 #  EnableLocationSchedules :boolean
 #
 
-class RockGroupType < ActiveRecord::Base
+class RockGroupType < RockBase
   self.primary_key = :Id
   belongs_to :purpose, class: RockDefinedValue, foreign_key: 'GroupTypePurposeValueId', primary_key: 'Id'
   belongs_to :default_role, class: RockGroupTypeRole, foreign_key: 'DefaultGroupRoleId', primary_key: 'Id'

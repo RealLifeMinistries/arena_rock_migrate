@@ -21,7 +21,7 @@
 #  NumberFormatted         :string
 #
 
-class RockPhoneNumber < ActiveRecord::Base
+class RockPhoneNumber < RockBase
   self.primary_key = :Id
   has_arena_mapping 
   belongs_to :person, class: RockPerson, foreign_key: 'PersonId'

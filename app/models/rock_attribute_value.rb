@@ -17,7 +17,7 @@
 #  ValueAsNumeric          :decimal(38, 10)
 #
 
-class RockAttributeValue < ActiveRecord::Base
+class RockAttributeValue < RockBase
   self.primary_key = :Id
   belongs_to :rock_attribute, class: RockAttribute, foreign_key: 'AttributeId', primary_key: 'Id'
 

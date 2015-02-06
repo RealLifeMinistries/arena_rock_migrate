@@ -21,7 +21,7 @@
 #  AllowGuests             :boolean
 #
 
-class RockGroup < ActiveRecord::Base
+class RockGroup < RockBase
   self.primary_key = :Id
   belongs_to :parent_group, class: RockGroup, foreign_key: 'ParentGroupId', primary_key: 'Id'
   belongs_to :group_type, class: RockGroupType, foreign_key: 'GroupTypeId', primary_key: 'Id'

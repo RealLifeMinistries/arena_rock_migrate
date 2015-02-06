@@ -24,7 +24,7 @@
 #  PersonAliasId           :integer
 #
 
-class RockAttendance < ActiveRecord::Base
+class RockAttendance < RockBase
   self.primary_key = :Id
   self.table_name = 'rock_attendance'
 

@@ -16,7 +16,7 @@
 #  ForeignId               :string
 #
 
-class RockDefinedValue < ActiveRecord::Base
+class RockDefinedValue < RockBase
   self.primary_key = "Id"
   belongs_to :defined_type, class: RockDefinedType, foreign_key: 'DefinedTypeId', primary_key: 'Id'
 end

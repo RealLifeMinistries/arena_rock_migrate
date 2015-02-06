@@ -11,7 +11,7 @@
 #  ForeignId   :string
 #
 
-class RockAttributeQualifier < ActiveRecord::Base
+class RockAttributeQualifier < RockBase
   self.primary_key = :Id
 
   belongs_to :rock_attribute, class: RockAttribute, foreign_key: 'AttributeId'

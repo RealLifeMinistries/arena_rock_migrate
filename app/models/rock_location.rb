@@ -35,7 +35,7 @@
 #  PostalCode                      :string
 #
 
-class RockLocation < ActiveRecord::Base
+class RockLocation < RockBase
   self.primary_key = :Id
   belongs_to :parent_location, class: RockLocation, foreign_key: 'ParentLocationId', primary_key: 'Id'
   belongs_to :location_type, class: RockDefinedValue, foreign_key: 'LocationTypeValueId', primary_key: 'Id'

@@ -19,7 +19,7 @@
 #  ForeignId               :string
 #
 
-class RockGroupTypeRole < ActiveRecord::Base
+class RockGroupTypeRole < RockBase
   self.primary_key = :Id
   belongs_to :group_type, class: RockGroupType, foreign_key: 'GroupTypeId', primary_key: 'Id'
 

@@ -42,7 +42,7 @@
 #  ReviewReasonNote          :string
 #
 
-class RockPerson < ActiveRecord::Base
+class RockPerson < RockBase
   self.primary_key = :Id
   has_arena_mapping
   belongs_to :record_type, class: RockDefinedValue, foreign_key: 'RecordTypeValueId', primary_key: 'Id'
