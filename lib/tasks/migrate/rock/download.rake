@@ -41,7 +41,8 @@ namespace :migrate do
         Rock::Attribute.find_each do |record|
           attribute = RockAttribute.find_or_initialize_by(Id: record.Id)
 
-          if attribute.persisted? && attribute.Guid != record.Guid
+          if attribute.persisted? && 
+              attribute.Guid.downcase != record.Guid.downcase
             puts "Attribute Mismatch: #{attribute.inspect}"
             attribute.mapping.destroy if attribute.mapping
             attribute.destroy
@@ -72,7 +73,8 @@ namespace :migrate do
         Rock::AttributeValue.find_each do |record|
           attribute_value = RockAttributeValue.find_or_initialize_by(Id: record.Id)
 
-          if attribute_value.persisted? && attribute_value.Guid != record.Guid
+          if attribute_value.persisted? &&
+              attribute_value.Guid.downcase != record.Guid.downcase
             puts "Attribute Value Mismatch: #{attribute_value.inspect}"
             attribute_value.mapping.destroy if attribute_value.mapping
             attribute_value.destroy
