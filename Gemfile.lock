@@ -38,6 +38,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    airbrake (4.1.0)
+      builder
+      multi_json
     annotate (2.6.5)
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
@@ -129,6 +132,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-sqlserver-adapter (= 4.2.2)
+  airbrake
   annotate
   byebug
   composite_primary_keys

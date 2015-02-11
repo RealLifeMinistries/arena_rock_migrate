@@ -12,3 +12,4 @@ gem 'safe_attributes'
 gem 'annotate'
 gem 'spring',        group: :development
 gem 'byebug'
+gem 'airbrake'
