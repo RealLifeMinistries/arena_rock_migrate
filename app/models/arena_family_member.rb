@@ -11,7 +11,7 @@
 #  role_luid     :integer
 #
 
-class ArenaFamilyMember < ActiveRecord::Base
+class ArenaFamilyMember < ArenaBase
   self.primary_keys = :family_id, :person_id
 
   belongs_to :person, class: ArenaPerson

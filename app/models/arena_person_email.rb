@@ -14,7 +14,7 @@
 #  notes         :string
 #
 
-class ArenaPersonEmail < ActiveRecord::Base
+class ArenaPersonEmail < ArenaBase
   self.primary_key = :email_id
   belongs_to :person, class: ArenaPerson
 end

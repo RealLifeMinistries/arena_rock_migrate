@@ -15,7 +15,7 @@
 #  display_location   :integer
 #
 
-class ArenaAttributeGroup < ActiveRecord::Base
+class ArenaAttributeGroup < ArenaBase
   self.primary_key = 'attribute_group_id'
 
   has_rock_mapping

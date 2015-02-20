@@ -6,6 +6,6 @@
 #  name :string           not null
 #
 
-class ArenaRecordStatus < ActiveRecord::Base
+class ArenaRecordStatus < ArenaBase
   has_rock_mapping
 end

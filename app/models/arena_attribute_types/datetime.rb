@@ -10,8 +10,9 @@
 class ArenaAttributeTypes::Datetime < ArenaAttributeType
 
   def set_rock_attribute_value(rock,arena)
-    rock.ValueAsDateTime = arena.datetime_value
-    rock.Value = arena.datetime_value.try(:strftime,'%F')
+    val = nil_if_1900 arena.datetime_value
+    rock.ValueAsDateTime = val
+    rock.Value = val.try(:strftime,'%F')
   end
 
 end

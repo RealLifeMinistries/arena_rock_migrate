@@ -1,4 +1,4 @@
-# == Schema Information
+# == Schoma Information
 #
 # Table name: arena_occurrence_types
 #
@@ -41,7 +41,7 @@
 #  min_leaders                   :integer
 #
 
-class ArenaOccurrenceType < ActiveRecord::Base
+class ArenaOccurrenceType < ArenaBase
   self.primary_key = 'occurrence_type_id'
   belongs_to :profile_source, class: ArenaLookup, foreign_key: :profile_source_luid
   belongs_to :profile_status, class: ArenaLookup, foreign_key: :profile_status_luid

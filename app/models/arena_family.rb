@@ -12,7 +12,7 @@
 #  organization_id :integer
 #
 
-class ArenaFamily < ActiveRecord::Base
+class ArenaFamily < ArenaBase
   self.primary_key = :family_id
 
   has_many :memberships, foreign_key: :family_id, class: ArenaFamilyMember

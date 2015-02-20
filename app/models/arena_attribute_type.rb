@@ -7,7 +7,7 @@
 #  type :string
 #
 
-class ArenaAttributeType < ActiveRecord::Base
+class ArenaAttributeType < ArenaBase
   has_rock_mapping
 
   def handle_qualifiers_for!(attr)

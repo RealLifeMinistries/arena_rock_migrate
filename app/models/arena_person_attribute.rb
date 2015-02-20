@@ -14,7 +14,7 @@
 #  modified_by    :string
 #
 
-class ArenaPersonAttribute < ActiveRecord::Base
+class ArenaPersonAttribute < ArenaBase
   self.primary_keys = :person_id, :attribute_id
   belongs_to :arena_attribute, class: ArenaAttribute, foreign_key: :attribute_id
   belongs_to :person, class: ArenaPerson

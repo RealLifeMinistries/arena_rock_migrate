@@ -19,7 +19,7 @@
 #  qualifier_8_title :string
 #
 
-class ArenaLookupType < ActiveRecord::Base
+class ArenaLookupType < ArenaBase
   self.primary_key = :lookup_type_id
   has_rock_mapping
   has_many :lookups, class: ArenaLookup, foreign_key: :lookup_type_id

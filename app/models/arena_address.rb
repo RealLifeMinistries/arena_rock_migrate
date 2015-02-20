@@ -33,7 +33,7 @@
 #  country           :string
 #
 
-class ArenaAddress < ActiveRecord::Base
+class ArenaAddress < ArenaBase
   self.primary_key = :address_id
   has_rock_mapping
 

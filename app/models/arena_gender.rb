@@ -6,6 +6,6 @@
 #  name :string           not null
 #
 
-class ArenaGender < ActiveRecord::Base
+class ArenaGender < ArenaBase
   has_rock_mapping
 end

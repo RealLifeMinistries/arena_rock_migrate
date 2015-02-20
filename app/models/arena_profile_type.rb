@@ -6,7 +6,7 @@
 #  name :string(255)
 #
 
-class ArenaProfileType < ActiveRecord::Base
+class ArenaProfileType < ArenaBase
 
   has_rock_mapping
 

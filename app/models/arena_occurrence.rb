@@ -25,7 +25,7 @@
 #  foreign_key                 :integer
 #
 
-class ArenaOccurrence < ActiveRecord::Base
+class ArenaOccurrence < ArenaBase
   self.primary_key = 'occurrence_id'
   belongs_to :type_record, class: ArenaOccurrenceType, foreign_key: :occurrence_type
   belongs_to :area, class: ArenaArea

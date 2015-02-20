@@ -25,7 +25,7 @@
 #  guid                  :uuid
 #
 
-class ArenaSmallGroupCluster < ActiveRecord::Base
+class ArenaSmallGroupCluster < ArenaBase
   self.primary_key = :group_cluster_id
   belongs_to :parent, class: ArenaSmallGroupCluster, foreign_key: 'parent_cluster_id'
   belongs_to :leader, class: ArenaPerson, foreign_key: 'leader_person_id'

@@ -29,7 +29,7 @@
 #  active                      :boolean
 #
 
-class ArenaSmallGroup < ActiveRecord::Base
+class ArenaSmallGroup < ArenaBase
   self.primary_key = :group_id
   belongs_to :cluster, class: ArenaSmallGroupCluster, foreign_key: 'group_cluster_id'
   belongs_to :leader, class: ArenaPerson, foreign_key: 'leader_person_id'

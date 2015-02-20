@@ -15,7 +15,7 @@
 #  active         :boolean
 #
 
-class ArenaSmallGroupMember < ActiveRecord::Base
+class ArenaSmallGroupMember < ArenaBase
   self.primary_key = :group_id,:person_id
   belongs_to :group, class: ArenaSmallGroup
   belongs_to :person, class: ArenaPerson

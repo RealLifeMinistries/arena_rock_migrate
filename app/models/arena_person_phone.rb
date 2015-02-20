@@ -11,7 +11,7 @@
 #  sms_enabled           :boolean
 #
 
-class ArenaPersonPhone < ActiveRecord::Base
+class ArenaPersonPhone < ArenaBase
   self.primary_key = :person_id,:phone_luid
 
   belongs_to :person, class: ArenaPerson

@@ -27,7 +27,7 @@
 #  campus_id                   :integer
 #
 
-class ArenaProfile < ActiveRecord::Base
+class ArenaProfile < ArenaBase
   self.primary_key = 'profile_id'
 
   belongs_to :profile_type_record, class: ArenaProfileType, foreign_key: :profile_type

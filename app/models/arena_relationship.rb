@@ -12,7 +12,7 @@
 #  related_person_id    :integer
 #
 
-class ArenaRelationship < ActiveRecord::Base
+class ArenaRelationship < ArenaBase
   self.primary_key = :relationship_id
 
   belongs_to :relationship_type, class: ArenaRelationshipType

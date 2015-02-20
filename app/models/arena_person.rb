@@ -45,7 +45,7 @@
 
 # NOTES
 # campus_id is not used
-class ArenaPerson < ActiveRecord::Base
+class ArenaPerson < ArenaBase
   self.table_name = 'arena_people'
   self.primary_key = 'person_id'
   has_rock_mapping
@@ -108,18 +108,16 @@ class ArenaPerson < ActiveRecord::Base
 
     # @TODO: rock.PhotoId
 
-    if birth_date?
-      if birth_date == Time.new(1900)
-        rock.BirthDay = nil 
-        rock.BirthMonth = nil
-        rock.BirthYear = nil
-        rock.BirthDate = nil
-      else
-        rock.BirthDay = birth_date.mday 
-        rock.BirthMonth = birth_date.month
-        rock.BirthYear = birth_date.year
-        rock.BirthDate = birth_date
-      end
+    unless birth_date?
+      rock.BirthDay = nil 
+      rock.BirthMonth = nil
+      rock.BirthYear = nil
+      rock.BirthDate = nil
+    else
+      rock.BirthDay = birth_date.mday 
+      rock.BirthMonth = birth_date.month
+      rock.BirthYear = birth_date.year
+      rock.BirthDate = birth_date
     end
 
     if gender
@@ -130,8 +128,8 @@ class ArenaPerson < ActiveRecord::Base
       rock.MaritalStatusValueId = marital_status_record.mapped_id
     end
 
-    rock.AnniversaryDate = anniversary_date
-    rock.GraduationDate = graduation_date
+    rock.AnniversaryDate = nil_if_1900 anniversary_date
+    rock.GraduationDate = nil_if_1900 graduation_date
 
     # @TODO: rock.GivingGroupId, giving_unit_id
 
@@ -168,14 +166,16 @@ class ArenaPerson < ActiveRecord::Base
       (inactive_reason_luid.to_i == 356)
   end
 
+  def birth_date
+    nil_if_1900 read_attribute(:birth_date)
+  end
+
   def aniversary_date
-    date = read_attribute(:anniversary_date)
-    return (date == Time.new(1900) ? nil : date)
+    nil_if_1900 read_attribute(:anniversary_date)
   end
 
   def graduation_date
-    date = read_attribute(:graduation_date)
-    return (date == Time.new(1900) ? nil : date)
+    nil_if_1900 read_attribute(:graduation_date)
   end
 
   def primary_address

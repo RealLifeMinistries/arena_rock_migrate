@@ -20,7 +20,7 @@
 #  foreign_key       :integer
 #
 
-class ArenaLookup < ActiveRecord::Base
+class ArenaLookup < ArenaBase
   self.primary_key = :lookup_id
   has_rock_mapping
   belongs_to :lookup_type, class_name: "ArenaLookupType", primary_key: 'lookup_type_id'

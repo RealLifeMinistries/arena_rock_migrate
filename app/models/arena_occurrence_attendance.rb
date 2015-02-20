@@ -15,7 +15,7 @@
 #  type                     :integer
 #
 
-class ArenaOccurrenceAttendance < ActiveRecord::Base
+class ArenaOccurrenceAttendance < ArenaBase
   self.primary_key = 'occurrence_attendance_id'
   self.table_name = 'arena_occurrence_attendance'
 
@@ -37,7 +37,13 @@ class ArenaOccurrenceAttendance < ActiveRecord::Base
     rock.ScheduleId = occurrence.type_record.mapped_id
     rock.PersonAliasId = person.mapped_record.person_alias.Id
     rock.StartDateTime = check_in_time
-    rock.EndDateTime = check_out_time
+
+    if check_out_time
+      rock.EndDateTime = check_out_time 
+    else
+      rock.EndDateTime = check_in_time
+    end
+
     rock.DidAttend = attended?
     rock.Note = notes
     rock.Guid ||= SecureRandom.uuid
@@ -48,6 +54,10 @@ class ArenaOccurrenceAttendance < ActiveRecord::Base
 
     rock.save!
     map.save!
+  end
+
+  def check_out_time
+    nil_if_1900 read_attribute(:check_out_time)
   end
   
 end

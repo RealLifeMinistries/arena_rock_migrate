@@ -17,7 +17,7 @@
 #  date_dormant  :datetime
 #
 
-class ArenaProfileMember < ActiveRecord::Base
+class ArenaProfileMember < ArenaBase
   self.primary_key = :profile_id, :person_id
   belongs_to :person, class: ArenaPerson
   belongs_to :profile, class: ArenaProfile

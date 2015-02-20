@@ -13,7 +13,7 @@
 #  notes             :string
 #
 
-class ArenaPersonAddress < ActiveRecord::Base
+class ArenaPersonAddress < ArenaBase
   self.primary_key = :person_id,:address_id,:address_type_luid
 
   belongs_to :person, class: ArenaPerson

@@ -19,7 +19,7 @@
 #  system_flag        :boolean
 #
 
-class ArenaAttribute < ActiveRecord::Base
+class ArenaAttribute < ArenaBase
   self.primary_key = 'attribute_id'
   belongs_to :attribute_group, class: ArenaAttributeGroup
   belongs_to :attribute_type_record, class: ArenaAttributeType, foreign_key: :attribute_type

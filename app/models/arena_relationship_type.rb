@@ -14,6 +14,6 @@
 #  peer_relationship_strength   :integer
 #
 
-class ArenaRelationshipType < ActiveRecord::Base
+class ArenaRelationshipType < ArenaBase
   self.primary_key = :relationship_type_id
 end
