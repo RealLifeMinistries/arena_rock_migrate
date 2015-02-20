@@ -108,7 +108,7 @@ class ArenaPerson < ArenaBase
 
     # @TODO: rock.PhotoId
 
-    unless birth_date?
+    unless birth_date
       rock.BirthDay = nil 
       rock.BirthMonth = nil
       rock.BirthYear = nil
