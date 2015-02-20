@@ -20,15 +20,15 @@ namespace :migrate do
       end
 
       task :families => :environment do
-        errors = []
+#        errors = []
         ArenaFamily.find_each do |arena_family|
-          begin
+#          begin
             arena_family.sync_to_rock!
-          rescue Exception => e
-            errors << e.message
-          end
+#          rescue Exception => e
+#            errors << e.message
+#          end
         end
-        puts errors.join('\n')
+#        puts errors.join('\n')
       end
 
       task :attributes => :environment do

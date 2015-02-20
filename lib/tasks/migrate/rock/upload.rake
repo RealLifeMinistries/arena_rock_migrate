@@ -151,59 +151,59 @@ namespace :migrate do
       end
 
       task :group_type_roles => :environment do
-        errors = []
+#        errors = []
         RockGroupTypeRole.find_each do |record|
           group_type = Rock::GroupTypeRole.find_or_initialize_by(Id: record.Id)
           group_type.attributes = record.attributes
-          begin
+#          begin
             if group_type.changes.any?
               group_type.save!
               puts "Uploaded #{record.class.name}/#{record.Id}"
             end
-          rescue Exception => e
+#          rescue Exception => e
             errors << e.message
-          end
+#          end
         end
-        puts errors.join('\n')
+#        puts errors.join('\n')
       end
 
       task :group_types => :environment do
-        errors = []
+#        errors = []
         RockGroupType.find_each do |record|
           group_type = Rock::GroupType.find_or_initialize_by(Id: record.Id)
           group_type.attributes = record.attributes
 
-          begin
+#          begin
             if group_type.changes.any?
               group_type.save!
               puts "Uploaded #{record.class.name}/#{record.Id}"
             end
-          rescue Exception => e
-            group_type.DefaultGroupRoleId = nil
-            group_type.save
-            errors << e.message
-          end
+#          rescue Exception => e
+#            group_type.DefaultGroupRoleId = nil
+#            group_type.save
+#            errors << e.message
+#          end
         end
-        puts errors.join('\n')
+#        puts errors.join('\n')
       end
 
 
       task :groups => :environment do
-        errors = []
+#        errors = []
         RockGroup.find_each do |record|
           group = Rock::Group.find_or_initialize_by(Id: record.Id)
           group.attributes = record.attributes
 
           if group.changes.any?
-            begin
+#            begin
               group.save!
               puts "Uploaded #{record.class.name}/#{record.Id}"
-            rescue Exception => e
-              errors << e.message
-            end
+#            rescue Exception => e
+#              errors << e.message
+#            end
           end
         end
-        puts errors.join('\n')
+#        puts errors.join('\n')
       end
 
       task :group_members => :environment do
