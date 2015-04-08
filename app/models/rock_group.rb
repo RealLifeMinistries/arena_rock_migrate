@@ -27,7 +27,7 @@ class RockGroup < RockBase
   belongs_to :group_type, class: RockGroupType, foreign_key: 'GroupTypeId', primary_key: 'Id'
   belongs_to :campus, class: RockCampus, foreign_key: 'CampusId', primary_key: 'Id'
   
-  has_many :memberships, class: RockGroupMember, foreign_key: 'GroupId', primary_key: 'Id'
+  has_many :memberships, class: RockGroupMember, foreign_key: 'GroupId', primary_key: 'Id', dependent: :destroy
 
   has_arena_mapping
 

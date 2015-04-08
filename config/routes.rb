@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  root 'application#index'
-  resources :map_attributes
-  resources :rock_attributes, only: [:index,:show]
-  resources :arena_attributes, only: [:index,:show]
+  Sidekiq::Web.use Rack::Auth::Basic do |username,password|
+    username == "reallife" && password == "ministries"
+  end
+  mount Sidekiq::Web, at: "/"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
