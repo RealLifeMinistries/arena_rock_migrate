@@ -16,7 +16,7 @@ class TaskStarter
       unless (arena_running || rock_running)
         conversion_running = true 
         Rails.cache.write('task:conversion',true)
-        DataSync.peform_async
+        ConversionStarter.peform_async
       end
     else
       unless arena_running

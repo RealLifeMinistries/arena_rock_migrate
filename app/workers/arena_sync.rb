@@ -9,7 +9,7 @@ class ArenaSync
     ArenaRecordSync.perform_async(Arena::AttributeGroup.name,ArenaAttributeGroup.name, :attribute_group_id)
     ArenaRecordSync.perform_async(Arena::Campus.name,ArenaCampus.name, :campus_id)
     ArenaRecordSync.perform_async(Arena::Family.name,ArenaFamily.name, :family_id)
-    ArenaRecordSync.perform_async(Arena::FamilyMember.name,ArenaFamilyMember.name, :family_member_id)
+    ArenaRecordSync.perform_async(Arena::FamilyMember.name,ArenaFamilyMember.name, :family_id, :person_id)
     ArenaRecordSync.perform_async(Arena::Lookup.name,ArenaLookup.name, :lookup_id)
     ArenaRecordSync.perform_async(Arena::LookupType.name,ArenaLookupType.name, :lookup_type_id)
     ArenaRecordSync.perform_async(Arena::Occurrence.name,ArenaOccurrence.name, :occurrence_id)
