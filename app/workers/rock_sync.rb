@@ -21,10 +21,9 @@ class RockSync
       [RockGroupMember,Rock::GroupMember,["Id"]],
       [RockSchedule,Rock::Schedule,["Id"]],
       [RockAttendance,Rock::Attendance,["Id"]],
-    ] 
+    ].each do |klass1,klass2,keys|
+      RockRecordSync.perform_async(klass1.name,klass2.name,*keys)
+    end
   end
 
-  def queue_sync(klass1,klass2,*keys)
-    RockRecordSync.perform_async(klass1.name,klass2.name,*keys)
-  end
 end
