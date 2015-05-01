@@ -24,5 +24,6 @@ class RockGroupMember < RockBase
   belongs_to :role, class: RockGroupTypeRole, foreign_key: 'GroupRoleId', primary_key: 'Id'
   belongs_to :status, class: RockGroupMemberStatus, foreign_key: 'GroupMemberStatus'  
 
+  has_arena_mapping
 
 end
