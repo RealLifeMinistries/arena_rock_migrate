@@ -19,6 +19,7 @@
 #  ModifiedByPersonAliasId :integer
 #  ForeignId               :string(50)
 #  AllowGuests             :boolean
+#  ScheduleId              :integer
 #
 
 class Rock::Group < Rock::Base

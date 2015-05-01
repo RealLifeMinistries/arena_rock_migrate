@@ -22,7 +22,6 @@
 #  Gender                    :integer          not null
 #  MaritalStatusValueId      :integer
 #  AnniversaryDate           :date
-#  GraduationDate            :date
 #  GivingGroupId             :integer
 #  Email                     :string(75)
 #  IsEmailActive             :boolean
@@ -34,12 +33,13 @@
 #  ModifiedDateTime          :datetime
 #  CreatedByPersonAliasId    :integer
 #  ModifiedByPersonAliasId   :integer
-#  BirthDate                 :date
 #  EmailPreference           :integer          default(0), not null
 #  InactiveReasonNote        :string(1000)
 #  ForeignId                 :string(50)
 #  ReviewReasonValueId       :integer
 #  ReviewReasonNote          :string(1000)
+#  GraduationYear            :integer
+#  BirthDate                 :date
 #
 
 class Rock::Person < Rock::Base

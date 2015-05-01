@@ -12,7 +12,7 @@
 #  QualifierValueId        :integer
 #  StartDateTime           :datetime         not null
 #  EndDateTime             :datetime
-#  DidAttend               :boolean          not null
+#  DidAttend               :boolean
 #  Note                    :text
 #  Guid                    :uuid             not null
 #  CreatedDateTime         :datetime
@@ -22,6 +22,9 @@
 #  ForeignId               :string(50)
 #  CampusId                :integer
 #  PersonAliasId           :integer
+#  RSVP                    :integer          default(0), not null
+#  DidNotOccur             :boolean
+#  Processed               :boolean
 #
 
 class Rock::Attendance < Rock::Base

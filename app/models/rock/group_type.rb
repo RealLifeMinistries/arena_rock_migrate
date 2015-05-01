@@ -27,6 +27,8 @@
 #  ModifiedByPersonAliasId :integer
 #  ForeignId               :string(50)
 #  EnableLocationSchedules :boolean
+#  AllowedScheduleTypes    :integer          default(0), not null
+#  SendAttendanceReminder  :boolean          default(FALSE), not null
 #
 
 class Rock::GroupType < Rock::Base

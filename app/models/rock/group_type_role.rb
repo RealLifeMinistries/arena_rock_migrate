@@ -17,6 +17,8 @@
 #  CreatedByPersonAliasId  :integer
 #  ModifiedByPersonAliasId :integer
 #  ForeignId               :string(50)
+#  CanView                 :boolean          default(FALSE), not null
+#  CanEdit                 :boolean          default(FALSE), not null
 #
 
 class Rock::GroupTypeRole < Rock::Base

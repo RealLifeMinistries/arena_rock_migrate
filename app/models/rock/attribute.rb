@@ -8,7 +8,7 @@
 #  EntityTypeId              :integer
 #  EntityTypeQualifierColumn :string(50)
 #  EntityTypeQualifierValue  :string(200)
-#  Key                       :string(50)       not null
+#  Key                       :string(200)      not null
 #  Name                      :string(100)      not null
 #  Description               :text
 #  Order                     :integer          not null

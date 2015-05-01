@@ -5,7 +5,7 @@
 #  Id          :integer          not null, primary key
 #  IsSystem    :boolean          not null
 #  AttributeId :integer          not null
-#  Key         :string(50)       not null
+#  Key         :string(100)      not null
 #  Value       :text
 #  Guid        :uuid             not null
 #  ForeignId   :string(50)

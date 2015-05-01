@@ -13,8 +13,9 @@
 #  CreatedByPersonAliasId  :integer
 #  ModifiedByPersonAliasId :integer
 #  ForeignId               :string(50)
-#  ValueAsDateTime         :datetime
 #  ValueAsNumeric          :decimal(38, 10)
+#  ValueAsPersonId         :integer
+#  ValueAsDateTime         :datetime
 #
 
 class Rock::AttributeValue < Rock::Base

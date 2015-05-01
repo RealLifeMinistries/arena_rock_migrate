@@ -17,6 +17,8 @@
 #  CreatedByPersonAliasId    :integer
 #  ModifiedByPersonAliasId   :integer
 #  ForeignId                 :string(50)
+#  WeeklyDayOfWeek           :integer
+#  WeeklyTimeOfDay           :time
 #
 
 class Rock::Schedule < Rock::Base

@@ -129,7 +129,8 @@ class ArenaPerson < ArenaBase
     end
 
     rock.AnniversaryDate = nil_if_1900 anniversary_date
-    rock.GraduationDate = nil_if_1900 graduation_date
+    gradDate = nil_if_1900 graduation_date
+    rock.GraduationYear = gradDate ? gradDate.year : nil
 
     # @TODO: rock.GivingGroupId, giving_unit_id
 

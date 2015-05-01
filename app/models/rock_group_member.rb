@@ -4,9 +4,9 @@
 #
 #  Id                      :integer          not null, primary key
 #  IsSystem                :boolean
-#  GroupId                 :integer
-#  PersonId                :integer
-#  GroupRoleId             :integer
+#  GroupId                 :integer          not null
+#  PersonId                :integer          not null
+#  GroupRoleId             :integer          not null
 #  GroupMemberStatus       :integer
 #  Guid                    :uuid
 #  CreatedDateTime         :datetime
