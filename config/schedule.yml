@@ -1,0 +1,3 @@
+TaskStarter:
+  cron: "*/10 * * * *"
+  class: "TaskStarter"

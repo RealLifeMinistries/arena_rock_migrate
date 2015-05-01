@@ -1,6 +1,6 @@
 class ArenaRecordSync
   include Sidekiq::Worker
-  sidekiq_options queue: :arena, unique: true
+  sidekiq_options queue: :arena, unique:true
 
   def perform(klass1,klass2,*keys)
     klass1.constantize.find_each do |record1|

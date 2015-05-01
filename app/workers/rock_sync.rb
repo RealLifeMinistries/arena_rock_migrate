@@ -1,6 +1,6 @@
 class RockSync
   include Sidekiq::Worker
-  sidekiq_options queue: :rock, unique: true
+  sidekiq_options queue: :rock
  
   def perform 
     [
