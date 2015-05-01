@@ -1,5 +1,6 @@
 class TaskStarter
   include Sidekiq::Worker
+  sidekiq_options unique: true
 
   def perform
     retries = Sidekiq::RetrySet.new
