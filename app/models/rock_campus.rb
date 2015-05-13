@@ -1,27 +1,28 @@
 # == Schema Information
 #
-# Table name: rock_campus
+# Table name: Campus
 #
 #  Id                      :integer          not null, primary key
-#  IsSystem                :boolean
-#  Name                    :string
-#  ShortCode               :string
+#  IsSystem                :boolean          not null
+#  Name                    :string(100)      not null
+#  ShortCode               :string(50)
 #  LocationId              :integer
-#  Guid                    :uuid
+#  Guid                    :uuid             not null
 #  CreatedDateTime         :datetime
 #  ModifiedDateTime        :datetime
 #  CreatedByPersonAliasId  :integer
 #  ModifiedByPersonAliasId :integer
-#  ForeignId               :integer
-#  PhoneNumber             :string
+#  ForeignId               :string(50)
+#  PhoneNumber             :text
 #  LeaderPersonAliasId     :integer
-#  ServiceTimes            :string
-#  Description             :string
+#  ServiceTimes            :string(500)
+#  Description             :text
 #  IsActive                :boolean
-#  Url                     :string
+#  Url                     :text
 #
 
 class RockCampus < RockBase
   self.primary_key = :Id
+  self.table_name = "Campus"
   belongs_to :location, class: RockLocation, foreign_key: 'LocationId', primary_key: 'Id'
 end

@@ -19,7 +19,7 @@
 #  primary_age_luid            :integer
 #  primary_marital_status_luid :integer          not null
 #  foreign_key                 :integer
-#  target_location_person_id   :integer
+#  target_location_person_id   :integer # THIS IS THE PERSON WHO"S ADDRESS IS THE GROUP ADDRESS
 #  picture_url                 :string
 #  schedule                    :string
 #  group_type_luid             :integer
@@ -66,6 +66,7 @@ class ArenaSmallGroup < ArenaBase
     map.save!
     sync_roles!
     sync_memberships!
+    sync_location!
   end
 
   def sync_roles!
@@ -87,5 +88,32 @@ class ArenaSmallGroup < ArenaBase
 
   def sync_memberships!
     memberships.each(&:sync_to_rock!)    
+  end
+
+  def sync_location!
+    if address = primary_address
+      rock_group = mapped_record
+
+      gloc = RockGroupLocation.find_or_initialize_by({
+          GroupId: rock_group.Id,
+          GroupLocationTypeValueId: RockGroupLocation::MEETING_LOCATION_TYPE
+      })
+
+      gloc.location ||= RockLocation.new
+      gloc.location.copy_arena_address(address)
+      gloc.location.save
+
+      gloc.Guid ||= SecureRandom.uuid
+      gloc.IsMailingLocation ||= true
+      gloc.IsMappedLocation ||= !!(address.Latitude && address.Latitude > 0)
+      gloc.save!
+    end
+  end
+
+  def primary_address
+    if target_location_person
+      return target_location_person.primary_address
+    end
+    return nil
   end
 end

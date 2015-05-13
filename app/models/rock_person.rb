@@ -1,49 +1,50 @@
 # == Schema Information
 #
-# Table name: rock_people
+# Table name: Person
 #
 #  Id                        :integer          not null, primary key
-#  IsSystem                  :boolean
+#  IsSystem                  :boolean          not null
 #  RecordTypeValueId         :integer
 #  RecordStatusValueId       :integer
 #  RecordStatusReasonValueId :integer
 #  ConnectionStatusValueId   :integer
 #  IsDeceased                :boolean
 #  TitleValueId              :integer
-#  FirstName                 :string
-#  NickName                  :string
-#  MiddleName                :string
-#  LastName                  :string
+#  FirstName                 :string(50)
+#  NickName                  :string(50)
+#  MiddleName                :string(50)
+#  LastName                  :string(50)
 #  SuffixValueId             :integer
 #  PhotoId                   :integer
 #  BirthDay                  :integer
 #  BirthMonth                :integer
 #  BirthYear                 :integer
-#  Gender                    :integer
+#  Gender                    :integer          not null
 #  MaritalStatusValueId      :integer
 #  AnniversaryDate           :date
-#  GraduationDate            :date
 #  GivingGroupId             :integer
-#  Email                     :string
+#  Email                     :string(75)
 #  IsEmailActive             :boolean
-#  EmailNote                 :string
-#  SystemNote                :string
+#  EmailNote                 :string(250)
+#  SystemNote                :string(1000)
 #  ViewedCount               :integer
-#  Guid                      :uuid
+#  Guid                      :uuid             not null
 #  CreatedDateTime           :datetime
 #  ModifiedDateTime          :datetime
 #  CreatedByPersonAliasId    :integer
 #  ModifiedByPersonAliasId   :integer
-#  BirthDate                 :date
-#  EmailPreference           :integer
-#  InactiveReasonNote        :string
-#  ForeignId                 :string(1)
+#  EmailPreference           :integer          default(0), not null
+#  InactiveReasonNote        :string(1000)
+#  ForeignId                 :string(50)
 #  ReviewReasonValueId       :integer
-#  ReviewReasonNote          :string
+#  ReviewReasonNote          :string(1000)
+#  GraduationYear            :integer
+#  BirthDate                 :date
 #
 
 class RockPerson < RockBase
   self.primary_key = :Id
+  self.table_name = 'Person'
   has_arena_mapping
   belongs_to :record_type, class: RockDefinedValue, foreign_key: 'RecordTypeValueId', primary_key: 'Id'
   belongs_to :record_status, class: RockDefinedValue, foreign_key: 'RecordStatusValueId', primary_key: 'Id'

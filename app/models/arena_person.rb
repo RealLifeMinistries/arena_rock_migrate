@@ -112,12 +112,10 @@ class ArenaPerson < ArenaBase
       rock.BirthDay = nil 
       rock.BirthMonth = nil
       rock.BirthYear = nil
-      rock.BirthDate = nil
     else
       rock.BirthDay = birth_date.mday 
       rock.BirthMonth = birth_date.month
       rock.BirthYear = birth_date.year
-      rock.BirthDate = birth_date
     end
 
     if gender
@@ -180,7 +178,7 @@ class ArenaPerson < ArenaBase
   end
 
   def primary_address
-    locations.where(primary_address: true).first.address
+    locations.where(primary_address: true).first.address rescue nil
   end
 
 end

@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: rock_attendance
+# Table name: Attendance
 #
 #  Id                      :integer          not null, primary key
 #  LocationId              :integer
@@ -10,23 +10,26 @@
 #  SearchTypeValueId       :integer
 #  AttendanceCodeId        :integer
 #  QualifierValueId        :integer
-#  StartDateTime           :datetime
+#  StartDateTime           :datetime         not null
 #  EndDateTime             :datetime
 #  DidAttend               :boolean
-#  Note                    :string
-#  Guid                    :uuid
+#  Note                    :text
+#  Guid                    :uuid             not null
 #  CreatedDateTime         :datetime
 #  ModifiedDateTime        :datetime
 #  CreatedByPersonAliasId  :integer
 #  ModifiedByPersonAliasId :integer
-#  ForeignId               :string
+#  ForeignId               :string(50)
 #  CampusId                :integer
 #  PersonAliasId           :integer
+#  RSVP                    :integer          default(0), not null
+#  DidNotOccur             :boolean
+#  Processed               :boolean
 #
 
 class RockAttendance < RockBase
   self.primary_key = :Id
-  self.table_name = 'rock_attendance'
+  self.table_name = "Attendance"
 
   belongs_to :location, class: RockLocation, foreign_key: 'LocationId', primary_key: 'Id'
   belongs_to :campus, class: RockCampus, foreign_key: 'CampusId', primary_key: 'Id'

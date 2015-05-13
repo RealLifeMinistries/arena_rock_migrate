@@ -45,17 +45,8 @@ class ArenaAddress < ArenaBase
     map = self.mapping || build_mapping
     rock = mapping.rock_record ||= RockLocation.new
 
-    rock.Guid ||= SecureRandom.uuid
-    rock.LocationTypeValueId = RockGroupLocation::FAMILY_HOME_TYPE
-    rock.IsActive ||= true
-    rock.Street1 = street_address_1
-    rock.Street2 = street_address_2
-    rock.City = city
-    rock.State = state
-    rock.PostalCode = postal_code
-    rock.Country = country
-    rock.CreatedDateTime = date_created
-    rock.ModifiedDateTime = date_modified
+    rock.copy_arena_address(self)
+
     rock.save!
     map.save!
   end

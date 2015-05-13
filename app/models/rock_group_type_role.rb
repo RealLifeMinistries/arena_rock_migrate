@@ -1,26 +1,29 @@
 # == Schema Information
 #
-# Table name: rock_group_type_roles
+# Table name: GroupTypeRole
 #
 #  Id                      :integer          not null, primary key
-#  IsSystem                :boolean
-#  GroupTypeId             :integer
-#  Name                    :string
-#  Description             :string
-#  Order                   :integer
+#  IsSystem                :boolean          not null
+#  GroupTypeId             :integer          not null
+#  Name                    :string(100)      not null
+#  Description             :text
+#  Order                   :integer          not null
 #  MaxCount                :integer
 #  MinCount                :integer
-#  IsLeader                :integer
-#  Guid                    :uuid
+#  IsLeader                :boolean          not null
+#  Guid                    :uuid             not null
 #  CreatedDateTime         :datetime
 #  ModifiedDateTime        :datetime
 #  CreatedByPersonAliasId  :integer
 #  ModifiedByPersonAliasId :integer
-#  ForeignId               :string
+#  ForeignId               :string(50)
+#  CanView                 :boolean          default(FALSE), not null
+#  CanEdit                 :boolean          default(FALSE), not null
 #
 
 class RockGroupTypeRole < RockBase
   self.primary_key = :Id
+  self.table_name = 'GroupTypeRole'
   belongs_to :group_type, class: RockGroupType, foreign_key: 'GroupTypeId', primary_key: 'Id'
 
   SMALL_GROUP_LEADER = 36

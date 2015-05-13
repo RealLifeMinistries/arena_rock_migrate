@@ -1,24 +1,25 @@
 # == Schema Information
 #
-# Table name: rock_defined_types
+# Table name: DefinedType
 #
 #  Id                      :integer          not null, primary key
-#  IsSystem                :boolean
+#  IsSystem                :boolean          not null
 #  FieldTypeId             :integer
-#  Order                   :integer
-#  Name                    :string
-#  Description             :string
-#  Guid                    :uuid
+#  Order                   :integer          not null
+#  Name                    :string(100)      not null
+#  Description             :text
+#  Guid                    :uuid             not null
 #  CreatedDateTime         :datetime
 #  ModifiedDateTime        :datetime
 #  CreatedByPersonAliasId  :integer
 #  ModifiedByPersonAliasId :integer
-#  ForeignId               :integer
+#  ForeignId               :string(50)
 #  HelpText                :text
 #  CategoryId              :integer
 #
 
 class RockDefinedType < RockBase
+  self.table_name = 'DefinedType'
   self.primary_key = "Id"
   has_arena_mapping
   has_many :defined_values, class: RockDefinedValue, foreign_key: 'DefinedTypeId', primary_key: 'Id'

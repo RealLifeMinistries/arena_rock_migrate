@@ -1,25 +1,27 @@
 # == Schema Information
 #
-# Table name: rock_attribute_values
+# Table name: AttributeValue
 #
 #  Id                      :integer          not null, primary key
-#  IsSystem                :boolean
-#  AttributeId             :integer
+#  IsSystem                :boolean          not null
+#  AttributeId             :integer          not null
 #  EntityId                :integer
-#  Value                   :string
-#  Guid                    :uuid
+#  Value                   :text
+#  Guid                    :uuid             not null
 #  CreatedDateTime         :datetime
 #  ModifiedDateTime        :datetime
 #  CreatedByPersonAliasId  :integer
 #  ModifiedByPersonAliasId :integer
-#  ForeignId               :string
-#  ValueAsDateTime         :datetime
+#  ForeignId               :string(50)
 #  ValueAsNumeric          :decimal(38, 10)
+#  ValueAsPersonId         :integer
+#  ValueAsDateTime         :datetime
 #
 
 class RockAttributeValue < RockBase
   self.primary_key = :Id
   belongs_to :rock_attribute, class: RockAttribute, foreign_key: 'AttributeId', primary_key: 'Id'
+  self.table_name = 'AttributeValue'
 
   has_arena_mapping
   

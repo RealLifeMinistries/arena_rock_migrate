@@ -46,24 +46,28 @@ class ArenaFamily < ArenaBase
   end
 
   def sync_location
-    rock_group = mapped_record
-    gloc = RockGroupLocation.find_or_initialize_by({
-      GroupId: rock_group.Id
-    })
-    gloc.Guid ||= SecureRandom.uuid
-    gloc.GroupLocationTypeValueId = RockGroupLocation::FAMILY_HOME_TYPE
-    gloc.IsMailingLocation ||= true
-    gloc.IsMappedLocation ||= true
-    gloc.LocationId ||= primary_address.mapped_id
-    gloc.save!
+    if self.primary_address
+      rock_group = mapped_record
+      gloc = RockGroupLocation.find_or_initialize_by({
+        GroupId: rock_group.Id
+      })
+      gloc.Guid ||= SecureRandom.uuid
+      gloc.GroupLocationTypeValueId = RockGroupLocation::FAMILY_HOME_TYPE
+      gloc.IsMailingLocation ||= true
+      gloc.IsMappedLocation ||= true
+      gloc.LocationId ||= primary_address.mapped_id
+      gloc.save!
+    end
   end
 
   def primary_address
     return @primary_address if @primary_address
     hohs = memberships.where(role_luid: [HOH_ROLE,HOH_GUARDIAN_ROLE]).collect(&:person).select{|p| !p.is_deceased?}
     unless hohs.any?
-      @primary_address = memberships.first.person.primary_address
+      @primary_address = (memberships.first.person.primary_address rescue nil)
+    else
+      @primary_address = (hohs.min_by(&:birth_date).primary_address rescue nil)
     end
-    @primary_address = hohs.min_by(&:birth_date).primary_address
+    @primary_address
   end
 end

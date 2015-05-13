@@ -1,22 +1,22 @@
 # == Schema Information
 #
-# Table name: rock_field_types
+# Table name: FieldType
 #
 #  Id                      :integer          not null, primary key
-#  IsSystem                :boolean
-#  Name                    :string
-#  Description             :string
-#  Assembly                :string
-#  Class                   :string
-#  Guid                    :uuid
+#  IsSystem                :boolean          not null
+#  Name                    :string(100)      not null
+#  Description             :text
+#  Assembly                :string(100)      not null
+#  Class                   :string(100)      not null
+#  Guid                    :uuid             not null
 #  CreatedDateTime         :datetime
 #  ModifiedDateTime        :datetime
 #  CreatedByPersonAliasId  :integer
 #  ModifiedByPersonAliasId :integer
-#  ForeignId               :integer
+#  ForeignId               :string(50)
 #
 
 class RockFieldType < RockBase
   self.primary_key = "Id"
-    
+  self.table_name = "FieldType"
 end

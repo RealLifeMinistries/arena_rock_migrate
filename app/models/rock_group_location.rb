@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: rock_group_locations
+# Table name: GroupLocation
 #
 #  Id                       :integer          not null, primary key
 #  GroupId                  :integer          not null
@@ -13,14 +13,16 @@
 #  ModifiedDateTime         :datetime
 #  CreatedByPersonAliasId   :integer
 #  ModifiedByPersonAliasId  :integer
+#  ForeignId                :string(50)
 #  GroupMemberPersonAliasId :integer
-#  ForeignId                :string
 #
 
 class RockGroupLocation < RockBase
   self.primary_key = :Id
+  self.table_name = 'GroupLocation'
   belongs_to :group, class: RockGroup, foreign_key: 'GroupId'
   belongs_to :location, class: RockLocation, foreign_key: 'LocationId'
 
   FAMILY_HOME_TYPE = 19
+  MEETING_LOCATION_TYPE = 209
 end

@@ -1,32 +1,33 @@
 # == Schema Information
 #
-# Table name: rock_attributes
+# Table name: Attribute
 #
 #  Id                        :integer          not null, primary key
-#  IsSystem                  :boolean
-#  FieldTypeId               :integer
+#  IsSystem                  :boolean          not null
+#  FieldTypeId               :integer          not null
 #  EntityTypeId              :integer
-#  EntityTypeQualifierColumn :string
-#  EntityTypeQualifierValue  :string
-#  Key                       :string
-#  Name                      :string
-#  Description               :string
-#  Order                     :integer
-#  IsGridColumn              :boolean
-#  DefaultValue              :string
-#  IsMultiValue              :boolean
-#  IsRequired                :boolean
-#  Guid                      :uuid
+#  EntityTypeQualifierColumn :string(50)
+#  EntityTypeQualifierValue  :string(200)
+#  Key                       :string(200)      not null
+#  Name                      :string(100)      not null
+#  Description               :text
+#  Order                     :integer          not null
+#  IsGridColumn              :boolean          not null
+#  DefaultValue              :text
+#  IsMultiValue              :boolean          not null
+#  IsRequired                :boolean          not null
+#  Guid                      :uuid             not null
 #  CreatedDateTime           :datetime
 #  ModifiedDateTime          :datetime
 #  CreatedByPersonAliasId    :integer
 #  ModifiedByPersonAliasId   :integer
-#  ForeignId                 :integer
-#  IconCssClass              :string
+#  ForeignId                 :string(50)
+#  IconCssClass              :text
 #
 
 class RockAttribute < RockBase
   self.primary_key = :Id
+  self.table_name = "Attribute"
 
   belongs_to :field_type, class: RockFieldType, primary_key: 'Id', foreign_key: 'FieldTypeId'
   belongs_to :entity_type, class: RockEntityType, primary_key: 'Id', foreign_key: 'EntityTypeId'
