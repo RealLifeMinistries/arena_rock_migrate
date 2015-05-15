@@ -14,6 +14,8 @@ namespace :migrate do
           lookup_types
           occurrences
           occurrence_attendance
+          occurrence_small_groups
+          occurrence_profiles
           occurrence_types
           people
           person_addresses
@@ -159,6 +161,28 @@ namespace :migrate do
           if occ.changes.any?
             occ.save!
             puts "Downloaded #{record.class.name}/#{record.occurrence_attendance_id}"
+          end
+        end
+      end
+
+      task :occurrence_small_groups => :environment do
+        Arena::OccurrenceAttendanceSmallGroup.find_each(batch_size:100) do |record|
+          occ = ArenaOccurrenceAttendanceSmallGroup.find_or_initialize_by(occurrence_id: record.occurrence_id, group_id: record.group_id)
+          occ.attributes = record.attributes
+          if occ.changes.any?
+            occ.save!
+            puts "Downloaded #{record.class.name}/#{record.occurrence_id},#{record.group_id}"
+          end
+        end
+      end
+
+      task :occurrence_profiles => :environment do
+        Arena::OccurrenceAttendanceProfile.find_each(batch_size:100) do |record|
+          occ = ArenaOccurrenceAttendanceProfile.find_or_initialize_by(occurrence_id: record.occurrence_id, profile_id: record.profile_id)
+          occ.attributes = record.attributes
+          if occ.changes.any?
+            occ.save!
+            puts "Downloaded #{record.class.name}/#{record.occurrence_id},#{record.profile_id}"
           end
         end
       end

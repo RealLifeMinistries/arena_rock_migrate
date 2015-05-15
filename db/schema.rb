@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150501153933) do
+ActiveRecord::Schema.define(version: 20150515204242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -191,6 +191,20 @@ ActiveRecord::Schema.define(version: 20150501153933) do
     t.integer  "session_id"
     t.integer  "type"
   end
+
+  create_table "arena_occurrence_attendances_profiles", id: false, force: true do |t|
+    t.integer "occurrence_id"
+    t.integer "profile_id"
+  end
+
+  add_index "arena_occurrence_attendances_profiles", ["occurrence_id", "profile_id"], name: "arena_profile_attendance_join", unique: true, using: :btree
+
+  create_table "arena_occurrence_attendances_small_groups", id: false, force: true do |t|
+    t.integer "occurrence_id"
+    t.integer "group_id"
+  end
+
+  add_index "arena_occurrence_attendances_small_groups", ["occurrence_id", "group_id"], name: "arena_attendance_small_groups_join", unique: true, using: :btree
 
   create_table "arena_occurrence_types", primary_key: "occurrence_type_id", force: true do |t|
     t.datetime "date_created"
@@ -486,7 +500,9 @@ ActiveRecord::Schema.define(version: 20150501153933) do
   end
 
   add_index "mappings", ["arena_record_type", "arena_record_id"], name: "arena_records", unique: true, using: :btree
+  add_index "mappings", ["arena_record_type"], name: "arena_types", using: :btree
   add_index "mappings", ["rock_record_type", "rock_record_id"], name: "rock_records", unique: true, using: :btree
+  add_index "mappings", ["rock_record_type"], name: "rock_types", using: :btree
 
   create_table "rock_attendance", primary_key: "Id", force: true do |t|
     t.integer  "LocationId"

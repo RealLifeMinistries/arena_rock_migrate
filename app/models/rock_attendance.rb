@@ -35,4 +35,6 @@ class RockAttendance < RockBase
   belongs_to :campus, class: RockCampus, foreign_key: 'CampusId', primary_key: 'Id'
   belongs_to :group, class: RockGroup, foreign_key: 'GroupId', primary_key: 'Id'
   belongs_to :person_alias, class: RockPersonAlias, foreign_key: 'PersonAliasId', primary_key: 'Id'
+
+  WEEKEND_WORSHIP_SERVICE_GROUP = 34316
 end
