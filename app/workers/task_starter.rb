@@ -22,7 +22,7 @@ class TaskStarter
       Rails.cache.write('task:conversion',true)
       puts 'queueing arena & rock sync'
       ArenaSync.perform_async
-      RockSync.perform_async
+      #RockSync.perform_async
     end
 
   end

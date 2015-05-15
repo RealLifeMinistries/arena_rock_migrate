@@ -1,6 +1,6 @@
 class Arena::Base < ActiveRecord::Base
   self.abstract_class = true
-  establish_connection :development_arena 
+  establish_connection "#{Rails.env}_arena" 
 
   def self.inheritance_column
     nil

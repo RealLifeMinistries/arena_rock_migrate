@@ -7,6 +7,15 @@ development:
   username: <%= ENV['DB_USER'] %>
   password: <%= ENV['DB_PASSWORD'] %>
   database: <%= ENV['DB_DATABASE'] %>
+production:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: <%= ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT'] %>
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  database: <%= ENV['DB_DATABASE'] %>
 
 development_rock:
   adapter: sqlserver
@@ -16,8 +25,25 @@ development_rock:
   username: <%= ENV['ROCK_DB_USER'] %>
   password: <%= ENV['ROCK_DB_PASS'] %>
   database: <%= ENV['ROCK_DB_DATABASE'] %>
+production_rock:
+  adapter: sqlserver
+  pool: 5
+  host: <%= ENV['ROCK_DB_HOST'] %>
+  port: <%= ENV['ROCK_DB_PORT'] %>
+  username: <%= ENV['ROCK_DB_USER'] %>
+  password: <%= ENV['ROCK_DB_PASS'] %>
+  database: <%= ENV['ROCK_DB_DATABASE'] %>
   
 development_arena:
+  adapter: sqlserver
+  pool: 3
+  timeout: 10000
+  host: <%= ENV['ARENA_DB_HOST'] %>
+  port: <%= ENV['ARENA_DB_PORT'] %>
+  username: <%= ENV['ARENA_DB_USER'] %>
+  password: <%= ENV['ARENA_DB_PASS'] %>
+  database: <%= ENV['ARENA_DB_DATABASE'] %>
+production_arena:
   adapter: sqlserver
   pool: 3
   timeout: 10000

@@ -1,7 +1,7 @@
 class Rock::Base < ActiveRecord::Base
   self.abstract_class = true
   self.primary_key = 'Id'
-  establish_connection :development_rock 
+  establish_connection "#{Rails.env}_rock" 
 
   # Geography data type not compatible yet with rails, postgresql
   def GeoPoint=d
