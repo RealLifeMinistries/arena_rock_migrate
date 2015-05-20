@@ -68,10 +68,12 @@ class RockLocation < RockBase
     self.ModifiedDateTime = arena.date_modified
 
     if (arena.Latitude && arena.Longitude) && (arena.Latitude > 0 || arena.Longitude > 0)
-      self.Latitude = arena.Latitude
-      self.Longitude = arena.Longitude
-      self.GeocodedDateTime = arena.date_geocoded
-      self.StandardizedDateTime = arena.date_standardized
+      unless self.GeoPoint?
+        self.Latitude = arena.Latitude
+        self.Longitude = arena.Longitude
+        self.GeocodedDateTime = arena.date_geocoded
+        self.StandardizedDateTime = arena.date_standardized
+      end
     end
     
   end
