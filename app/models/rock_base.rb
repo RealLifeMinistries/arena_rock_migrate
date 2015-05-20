@@ -1,7 +1,7 @@
 class RockBase < ActiveRecord::Base
   self.abstract_class = true
   self.primary_key = 'Id'
-  establish_connection "#{Rails.env}_rock" 
+  establish_connection "#{Rails.env}_rock".to_sym
 
   def Guid=g
     write_attribute :Guid, g.to_s.downcase 

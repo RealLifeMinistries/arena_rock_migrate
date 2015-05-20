@@ -70,6 +70,8 @@ class RockLocation < RockBase
     if (arena.Latitude && arena.Longitude) && (arena.Latitude > 0 || arena.Longitude > 0)
       self.Latitude = arena.Latitude
       self.Longitude = arena.Longitude
+      self.GeocodedDateTime = arena.date_geocoded
+      self.StandardizedDateTime = arena.date_standardized
     end
     
   end
