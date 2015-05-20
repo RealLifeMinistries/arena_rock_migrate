@@ -19,7 +19,7 @@
 #  primary_age_luid            :integer
 #  primary_marital_status_luid :integer          not null
 #  foreign_key                 :integer
-#  target_location_person_id   :integer # THIS IS THE PERSON WHO"S ADDRESS IS THE GROUP ADDRESS
+#  target_location_person_id   :integer
 #  picture_url                 :string
 #  schedule                    :string
 #  group_type_luid             :integer

@@ -61,6 +61,10 @@ class ArenaOccurrenceAttendance < ArenaBase
       rock.GroupId = g.mapped_id
     end
 
+    if occurrence.occurrence_type == 1
+      rock.CampusId = RockCampus::PF 
+    end
+
     rock.save!
     map.save!
   end
