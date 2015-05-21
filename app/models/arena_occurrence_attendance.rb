@@ -57,8 +57,8 @@ class ArenaOccurrenceAttendance < ArenaBase
     rock.DidAttend = attended?
     rock.Note = notes
     rock.Guid ||= SecureRandom.uuid
-    if !rock.GroupId? && g = group
-      rock.GroupId = g.mapped_id
+    if !rock.GroupId? && g = group_id
+      rock.GroupId = g
     end
 
     if occurrence.occurrence_type == 1
@@ -73,16 +73,17 @@ class ArenaOccurrenceAttendance < ArenaBase
     nil_if_1900 read_attribute(:check_out_time)
   end
 
-  def group
+  def group_id
+    return @group_id if @group_id
     # weekend service/normal attendance
     if occurrence.occurrence_type == 1
-      return RockGroup.find(RockAttendance::WEEKEND_WORSHIP_SERVICE_GROUP)
+      return @group_id = RockAttendance::WEEKEND_WORSHIP_SERVICE_GROUP
     end
     
     if profile = profiles.first
-      return profile 
+      return @group_id = profile.mapped_id
     elsif small_group = small_groups.first
-      return small_group
+      return @group_id = small_group.mapped_id
     end
     nil
   end
