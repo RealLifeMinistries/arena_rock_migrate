@@ -24,18 +24,19 @@ class ArenaSmallGroupMember < ArenaBase
   has_rock_mapping
 
   def sync_to_rock!
-    map = mapping || build_mapping
-    rock = map.rock_record ||= RockGroupMember.new
-    
-    rock.IsSystem ||= false
-    rock.Guid ||= SecureRandom.uuid
-    rock.GroupMemberStatus ||= (active? ? RockGroupMemberStatus::ACTIVE : RockGroupMemberStatus::INACTIVE)
-    rock.GroupId = group.mapped_id
-    rock.PersonId = person.mapped_id
-    rock.GroupRoleId = role.mapped_id
+    if group.mapping && person.mapping
+      map = mapping || build_mapping
+      rock = map.rock_record ||= RockGroupMember.new
+      
+      rock.IsSystem ||= false
+      rock.Guid ||= SecureRandom.uuid
+      rock.GroupMemberStatus ||= (active? ? RockGroupMemberStatus::ACTIVE : RockGroupMemberStatus::INACTIVE)
+      rock.GroupId = group.mapped_id
+      rock.PersonId = person.mapped_id
+      rock.GroupRoleId = role.mapped_id
 
-    rock.save!
-    map.save!
-
+      rock.save!
+      map.save!
+    end
   end
 end

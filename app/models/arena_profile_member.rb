@@ -27,17 +27,19 @@ class ArenaProfileMember < ArenaBase
   has_rock_mapping
   
   def sync_to_rock!
-    map = mapping || build_mapping
-    rock = map.rock_record ||= RockGroupMember.new
+    if profile.mapping && person.mapping
+      map = mapping || build_mapping
+      rock = map.rock_record ||= RockGroupMember.new
 
-    rock.IsSystem ||= false
-    rock.Guid ||= SecureRandom.uuid
-    rock.GroupMemberStatus = (status_luid == 316 ? RockGroupMemberStatus::INACTIVE : RockGroupMemberStatus::ACTIVE)
-    rock.GroupId = profile.mapped_id
-    rock.GroupRoleId = profile.mapped_record.group_type.DefaultGroupRoleId
-    rock.PersonId = person.mapped_id
-    
-    rock.save!
-    map.save!
+      rock.IsSystem ||= false
+      rock.Guid ||= SecureRandom.uuid
+      rock.GroupMemberStatus = (status_luid == 316 ? RockGroupMemberStatus::INACTIVE : RockGroupMemberStatus::ACTIVE)
+      rock.GroupId = profile.mapped_id
+      rock.GroupRoleId = profile.mapped_record.group_type.DefaultGroupRoleId
+      rock.PersonId = person.mapped_id
+      
+      rock.save!
+      map.save!
+    end
   end
 end

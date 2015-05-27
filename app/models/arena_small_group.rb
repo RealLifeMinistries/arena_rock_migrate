@@ -65,7 +65,7 @@ class ArenaSmallGroup < ArenaBase
     rock.save!
     map.save!
     sync_roles!
-    sync_memberships!
+    #sync_memberships!
     sync_location!
   end
 

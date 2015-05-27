@@ -21,22 +21,24 @@ class ArenaFamilyMember < ArenaBase
   has_rock_mapping
 
   def sync_to_rock!
-    map = mapping || build_mapping
-    rock = map.rock_record ||= RockGroupMember.new
+    if family.mapping && person.mapping
+      map = mapping || build_mapping
+      rock = map.rock_record ||= RockGroupMember.new
 
-    rock.IsSystem = false
-    rock.GroupId = family.mapped_id
-    rock.PersonId = person.mapped_id
-    rock.GroupRoleId = group_role_mapped_id 
-    rock.GroupMemberStatus = RockGroupMemberStatus::ACTIVE
-    rock.CreatedDateTime = date_created
-    rock.ModifiedDateTime = date_modified
+      rock.IsSystem = false
+      rock.GroupId = family.mapped_id
+      rock.PersonId = person.mapped_id
+      rock.GroupRoleId = group_role_mapped_id 
+      rock.GroupMemberStatus = RockGroupMemberStatus::ACTIVE
+      rock.CreatedDateTime = date_created
+      rock.ModifiedDateTime = date_modified
 
-    rock.Guid ||= SecureRandom.uuid()
-    
-    rock.save!
-    self.mapping = map
-    map.save!
+      rock.Guid ||= SecureRandom.uuid()
+      
+      rock.save!
+      self.mapping = map
+      map.save!
+    end
   end
 
   def group_role_mapped_id

@@ -41,7 +41,7 @@ class ArenaFamily < ArenaBase
     self.mapping = map
     map.save!
 
-    memberships.each(&:sync_to_rock!)
+    #memberships.each(&:sync_to_rock!)
     sync_location
   end
 

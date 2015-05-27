@@ -60,7 +60,7 @@ class ArenaProfile < ArenaBase
       rock.save!
       map.save!
       # add owner to group
-      sync_members
+      #sync_members
     end
   end
 
