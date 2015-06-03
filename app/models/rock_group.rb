@@ -28,6 +28,7 @@ class RockGroup < RockBase
   belongs_to :parent_group, class: RockGroup, foreign_key: 'ParentGroupId', primary_key: 'Id'
   belongs_to :group_type, class: RockGroupType, foreign_key: 'GroupTypeId', primary_key: 'Id'
   belongs_to :campus, class: RockCampus, foreign_key: 'CampusId', primary_key: 'Id'
+  belongs_to :schedule, class: RockSchedule, foreign_key: 'ScheduleId', primary_key: 'Id'
   
   has_many :memberships, class: RockGroupMember, foreign_key: 'GroupId', primary_key: 'Id', dependent: :destroy
   has_many :group_locations, class: RockGroupLocation, foreign_key: 'GroupId', primary_key: 'Id'

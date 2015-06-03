@@ -71,8 +71,9 @@ class ArenaSmallGroup < ArenaBase
     rock.ModifiedDateTime ||= date_modified
 
     if meeting_day_luid?
-      rock.Schedule ||= RockSchedule.new
-      rock.Schedule.WeeklyDayOfWeek = rock_meeting_day
+      rock.schedule ||= RockSchedule.new
+      rock.schedule.Guid ||= SecureRandom.uuid
+      rock.schedule.WeeklyDayOfWeek = rock_meeting_day
     end
     
     rock.save!
@@ -133,19 +134,19 @@ class ArenaSmallGroup < ArenaBase
   def rock_meeting_day
     case meeting_day_luid
       when MEET_SUNDAY
-       Rock::Schedule::SUNDAY 
+       RockSchedule::SUNDAY 
       when MEET_MONDAY
-        Rock::Schedule::MONDAY
+        RockSchedule::MONDAY
       when MEET_TUESDAY
-        Rock::Schedule::TUESDAY
+        RockSchedule::TUESDAY
       when MEET_WEDNESDAY
-        Rock::Schedule::WEDNESDAY
+        RockSchedule::WEDNESDAY
       when MEET_THURSDAY
-        Rock::Schedule::THURSDAY
+        RockSchedule::THURSDAY
       when MEET_FRIDAY
-        Rock::Schedule::FRIDAY
+        RockSchedule::FRIDAY
       when MEET_SATURDAY
-        Rock::Schedule::SATURDAY
+        RockSchedule::SATURDAY
       else
         nil
     end
