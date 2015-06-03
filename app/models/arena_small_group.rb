@@ -46,6 +46,14 @@ class ArenaSmallGroup < ArenaBase
   has_many :occurrences, through: :occurrence_instances, class: ArenaOccurrence
   has_rock_mapping
 
+  MEET_SUNDAY = 9
+  MEET_MONDAY = 10
+  MEET_TUESDAY = 11
+  MEET_WEDNESDAY = 12
+  MEET_THURSDAY = 13
+  MEET_FRIDAY = 14
+  MEET_SATURDAY = 15
+
   def sync_to_rock!
     map = mapping || build_mapping
     rock = map.rock_record ||= RockGroup.new 
@@ -61,6 +69,11 @@ class ArenaSmallGroup < ArenaBase
     rock.Guid ||= guid
     rock.CreatedDateTime ||= date_created
     rock.ModifiedDateTime ||= date_modified
+
+    if meeting_day_luid?
+      rock.Schedule ||= RockSchedule.new
+      rock.Schedule.WeeklyDayOfWeek = rock_meeting_day
+    end
     
     rock.save!
     map.save!
@@ -115,5 +128,26 @@ class ArenaSmallGroup < ArenaBase
       return target_location_person.primary_address
     end
     return nil
+  end
+
+  def rock_meeting_day
+    case meeting_day_luid
+      when MEET_SUNDAY
+       Rock::Schedule::SUNDAY 
+      when MEET_MONDAY
+        Rock::Schedule::MONDAY
+      when MEET_TUESDAY
+        Rock::Schedule::TUESDAY
+      when MEET_WEDNESDAY
+        Rock::Schedule::WEDNESDAY
+      when MEET_THURSDAY
+        Rock::Schedule::THURSDAY
+      when MEET_FRIDAY
+        Rock::Schedule::FRIDAY
+      when MEET_SATURDAY
+        Rock::Schedule::SATURDAY
+      else
+        nil
+    end
   end
 end
