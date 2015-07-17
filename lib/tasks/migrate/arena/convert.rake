@@ -8,8 +8,16 @@ namespace :migrate do
       end
 
       task :attendance => :environment do
-        ArenaOccurrenceAttendance.find_each do |record|
-          record.sync_to_rock!
+        ArenaOccurrenceAttendance.order(:occurrence_attendance_id).find_each do |record|
+          key = 'migrate-convert-attendance-last-id'
+          last_id = Rails.cache.read(key) || 0
+          pk = record.occurrence_attendance_id
+          if pk > last_id
+            record.sync_to_rock! false
+            puts "Group ID: #{record.mapped_record.GroupId}"
+            Rails.cache.write(key,pk)
+          end
+          puts pk
         end
       end
       

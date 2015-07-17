@@ -37,14 +37,14 @@ class ArenaOccurrenceAttendance < ArenaBase
   end
   
   def sync_to_rock!(only_new = true)
-    occurrence.type_record.sync_to_rock!
+    #occurrence.type_record.sync_to_rock!
 
     map = self.mapping || build_mapping
     rock = map.rock_record ||= RockAttendance.new
 
     return if only_new && rock.persisted? && map.persisted?
 
-    rock.ScheduleId = occurrence.type_record.mapped_id
+    #rock.ScheduleId = occurrence.type_record.mapped_id
     rock.PersonAliasId = person.mapped_record.person_alias.Id
     rock.StartDateTime = check_in_time
 
@@ -57,7 +57,8 @@ class ArenaOccurrenceAttendance < ArenaBase
     rock.DidAttend = attended?
     rock.Note = notes
     rock.Guid ||= SecureRandom.uuid
-    if !rock.GroupId? && g = group_id
+    #if !rock.GroupId? && g = group_id
+    if g = group_id
       rock.GroupId = g
     end
 
@@ -75,16 +76,25 @@ class ArenaOccurrenceAttendance < ArenaBase
 
   def group_id
     return @group_id if @group_id
-    # weekend service/normal attendance
-    if occurrence.occurrence_type == 1
-      return @group_id = RockAttendance::WEEKEND_WORSHIP_SERVICE_GROUP
-    end
-    
-    if profile = profiles.first
+
+    if occurrence.type_record.sync_with_profile?
+      profile = ArenaProfile.find(occurrence.type_record.sync_with_profile)
       return @group_id = profile.mapped_id
-    elsif small_group = small_groups.first
-      return @group_id = small_group.mapped_id
+    elsif occurrence.type_record.sync_with_group?
+      group = ArenaSmallGroup.find(occurrence.type_record.sync_with_group)
+      return @group_id = group.mapped_id
     end
+
+    ## weekend service/normal attendance
+    #if occurrence.occurrence_type == 1
+    #  return @group_id = RockAttendance::WEEKEND_WORSHIP_SERVICE_GROUP
+    #end
+    #
+    #if profile = profiles.first
+    #  return @group_id = profile.mapped_id
+    #elsif small_group = small_groups.first
+    #  return @group_id = small_group.mapped_id
+    #end
     nil
   end
   
