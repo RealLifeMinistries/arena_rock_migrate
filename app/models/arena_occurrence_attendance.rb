@@ -83,19 +83,9 @@ class ArenaOccurrenceAttendance < ArenaBase
     elsif occurrence.type_record.sync_with_group?
       group = ArenaSmallGroup.find(occurrence.type_record.sync_with_group)
       return @group_id = group.mapped_id
+    else
+      return @group_id = RockAttendance::WEEKEND_WORSHIP_SERVICE_GROUP
     end
-
-    ## weekend service/normal attendance
-    #if occurrence.occurrence_type == 1
-    #  return @group_id = RockAttendance::WEEKEND_WORSHIP_SERVICE_GROUP
-    #end
-    #
-    #if profile = profiles.first
-    #  return @group_id = profile.mapped_id
-    #elsif small_group = small_groups.first
-    #  return @group_id = small_group.mapped_id
-    #end
-    nil
   end
   
 end
