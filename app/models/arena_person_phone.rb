@@ -24,6 +24,7 @@ class ArenaPersonPhone < ArenaBase
     rock = map.rock_record ||= RockPhoneNumber.new
 
     rock.IsSystem = false #?
+    rock.CountryCode ||= 1
     rock.PersonId = person.mapped_id
     rock.Number = phone_number_stripped
     rock.NumberFormatted = phone_number
