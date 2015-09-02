@@ -76,8 +76,11 @@ class ArenaOccurrenceAttendance < ArenaBase
 
   def group_id
     return @group_id if @group_id
-
-    if occurrence.type_record.sync_with_profile?
+    if occurrence.small_group_occurrence
+      return @group_id = occurrence.small_group_occurrence.small_group.mapped_id
+    elsif occurrence.profile_occurrence
+      return @group_id = occurrence.profile_occurrence.profile.mapped_id
+    elsif occurrence.type_record.sync_with_profile?
       profile = ArenaProfile.find(occurrence.type_record.sync_with_profile)
       return @group_id = profile.mapped_id
     elsif occurrence.type_record.sync_with_group?

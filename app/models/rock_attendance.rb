@@ -30,6 +30,7 @@
 class RockAttendance < RockBase
   self.primary_key = :Id
   self.table_name = "Attendance"
+  has_arena_mapping
 
   belongs_to :location, class: RockLocation, foreign_key: 'LocationId', primary_key: 'Id'
   belongs_to :campus, class: RockCampus, foreign_key: 'CampusId', primary_key: 'Id'

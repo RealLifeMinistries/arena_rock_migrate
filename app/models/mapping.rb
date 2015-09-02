@@ -23,9 +23,9 @@ class Mapping < ActiveRecord::Base
   end
 
   def arena_record
-    return @arena_record if @rock_record
+    return @arena_record if @arena_record
     return nil unless arena_record_id
-    pkey = arena_record_id.to_s.include?(",") ? rock_record_id.to_s.split(',') : rock_record_id.to_s
-    @arena_record = rock_record_type.constantize.find(pkey)
+    pkey = arena_record_id.to_s.include?(",") ? arena_record_id.to_s.split(',') : arena_record_id.to_s
+    @arena_record = arena_record_type.constantize.find(pkey)
   end
 end

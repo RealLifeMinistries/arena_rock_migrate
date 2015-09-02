@@ -29,5 +29,7 @@ class ArenaOccurrence < ArenaBase
   self.primary_key = 'occurrence_id'
   belongs_to :type_record, class: ArenaOccurrenceType, foreign_key: :occurrence_type
   belongs_to :area, class: ArenaArea
+  has_one :small_group_occurrence, class: ArenaOccurrenceAttendanceSmallGroup, foreign_key: :occurrence_id
+  has_one :profile_occurrence, class: ArenaOccurrenceAttendanceProfile, foreign_key: :occurrence_id
 
 end
