@@ -42,7 +42,7 @@ class ArenaOccurrenceAttendance < ArenaBase
     map = self.mapping || build_mapping
     rock = map.rock_record ||= RockAttendance.new
 
-    #return if only_new && rock.persisted? && map.persisted?
+    return if only_new && rock.persisted? && map.persisted?
 
     #rock.ScheduleId = occurrence.type_record.mapped_id
     rock.PersonAliasId = person.mapped_record.person_alias.Id
