@@ -15,8 +15,8 @@
 class ArenaRelationship < ArenaBase
   self.primary_key = :relationship_id
 
-  belongs_to :relationship_type, class: ArenaRelationshipType
-  belongs_to :person, class: ArenaPerson
-  belongs_to :related_person, class: ArenaPerson
-  belongs_to :inverse_type, class: ArenaRelationshipType
+  belongs_to :relationship_type, class_name: "ArenaRelationshipType"
+  belongs_to :person, class_name: "ArenaPerson"
+  belongs_to :related_person, class_name: "ArenaPerson"
+  belongs_to :inverse_type, class_name: "ArenaRelationshipType"
 end

@@ -24,7 +24,7 @@
 class RockGroupTypeRole < RockBase
   self.primary_key = :Id
   self.table_name = 'GroupTypeRole'
-  belongs_to :group_type, class: RockGroupType, foreign_key: 'GroupTypeId', primary_key: 'Id'
+  belongs_to :group_type, class_name: "RockGroupType", foreign_key: 'GroupTypeId', primary_key: 'Id'
 
   SMALL_GROUP_LEADER = 36
   SMALL_GROUP_MEMBER = 32

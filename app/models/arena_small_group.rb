@@ -31,19 +31,19 @@
 
 class ArenaSmallGroup < ArenaBase
   self.primary_key = :group_id
-  belongs_to :cluster, class: ArenaSmallGroupCluster, foreign_key: 'group_cluster_id'
-  belongs_to :leader, class: ArenaPerson, foreign_key: 'leader_person_id'
-  belongs_to :topic, class: ArenaLookup, foreign_key: 'topic_luid'
-  belongs_to :meeting_day, class: ArenaLookup, foreign_key: 'meeting_day_luid'
-  belongs_to :primary_age, class: ArenaLookup, foreign_key: 'primary_age_luid'
-  belongs_to :primary_marital_status, class: ArenaLookup, foreign_key: 'primay_marital_status_luid'
-  belongs_to :target_location_person, class: ArenaPerson
-  belongs_to :group_type, class: ArenaLookup, foreign_key: 'group_type_luid'
+  belongs_to :cluster, class_name: "ArenaSmallGroupCluster", foreign_key: 'group_cluster_id'
+  belongs_to :leader, class_name: "ArenaPerson", foreign_key: 'leader_person_id'
+  belongs_to :topic, class_name: "ArenaLookup", foreign_key: 'topic_luid'
+  belongs_to :meeting_day, class_name: "ArenaLookup", foreign_key: 'meeting_day_luid'
+  belongs_to :primary_age, class_name: "ArenaLookup", foreign_key: 'primary_age_luid'
+  belongs_to :primary_marital_status, class_name: "ArenaLookup", foreign_key: 'primay_marital_status_luid'
+  belongs_to :target_location_person, class_name: "ArenaPerson"
+  belongs_to :group_type, class_name: "ArenaLookup", foreign_key: 'group_type_luid'
 
-  has_many :memberships, class: ArenaSmallGroupMember, foreign_key: 'group_id'
-  has_many :members, through: :memberships, class: ArenaPerson, source: :person
-  has_many :occurrence_instances, class: ArenaSmallGroupOccurrence, foreign_key: 'group_id'
-  has_many :occurrences, through: :occurrence_instances, class: ArenaOccurrence
+  has_many :memberships, class_name: "ArenaSmallGroupMember", foreign_key: 'group_id'
+  has_many :members, through: :memberships, class_name: "ArenaPerson", source: :person
+  has_many :occurrence_instances, class_name: "ArenaSmallGroupOccurrence", foreign_key: 'group_id'
+  has_many :occurrences, through: :occurrence_instances, class_name: "ArenaOccurrence"
   has_rock_mapping
 
   MEET_SUNDAY = 9

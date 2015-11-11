@@ -32,10 +32,10 @@ class RockAttendance < RockBase
   self.table_name = "Attendance"
   has_arena_mapping
 
-  belongs_to :location, class: RockLocation, foreign_key: 'LocationId', primary_key: 'Id'
-  belongs_to :campus, class: RockCampus, foreign_key: 'CampusId', primary_key: 'Id'
-  belongs_to :group, class: RockGroup, foreign_key: 'GroupId', primary_key: 'Id'
-  belongs_to :person_alias, class: RockPersonAlias, foreign_key: 'PersonAliasId', primary_key: 'Id'
+  belongs_to :location, class_name: "RockLocation", foreign_key: 'LocationId', primary_key: 'Id'
+  belongs_to :campus, class_name: "RockCampus", foreign_key: 'CampusId', primary_key: 'Id'
+  belongs_to :group, class_name: "RockGroup", foreign_key: 'GroupId', primary_key: 'Id'
+  belongs_to :person_alias, class_name: "RockPersonAlias", foreign_key: 'PersonAliasId', primary_key: 'Id'
 
   WEEKEND_WORSHIP_SERVICE_GROUP = 34316
 end

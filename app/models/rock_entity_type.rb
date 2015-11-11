@@ -18,8 +18,8 @@
 class RockEntityType <  RockBase
   self.primary_key = :Id
   self.table_name = 'EntityType'
-  belongs_to :single_value_field_type, class: RockFieldType, foreign_key: :SingleValueFieldTypeId, primary_key: :Id
-  belongs_to :multi_value_field_type, class: RockFieldType, foreign_key: :SingleValueFieldTypeId, primary_key: :Id
+  belongs_to :single_value_field_type, class_name: "RockFieldType", foreign_key: :SingleValueFieldTypeId, primary_key: :Id
+  belongs_to :multi_value_field_type, class_name: "RockFieldType", foreign_key: :SingleValueFieldTypeId, primary_key: :Id
 
   PERSON = 15
   ATTRIBUTE = 49

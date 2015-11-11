@@ -27,13 +27,13 @@
 
 class ArenaSmallGroupCluster < ArenaBase
   self.primary_key = :group_cluster_id
-  belongs_to :parent, class: ArenaSmallGroupCluster, foreign_key: 'parent_cluster_id'
-  belongs_to :leader, class: ArenaPerson, foreign_key: 'leader_person_id'
-  belongs_to :admin, class: ArenaPerson, foreign_key: 'admin_person_id'
-  belongs_to :area, class: ArenaArea
+  belongs_to :parent, class_name: "ArenaSmallGroupCluster", foreign_key: 'parent_cluster_id'
+  belongs_to :leader, class_name: "ArenaPerson", foreign_key: 'leader_person_id'
+  belongs_to :admin, class_name: "ArenaPerson", foreign_key: 'admin_person_id'
+  belongs_to :area, class_name: "ArenaArea"
 
-  has_many :groups, class: ArenaSmallGroup, foreign_key: 'group_cluster_id'
-  has_many :child_clusters, class: self, foreign_key: :parent_cluster_id
+  has_many :groups, class_name: "ArenaSmallGroup", foreign_key: 'group_cluster_id'
+  has_many :child_clusters, class_name: "self", foreign_key: :parent_cluster_id
 
   has_rock_mapping
 

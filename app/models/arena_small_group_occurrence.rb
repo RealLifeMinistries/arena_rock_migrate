@@ -8,6 +8,6 @@
 
 class ArenaSmallGroupOccurrence < ArenaBase
   self.primary_key = :group_id, :occurrence_id
-  belongs_to :group, class: ArenaSmallGroup
-  belongs_to :occurrence, class: ArenaOccurrence
+  belongs_to :group, class_name: "ArenaSmallGroup"
+  belongs_to :occurrence, class_name: "ArenaOccurrence"
 end

@@ -50,24 +50,24 @@ class ArenaPerson < ArenaBase
   self.primary_key = 'person_id'
   has_rock_mapping
   
-  belongs_to :member_status_record, foreign_key: :member_status, class: ArenaLookup 
-  belongs_to :marital_status_record, foreign_key: :marital_status, class: ArenaLookup
-  belongs_to :gender_record, foreign_key: :gender, class: ArenaGender
-  belongs_to :inactive_reason, foreign_key: :inactive_reason_luid, class: ArenaLookup
-  belongs_to :title, foreign_key: :title_luid, class: ArenaLookup
-  belongs_to :suffix, foreign_key: :suffix_luid, class: ArenaLookup
-  belongs_to :record_status_record, foreign_key: :record_status, class: ArenaRecordStatus
+  belongs_to :member_status_record, foreign_key: :member_status, class_name: "ArenaLookup" 
+  belongs_to :marital_status_record, foreign_key: :marital_status, class_name: "ArenaLookup"
+  belongs_to :gender_record, foreign_key: :gender, class_name: "ArenaGender"
+  belongs_to :inactive_reason, foreign_key: :inactive_reason_luid, class_name: "ArenaLookup"
+  belongs_to :title, foreign_key: :title_luid, class_name: "ArenaLookup"
+  belongs_to :suffix, foreign_key: :suffix_luid, class_name: "ArenaLookup"
+  belongs_to :record_status_record, foreign_key: :record_status, class_name: "ArenaRecordStatus"
 
-  has_many :relationships, class: ArenaRelationship, foreign_key: :person_id
-  has_many :family_memberships, foreign_key: :person_id, class: ArenaFamilyMember
-  has_many :families, through: :family_memberships, foreign_key: :family_id, class: ArenaFamily
-  has_many :locations, class: ArenaPersonAddress, foreign_key: :person_id
-  has_many :addresses, through: :locations, class: ArenaAddress
-  has_many :phones, class: ArenaPersonPhone, foreign_key: :person_id
-  has_many :emails, class: ArenaPersonEmail, foreign_key: :person_id
-  has_many :profile_memberships, class: ArenaProfileMember, foreign_key: :person_id
-  has_many :profiles, through: :profile_memberships, class: ArenaProfile
-  has_many :attribute_values, class: ArenaPersonAttribute, foreign_key: :person_id
+  has_many :relationships, class_name: "ArenaRelationship", foreign_key: :person_id
+  has_many :family_memberships, foreign_key: :person_id, class_name: "ArenaFamilyMember"
+  has_many :families, through: :family_memberships, foreign_key: :family_id, class_name: "ArenaFamily"
+  has_many :locations, class_name: "ArenaPersonAddress", foreign_key: :person_id
+  has_many :addresses, through: :locations, class_name: "ArenaAddress"
+  has_many :phones, class_name: "ArenaPersonPhone", foreign_key: :person_id
+  has_many :emails, class_name: "ArenaPersonEmail", foreign_key: :person_id
+  has_many :profile_memberships, class_name: "ArenaProfileMember", foreign_key: :person_id
+  has_many :profiles, through: :profile_memberships, class_name: "ArenaProfile"
+  has_many :attribute_values, class_name: "ArenaPersonAttribute", foreign_key: :person_id
 
 
   def sync_to_rock!

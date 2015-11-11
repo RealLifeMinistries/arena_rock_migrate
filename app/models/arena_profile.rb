@@ -30,11 +30,11 @@
 class ArenaProfile < ArenaBase
   self.primary_key = 'profile_id'
 
-  belongs_to :profile_type_record, class: ArenaProfileType, foreign_key: :profile_type
-  belongs_to :owner, class: ArenaPerson
-  belongs_to :parent, class: ArenaProfile, foreign_key: :parent_profile_id
+  belongs_to :profile_type_record, class_name: "ArenaProfileType", foreign_key: :profile_type
+  belongs_to :owner, class_name: "ArenaPerson"
+  belongs_to :parent, class_name: "ArenaProfile", foreign_key: :parent_profile_id
 
-  has_many :memberships, class: ArenaProfileMember, foreign_key: :profile_id
+  has_many :memberships, class_name: "ArenaProfileMember", foreign_key: :profile_id
 
   has_rock_mapping
 

@@ -15,5 +15,5 @@ class RockAttributeQualifier < RockBase
   self.primary_key = :Id
   self.table_name = 'AttributeQualifier'
 
-  belongs_to :rock_attribute, class: RockAttribute, foreign_key: 'AttributeId'
+  belongs_to :rock_attribute, class_name: "RockAttribute", foreign_key: 'AttributeId'
 end

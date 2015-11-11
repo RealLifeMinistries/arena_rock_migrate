@@ -25,14 +25,14 @@
 class RockGroup < RockBase
   self.primary_key = :Id
   self.table_name = 'Group'
-  belongs_to :parent_group, class: RockGroup, foreign_key: 'ParentGroupId', primary_key: 'Id'
-  belongs_to :group_type, class: RockGroupType, foreign_key: 'GroupTypeId', primary_key: 'Id'
-  belongs_to :campus, class: RockCampus, foreign_key: 'CampusId', primary_key: 'Id'
-  belongs_to :schedule, class: RockSchedule, foreign_key: 'ScheduleId', primary_key: 'Id'
+  belongs_to :parent_group, class_name: "RockGroup", foreign_key: 'ParentGroupId', primary_key: 'Id'
+  belongs_to :group_type, class_name: "RockGroupType", foreign_key: 'GroupTypeId', primary_key: 'Id'
+  belongs_to :campus, class_name: "RockCampus", foreign_key: 'CampusId', primary_key: 'Id'
+  belongs_to :schedule, class_name: "RockSchedule", foreign_key: 'ScheduleId', primary_key: 'Id'
 
-  has_many :memberships, class: RockGroupMember, foreign_key: 'GroupId', primary_key: 'Id', dependent: :destroy
-  has_many :group_locations, class: RockGroupLocation, foreign_key: 'GroupId', primary_key: 'Id'
-  has_many :child_groups, class: RockGroup, foreign_key: 'ParentGroupId', primary_key: 'Id', dependent: :nullify
+  has_many :memberships, class_name: "RockGroupMember", foreign_key: 'GroupId', primary_key: 'Id', dependent: :destroy
+  has_many :group_locations, class_name: "RockGroupLocation", foreign_key: 'GroupId', primary_key: 'Id'
+  has_many :child_groups, class_name: "RockGroup", foreign_key: 'ParentGroupId', primary_key: 'Id', dependent: :nullify
 
   has_arena_mapping
 

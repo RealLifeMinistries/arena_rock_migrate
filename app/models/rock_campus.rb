@@ -24,7 +24,7 @@
 class RockCampus < RockBase
   self.primary_key = :Id
   self.table_name = "Campus"
-  belongs_to :location, class: RockLocation, foreign_key: 'LocationId', primary_key: 'Id'
+  belongs_to :location, class_name: "RockLocation", foreign_key: 'LocationId', primary_key: 'Id'
 
   PF = 1
   CDA = 2

@@ -25,8 +25,8 @@ class RockPhoneNumber < RockBase
   self.primary_key = :Id
   self.table_name = 'PhoneNumber'
   has_arena_mapping 
-  belongs_to :person, class: RockPerson, foreign_key: 'PersonId'
+  belongs_to :person, class_name: "RockPerson", foreign_key: 'PersonId'
 
-  belongs_to :type, class: RockDefinedValue, foreign_key: 'NumberTypeValueId'
+  belongs_to :type, class_name: "RockDefinedValue", foreign_key: 'NumberTypeValueId'
 
 end

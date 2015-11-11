@@ -19,5 +19,5 @@
 class RockDefinedValue < RockBase
   self.primary_key = "Id"
   self.table_name = "DefinedValue"
-  belongs_to :defined_type, class: RockDefinedType, foreign_key: 'DefinedTypeId', primary_key: 'Id'
+  belongs_to :defined_type, class_name: "RockDefinedType", foreign_key: 'DefinedTypeId', primary_key: 'Id'
 end

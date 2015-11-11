@@ -46,21 +46,21 @@ class RockPerson < RockBase
   self.primary_key = :Id
   self.table_name = 'Person'
   has_arena_mapping
-  belongs_to :record_type, class: RockDefinedValue, foreign_key: 'RecordTypeValueId', primary_key: 'Id'
-  belongs_to :record_status, class: RockDefinedValue, foreign_key: 'RecordStatusValueId', primary_key: 'Id'
-  belongs_to :record_status_reason, class: RockDefinedValue, foreign_key: 'RecordStatusReasonValueId', primary_key: 'Id'
-  belongs_to :connection_status, class: RockDefinedValue, foreign_key: 'ConnectionStatusValueId', primary_key: 'Id'
-  belongs_to :review_reason, class: RockDefinedValue, foreign_key: 'ReviewReasonValueId', primary_key: 'Id'
-  belongs_to :title, class: RockDefinedValue, foreign_key: 'TitleValueId', primary_key: 'Id'
-  belongs_to :suffix, class: RockDefinedValue, foreign_key: 'SuffixValueId', primary_key: 'Id'
-  belongs_to :marital_status, class: RockDefinedValue, foreign_key: 'MaritalStatusValueId', primary_key: 'Id'
-  belongs_to :gender, class: RockGender, foreign_key: 'Gender'
+  belongs_to :record_type, class_name: "RockDefinedValue", foreign_key: 'RecordTypeValueId', primary_key: 'Id'
+  belongs_to :record_status, class_name: "RockDefinedValue", foreign_key: 'RecordStatusValueId', primary_key: 'Id'
+  belongs_to :record_status_reason, class_name: "RockDefinedValue", foreign_key: 'RecordStatusReasonValueId', primary_key: 'Id'
+  belongs_to :connection_status, class_name: "RockDefinedValue", foreign_key: 'ConnectionStatusValueId', primary_key: 'Id'
+  belongs_to :review_reason, class_name: "RockDefinedValue", foreign_key: 'ReviewReasonValueId', primary_key: 'Id'
+  belongs_to :title, class_name: "RockDefinedValue", foreign_key: 'TitleValueId', primary_key: 'Id'
+  belongs_to :suffix, class_name: "RockDefinedValue", foreign_key: 'SuffixValueId', primary_key: 'Id'
+  belongs_to :marital_status, class_name: "RockDefinedValue", foreign_key: 'MaritalStatusValueId', primary_key: 'Id'
+  belongs_to :gender, class_name: "RockGender", foreign_key: 'Gender'
 
 
-  has_many :attribute_values, class: RockAttributeValue, foreign_key: 'EntityId'
-  has_many :phone_numbers, class: RockPhoneNumber, foreign_key: 'PersonId'
+  has_many :attribute_values, class_name: "RockAttributeValue", foreign_key: 'EntityId'
+  has_many :phone_numbers, class_name: "RockPhoneNumber", foreign_key: 'PersonId'
 
-  has_one :person_alias, class: RockPersonAlias, foreign_key: 'PersonId'
+  has_one :person_alias, class_name: "RockPersonAlias", foreign_key: 'PersonId'
 
   def make_alias
     self.person_alias ||= RockPersonAlias.create({

@@ -24,5 +24,5 @@
 class RockCategory < RockBase
   self.primary_key = :Id
   self.table_name = 'Category'
-  belongs_to :entity_type, class: RockEntityType, foreign_key: 'EntityTypeId', primary_key: 'Id'
+  belongs_to :entity_type, class_name: "RockEntityType", foreign_key: 'EntityTypeId', primary_key: 'Id'
 end

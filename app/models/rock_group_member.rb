@@ -20,10 +20,10 @@
 class RockGroupMember < RockBase
   self.primary_key = :Id
   self.table_name = 'GroupMember'
-  belongs_to :group, class: RockGroup, foreign_key: 'GroupId', primary_key: 'Id'
-  belongs_to :person, class: RockPerson, foreign_key: 'PersonId', primary_key: 'Id'
-  belongs_to :role, class: RockGroupTypeRole, foreign_key: 'GroupRoleId', primary_key: 'Id'
-  belongs_to :status, class: RockGroupMemberStatus, foreign_key: 'GroupMemberStatus'  
+  belongs_to :group, class_name: "RockGroup", foreign_key: 'GroupId', primary_key: 'Id'
+  belongs_to :person, class_name: "RockPerson", foreign_key: 'PersonId', primary_key: 'Id'
+  belongs_to :role, class_name: "RockGroupTypeRole", foreign_key: 'GroupRoleId', primary_key: 'Id'
+  belongs_to :status, class_name: "RockGroupMemberStatus", foreign_key: 'GroupMemberStatus'  
 
   has_arena_mapping
 

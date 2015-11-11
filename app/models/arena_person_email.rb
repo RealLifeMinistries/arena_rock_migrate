@@ -16,5 +16,5 @@
 
 class ArenaPersonEmail < ArenaBase
   self.primary_key = :email_id
-  belongs_to :person, class: ArenaPerson
+  belongs_to :person, class_name: "ArenaPerson"
 end

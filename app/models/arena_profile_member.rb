@@ -19,10 +19,10 @@
 
 class ArenaProfileMember < ArenaBase
   self.primary_key = :profile_id, :person_id
-  belongs_to :person, class: ArenaPerson
-  belongs_to :profile, class: ArenaProfile
-  belongs_to :source, class: ArenaLookup, foreign_key: :source_luid
-  belongs_to :status, class: ArenaLookup, foreign_key: :status_luid
+  belongs_to :person, class_name: "ArenaPerson"
+  belongs_to :profile, class_name: "ArenaProfile"
+  belongs_to :source, class_name: "ArenaLookup", foreign_key: :source_luid
+  belongs_to :status, class_name: "ArenaLookup", foreign_key: :status_luid
 
   has_rock_mapping
   

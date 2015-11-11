@@ -38,8 +38,8 @@
 class RockLocation < RockBase
   self.primary_key = :Id
   self.table_name = 'Location'
-  belongs_to :parent_location, class: RockLocation, foreign_key: 'ParentLocationId', primary_key: 'Id'
-  belongs_to :location_type, class: RockDefinedValue, foreign_key: 'LocationTypeValueId', primary_key: 'Id'
+  belongs_to :parent_location, class_name: "RockLocation", foreign_key: 'ParentLocationId', primary_key: 'Id'
+  belongs_to :location_type, class_name: "RockDefinedValue", foreign_key: 'LocationTypeValueId', primary_key: 'Id'
 
   has_one :mapping, as: :rock_record
   has_one :arena_record, through: :mapping

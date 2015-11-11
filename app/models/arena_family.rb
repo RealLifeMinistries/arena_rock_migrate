@@ -15,8 +15,8 @@
 class ArenaFamily < ArenaBase
   self.primary_key = :family_id
 
-  has_many :memberships, foreign_key: :family_id, class: ArenaFamilyMember
-  has_many :members, through: :memberships, class: ArenaPerson, foreign_key: :person_id, source: :person
+  has_many :memberships, foreign_key: :family_id, class_name: "ArenaFamilyMember"
+  has_many :members, through: :memberships, class_name: "ArenaPerson", foreign_key: :person_id, source: :person
 
   HOH_ROLE = 9435
   HOH_GUARDIAN_ROLE = 9436

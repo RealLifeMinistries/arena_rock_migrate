@@ -17,9 +17,9 @@
 
 class ArenaSmallGroupMember < ArenaBase
   self.primary_key = :group_id,:person_id
-  belongs_to :group, class: ArenaSmallGroup
-  belongs_to :person, class: ArenaPerson
-  belongs_to :role, class: ArenaLookup, foreign_key: 'role_luid'
+  belongs_to :group, class_name: "ArenaSmallGroup"
+  belongs_to :person, class_name: "ArenaPerson"
+  belongs_to :role, class_name: "ArenaLookup", foreign_key: 'role_luid'
 
   has_rock_mapping
 

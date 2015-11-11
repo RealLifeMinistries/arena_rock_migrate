@@ -14,6 +14,6 @@
 class RockPersonAlias < RockBase
   self.primary_key = :Id
   self.table_name = 'PersonAlias'
-  belongs_to :person, class: RockPerson, foreign_key: 'PersonId'
-  belongs_to :alias_person, class: RockPerson, foreign_key: 'AliasPersonId'
+  belongs_to :person, class_name: "RockPerson", foreign_key: 'PersonId'
+  belongs_to :alias_person, class_name: "RockPerson", foreign_key: 'AliasPersonId'
 end

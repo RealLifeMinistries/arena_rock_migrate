@@ -20,8 +20,8 @@
 class RockGroupLocation < RockBase
   self.primary_key = :Id
   self.table_name = 'GroupLocation'
-  belongs_to :group, class: RockGroup, foreign_key: 'GroupId'
-  belongs_to :location, class: RockLocation, foreign_key: 'LocationId'
+  belongs_to :group, class_name: "RockGroup", foreign_key: 'GroupId'
+  belongs_to :location, class_name: "RockLocation", foreign_key: 'LocationId'
 
   FAMILY_HOME_TYPE = 19
   MEETING_LOCATION_TYPE = 209

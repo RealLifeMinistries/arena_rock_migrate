@@ -16,8 +16,8 @@
 
 class ArenaPersonAttribute < ArenaBase
   self.primary_keys = :person_id, :attribute_id
-  belongs_to :arena_attribute, class: ArenaAttribute, foreign_key: :attribute_id
-  belongs_to :person, class: ArenaPerson
+  belongs_to :arena_attribute, class_name: "ArenaAttribute", foreign_key: :attribute_id
+  belongs_to :person, class_name: "ArenaPerson"
 
   has_rock_mapping
 

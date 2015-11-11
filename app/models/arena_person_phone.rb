@@ -14,8 +14,8 @@
 class ArenaPersonPhone < ArenaBase
   self.primary_key = :person_id,:phone_luid
 
-  belongs_to :person, class: ArenaPerson
-  belongs_to :phone_type, class: ArenaLookup, foreign_key: :phone_luid
+  belongs_to :person, class_name: "ArenaPerson"
+  belongs_to :phone_type, class_name: "ArenaLookup", foreign_key: :phone_luid
 
   has_rock_mapping
 

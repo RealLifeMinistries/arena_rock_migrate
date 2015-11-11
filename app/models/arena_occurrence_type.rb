@@ -43,12 +43,12 @@
 
 class ArenaOccurrenceType < ArenaBase
   self.primary_key = 'occurrence_type_id'
-  belongs_to :profile_source, class: ArenaLookup, foreign_key: :profile_source_luid
-  belongs_to :profile_status, class: ArenaLookup, foreign_key: :profile_status_luid
-  belongs_to :leader_profile, class: ArenaProfile
-  belongs_to :group, class: ArenaSmallGroup
+  belongs_to :profile_source, class_name: "ArenaLookup", foreign_key: :profile_source_luid
+  belongs_to :profile_status, class_name: "ArenaLookup", foreign_key: :profile_status_luid
+  belongs_to :leader_profile, class_name: "ArenaProfile"
+  belongs_to :group, class_name: "ArenaSmallGroup"
 
-  has_many :occurrences, class: ArenaOccurrence, foreign_key: :occurrence_type
+  has_many :occurrences, class_name: "ArenaOccurrence", foreign_key: :occurrence_type
 
   has_rock_mapping
 

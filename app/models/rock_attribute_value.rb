@@ -20,7 +20,7 @@
 
 class RockAttributeValue < RockBase
   self.primary_key = :Id
-  belongs_to :rock_attribute, class: RockAttribute, foreign_key: 'AttributeId', primary_key: 'Id'
+  belongs_to :rock_attribute, class_name: "RockAttribute", foreign_key: 'AttributeId', primary_key: 'Id'
   self.table_name = 'AttributeValue'
 
   has_arena_mapping

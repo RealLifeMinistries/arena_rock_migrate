@@ -21,10 +21,10 @@
 
 class ArenaAttribute < ArenaBase
   self.primary_key = 'attribute_id'
-  belongs_to :attribute_group, class: ArenaAttributeGroup
-  belongs_to :attribute_type_record, class: ArenaAttributeType, foreign_key: :attribute_type
-  belongs_to :qualifier, class: ArenaLookupType, foreign_key: :type_qualifier
-  has_many :values, class: ArenaPersonAttribute, foreign_key: :attribute_id
+  belongs_to :attribute_group, class_name: "ArenaAttributeGroup"
+  belongs_to :attribute_type_record, class_name: "ArenaAttributeType", foreign_key: :attribute_type
+  belongs_to :qualifier, class_name: "ArenaLookupType", foreign_key: :type_qualifier
+  has_many :values, class_name: "ArenaPersonAttribute", foreign_key: :attribute_id
   
   has_rock_mapping
 

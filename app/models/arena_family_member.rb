@@ -14,9 +14,9 @@
 class ArenaFamilyMember < ArenaBase
   self.primary_keys = :family_id, :person_id
 
-  belongs_to :person, class: ArenaPerson
-  belongs_to :family, class: ArenaFamily
-  belongs_to :role, class: ArenaLookup, foreign_key: :role_luid
+  belongs_to :person, class_name: "ArenaPerson"
+  belongs_to :family, class_name: "ArenaFamily"
+  belongs_to :role, class_name: "ArenaLookup", foreign_key: :role_luid
 
   has_rock_mapping
 

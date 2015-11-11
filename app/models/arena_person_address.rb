@@ -16,7 +16,7 @@
 class ArenaPersonAddress < ArenaBase
   self.primary_key = :person_id,:address_id,:address_type_luid
 
-  belongs_to :person, class: ArenaPerson
-  belongs_to :address, class: ArenaAddress
-  belongs_to :address_type, class: ArenaLookup, foreign_key: :address_type_luid
+  belongs_to :person, class_name: "ArenaPerson"
+  belongs_to :address, class_name: "ArenaAddress"
+  belongs_to :address_type, class_name: "ArenaLookup", foreign_key: :address_type_luid
 end

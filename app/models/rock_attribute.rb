@@ -29,11 +29,11 @@ class RockAttribute < RockBase
   self.primary_key = :Id
   self.table_name = "Attribute"
 
-  belongs_to :field_type, class: RockFieldType, primary_key: 'Id', foreign_key: 'FieldTypeId'
-  belongs_to :entity_type, class: RockEntityType, primary_key: 'Id', foreign_key: 'EntityTypeId'
-  has_many :category_assignments, class: RockAttributeCategory, foreign_key: 'AttributeId'
-  has_many :values, class: RockAttributeValue, foreign_key: 'AttributeId'
-  has_many :qualifiers, class: RockAttributeQualifier, foreign_key: 'AttributeId'
+  belongs_to :field_type, class_name: "RockFieldType", primary_key: 'Id', foreign_key: 'FieldTypeId'
+  belongs_to :entity_type, class_name: "RockEntityType", primary_key: 'Id', foreign_key: 'EntityTypeId'
+  has_many :category_assignments, class_name: "RockAttributeCategory", foreign_key: 'AttributeId'
+  has_many :values, class_name: "RockAttributeValue", foreign_key: 'AttributeId'
+  has_many :qualifiers, class_name: "RockAttributeQualifier", foreign_key: 'AttributeId'
 
   has_arena_mapping
 

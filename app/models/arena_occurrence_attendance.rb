@@ -18,8 +18,8 @@
 class ArenaOccurrenceAttendance < ArenaBase
   self.primary_key = 'occurrence_attendance_id'
 
-  belongs_to :occurrence, class: ArenaOccurrence
-  belongs_to :person, class: ArenaPerson
+  belongs_to :occurrence, class_name: "ArenaOccurrence"
+  belongs_to :person, class_name: "ArenaPerson"
   has_and_belongs_to_many :profiles, class_name: "ArenaProfile", 
     join_table: 'arena_occurrence_attendances_profiles', foreign_key: :occurrence_id,
     association_foreign_key: :profile_id
