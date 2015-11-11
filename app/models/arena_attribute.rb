@@ -24,7 +24,8 @@ class ArenaAttribute < ArenaBase
   belongs_to :attribute_group, class: ArenaAttributeGroup
   belongs_to :attribute_type_record, class: ArenaAttributeType, foreign_key: :attribute_type
   belongs_to :qualifier, class: ArenaLookupType, foreign_key: :type_qualifier
-
+  has_many :values, class: ArenaPersonAttribute, foreign_key: :attribute_id
+  
   has_rock_mapping
 
   def sync_to_rock!
@@ -33,7 +34,7 @@ class ArenaAttribute < ArenaBase
       rock = map.rock_record ||= RockAttribute.new
       rock.FieldTypeId = attribute_type_record.mapped_id
       rock.IsSystem ||= false
-      rock.EntityTypeId = RockEntityType::PERSON 
+      rock.EntityTypeId = RockEntityType::PERSON
       rock.EntityTypeQualifierColumn = ""
       rock.EntityTypeQualifierValue = ""
       rock.Name ||= attribute_name
@@ -54,15 +55,15 @@ class ArenaAttribute < ArenaBase
   end
 
   def sync_attribute_group!
-    attribute_group.sync_to_rock! 
+    attribute_group.sync_to_rock!
     rock_attr_category = attribute_group.mapped_record
 
     unless mapped_record.in_category?(rock_attr_category)
       RockAttributeCategory.create!(
-        rock_attribute: mapped_record, 
+        rock_attribute: mapped_record,
         category: rock_attr_category
       )
-    end 
+    end
   end
 
   def key
