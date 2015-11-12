@@ -49,8 +49,8 @@ class ArenaPerson < ArenaBase
   self.table_name = 'arena_people'
   self.primary_key = 'person_id'
   has_rock_mapping
-  
-  belongs_to :member_status_record, foreign_key: :member_status, class_name: "ArenaLookup" 
+
+  belongs_to :member_status_record, foreign_key: :member_status, class_name: "ArenaLookup"
   belongs_to :marital_status_record, foreign_key: :marital_status, class_name: "ArenaLookup"
   belongs_to :gender_record, foreign_key: :gender, class_name: "ArenaGender"
   belongs_to :inactive_reason, foreign_key: :inactive_reason_luid, class_name: "ArenaLookup"
@@ -83,7 +83,7 @@ class ArenaPerson < ArenaBase
     if record_status
       rock.RecordStatusValueId = record_status_record.mapped_id
     end
-    
+
     if inactive_reason
       rock.RecordStatusReasonValueId = inactive_reason.mapped_id
     end
@@ -93,7 +93,7 @@ class ArenaPerson < ArenaBase
     end
 
     rock.IsDeceased = is_deceased?
-    
+
     if title
       rock.TitleValueId = title.mapped_id
     end
@@ -103,17 +103,17 @@ class ArenaPerson < ArenaBase
     rock.LastName = last_name
 
     if suffix
-      rock.SuffixValueId = suffix.mapped_id 
+      rock.SuffixValueId = suffix.mapped_id
     end
 
     # @TODO: rock.PhotoId
 
     unless birth_date
-      rock.BirthDay = nil 
+      rock.BirthDay = nil
       rock.BirthMonth = nil
       rock.BirthYear = nil
     else
-      rock.BirthDay = birth_date.mday 
+      rock.BirthDay = birth_date.mday
       rock.BirthMonth = birth_date.month
       rock.BirthYear = birth_date.year
     end
@@ -135,12 +135,14 @@ class ArenaPerson < ArenaBase
     ##########################
     # ARENA has multiple emails,
     # Rock has one?
-    arena_email = emails.where(active: true).first 
+    arena_email = emails.where(active: true).first
     rock.EmailPreference ||= 0 # EmailAllowed - What is arena spec?
     if arena_email
-      rock.Email = arena_email.email  
+      rock.Email = arena_email.email
       rock.IsEmailActive = true
       rock.EmailNote = arena_email.notes
+    else
+      rock.IsEmailActive = false
     end
 
     rock.SystemNote = self.Notes
