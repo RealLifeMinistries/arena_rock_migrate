@@ -100,6 +100,7 @@ class ArenaPerson < ArenaBase
 
     rock.NickName = nick_name
     rock.FirstName = first_name
+    rock.MiddleName = middle_name
     rock.LastName = last_name
 
     if suffix
