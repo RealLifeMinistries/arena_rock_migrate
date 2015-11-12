@@ -1,6 +1,6 @@
-class ConversionStarter 
+class ConversionStarter
   include Sidekiq::Worker
-  sidekiq_options queue: :conversion, unique: true
+  sidekiq_options queue: :conversion, unique: :until_and_while_executing
 
   def perform
     [
@@ -41,11 +41,11 @@ class ConversionStarter
     elsif !klass.primary_key.is_a?(Array)
       #######################################
       # No date_modified field, and primary key is a single integer
-      # Get records created after last record processed 
+      # Get records created after last record processed
       # (New records only)
       #
 
-      cache_key = "conversion:#{klass.name}:lastRecord"      
+      cache_key = "conversion:#{klass.name}:lastRecord"
       lastRecord = Rails.cache.read(cache_key) || 0
 
       scope = scope.where("#{klass.primary_key} > ?",lastRecord)
