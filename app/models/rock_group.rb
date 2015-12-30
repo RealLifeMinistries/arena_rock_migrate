@@ -33,6 +33,7 @@ class RockGroup < RockBase
   has_many :memberships, class_name: "RockGroupMember", foreign_key: 'GroupId', primary_key: 'Id', dependent: :destroy
   has_many :group_locations, class_name: "RockGroupLocation", foreign_key: 'GroupId', primary_key: 'Id'
   has_many :child_groups, class_name: "RockGroup", foreign_key: 'ParentGroupId', primary_key: 'Id', dependent: :nullify
+  has_many :attendances, class_name: "RockAttendance", foreign_key: "GroupId", primary_key: 'Id'
 
   has_arena_mapping
 
