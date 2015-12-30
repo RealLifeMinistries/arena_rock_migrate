@@ -9,7 +9,6 @@
 vendor/bundle
 .env
 *.swp
-/bin
 .git
 # Ignore the default SQLite database.
 /db/*.sqlite3
