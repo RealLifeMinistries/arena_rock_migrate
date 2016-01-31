@@ -61,6 +61,7 @@ GEM
     minitest (5.5.1)
     multi_json (1.11.0)
     pg (0.18.1)
+    puma (2.15.3)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -157,6 +158,7 @@ DEPENDENCIES
   composite_primary_keys
   dotenv-rails
   pg
+  puma
   rails (= 4.1.10)
   rails_12factor
   redis-rails
