@@ -8,12 +8,12 @@
 #  EntityTypeId              :integer
 #  EntityTypeQualifierColumn :string(50)
 #  EntityTypeQualifierValue  :string(200)
-#  Key                       :string(200)      not null
-#  Name                      :string(100)      not null
-#  Description               :text
+#  Key                       :string(1000)     not null
+#  Name                      :string(1000)     not null
+#  Description               :text(2147483647)
 #  Order                     :integer          not null
 #  IsGridColumn              :boolean          not null
-#  DefaultValue              :text
+#  DefaultValue              :text(2147483647)
 #  IsMultiValue              :boolean          not null
 #  IsRequired                :boolean          not null
 #  Guid                      :uuid             not null
@@ -21,8 +21,11 @@
 #  ModifiedDateTime          :datetime
 #  CreatedByPersonAliasId    :integer
 #  ModifiedByPersonAliasId   :integer
-#  ForeignId                 :string(50)
-#  IconCssClass              :text
+#  ForeignKey                :string(100)
+#  IconCssClass              :string(100)
+#  AllowSearch               :boolean          default(FALSE), not null
+#  ForeignGuid               :uuid
+#  ForeignId                 :integer
 #
 
 class Rock::Attribute < Rock::Base

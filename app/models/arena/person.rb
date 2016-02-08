@@ -7,23 +7,23 @@
 #  date_created            :datetime         not null
 #  date_modified           :datetime         not null
 #  date_last_verified      :datetime         not null
-#  created_by              :string(50)       not null
-#  modified_by             :string(50)       not null
+#  created_by              :varchar(50)      not null
+#  modified_by             :varchar(50)      not null
 #  title_luid              :integer
-#  nick_name               :string(50)       not null
-#  first_name              :string(40)       not null
-#  middle_name             :string(40)       not null
-#  last_name               :string(40)       not null
+#  nick_name               :varchar(50)      not null
+#  first_name              :varchar(40)      not null
+#  middle_name             :varchar(40)      not null
+#  last_name               :varchar(40)      not null
 #  suffix_luid             :integer
 #  birth_date              :datetime         not null
 #  gender                  :integer          not null
-#  postal_code             :string(10)       not null
-#  Notes                   :string(255)      not null
+#  postal_code             :varchar(10)      not null
+#  Notes                   :varchar(255)     not null
 #  marital_status          :integer
 #  anniversary_date        :datetime         not null
 #  member_status           :integer
 #  record_status           :integer          not null
-#  medical_information     :string(1000)     not null
+#  medical_information     :varchar(1000)    not null
 #  blob_id                 :integer
 #  inactive_reason_luid    :integer
 #  foreign_key             :integer
@@ -32,9 +32,9 @@
 #  active_meter            :integer          not null
 #  last_attended           :datetime         not null
 #  contribute_individually :boolean          not null
-#  giving_unit_id          :string(50)       not null
+#  giving_unit_id          :varchar(50)      not null
 #  graduation_date         :datetime         not null
-#  social_security         :binary(500)
+#  social_security         :varbinary(500)
 #  print_statement         :boolean          not null
 #  envelope_number         :integer          not null
 #  include_on_envelope     :boolean

@@ -8,7 +8,9 @@
 #  AliasPersonId   :integer          not null
 #  AliasPersonGuid :uuid             not null
 #  Guid            :uuid             not null
-#  ForeignId       :string(50)
+#  ForeignKey      :string(100)
+#  ForeignGuid     :uuid
+#  ForeignId       :integer
 #
 
 class Rock::PersonAlias < Rock::Base

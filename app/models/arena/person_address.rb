@@ -8,9 +8,9 @@
 #  primary_address   :boolean          not null
 #  active_date       :datetime
 #  inactive_date     :datetime
-#  from_month_day    :string(4)
-#  to_month_day      :string(4)
-#  notes             :string(255)      not null
+#  from_month_day    :varchar(4)
+#  to_month_day      :varchar(4)
+#  notes             :varchar(255)     not null
 #
 
 class Arena::PersonAddress < Arena::Base

@@ -13,18 +13,21 @@
 #  StartDateTime           :datetime         not null
 #  EndDateTime             :datetime
 #  DidAttend               :boolean
-#  Note                    :text
+#  Note                    :text(2147483647)
 #  Guid                    :uuid             not null
 #  CreatedDateTime         :datetime
 #  ModifiedDateTime        :datetime
 #  CreatedByPersonAliasId  :integer
 #  ModifiedByPersonAliasId :integer
-#  ForeignId               :string(50)
+#  ForeignKey              :string(100)
 #  CampusId                :integer
 #  PersonAliasId           :integer
 #  RSVP                    :integer          default(0), not null
 #  DidNotOccur             :boolean
 #  Processed               :boolean
+#  ForeignGuid             :uuid
+#  ForeignId               :integer
+#  SundayDate              :date
 #
 
 class Rock::Attendance < Rock::Base

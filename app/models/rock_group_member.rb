@@ -13,8 +13,13 @@
 #  ModifiedDateTime        :datetime
 #  CreatedByPersonAliasId  :integer
 #  ModifiedByPersonAliasId :integer
-#  ForeignId               :string(50)
+#  ForeignKey              :string(100)
 #  GuestCount              :integer
+#  DateTimeAdded           :datetime
+#  IsNotified              :boolean          default(FALSE), not null
+#  Note                    :text(2147483647)
+#  ForeignGuid             :uuid
+#  ForeignId               :integer
 #
 
 class RockGroupMember < RockBase

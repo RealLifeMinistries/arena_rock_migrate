@@ -4,8 +4,8 @@
 #
 #  Id                        :integer          not null, primary key
 #  Name                      :string(50)
-#  Description               :text
-#  iCalendarContent          :text
+#  Description               :text(2147483647)
+#  iCalendarContent          :text(2147483647)
 #  CheckInStartOffsetMinutes :integer
 #  CheckInEndOffsetMinutes   :integer
 #  EffectiveStartDate        :date
@@ -16,9 +16,11 @@
 #  ModifiedDateTime          :datetime
 #  CreatedByPersonAliasId    :integer
 #  ModifiedByPersonAliasId   :integer
-#  ForeignId                 :string(50)
+#  ForeignKey                :string(100)
 #  WeeklyDayOfWeek           :integer
 #  WeeklyTimeOfDay           :time
+#  ForeignGuid               :uuid
+#  ForeignId                 :integer
 #
 
 class RockSchedule < RockBase

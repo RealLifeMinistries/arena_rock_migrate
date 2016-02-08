@@ -37,14 +37,11 @@ class ArenaOccurrenceAttendance < ArenaBase
   end
   
   def sync_to_rock!(only_new = true)
-    #occurrence.type_record.sync_to_rock!
-
     map = self.mapping || build_mapping
     rock = map.rock_record ||= RockAttendance.new
 
     return if only_new && rock.persisted? && map.persisted?
 
-    #rock.ScheduleId = occurrence.type_record.mapped_id
     rock.PersonAliasId = person.mapped_record.person_alias.Id
     rock.StartDateTime = check_in_time
 

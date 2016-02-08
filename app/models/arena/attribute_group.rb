@@ -6,11 +6,11 @@
 #  guid               :uuid             not null
 #  date_created       :datetime         not null
 #  date_modified      :datetime         not null
-#  created_by         :string(50)       not null
-#  modified_by        :string(50)       not null
+#  created_by         :varchar(50)      not null
+#  modified_by        :varchar(50)      not null
 #  organization_id    :integer          not null
 #  system_flag        :boolean          not null
-#  group_name         :string(50)       not null
+#  group_name         :varchar(50)      not null
 #  group_order        :integer          not null
 #  display_location   :integer          not null
 #

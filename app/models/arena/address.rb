@@ -5,32 +5,32 @@
 #  address_id        :integer          not null, primary key
 #  date_created      :datetime         not null
 #  date_modified     :datetime         not null
-#  created_by        :string(50)       not null
-#  modified_by       :string(50)       not null
-#  street_address_1  :string(100)      not null
-#  street_address_2  :string(100)      not null
-#  city              :string(64)       not null
-#  state             :string(12)       not null
-#  postal_code       :string(24)       not null
-#  Latitude          :float(53)        not null
-#  Longitude         :float(53)        not null
+#  created_by        :varchar(50)      not null
+#  modified_by       :varchar(50)      not null
+#  street_address_1  :varchar(100)     not null
+#  street_address_2  :varchar(100)     not null
+#  city              :varchar(64)      not null
+#  state             :varchar(12)      not null
+#  postal_code       :varchar(24)      not null
+#  Latitude          :float            not null
+#  Longitude         :float            not null
 #  standardize_code  :integer          not null
-#  standardize_msg   :string(255)      not null
+#  standardize_msg   :varchar(255)     not null
 #  foreign_key       :integer
-#  XAxis             :float(53)        not null
-#  YAxis             :float(53)        not null
-#  ZAxis             :float(53)        not null
+#  XAxis             :float            not null
+#  YAxis             :float            not null
+#  ZAxis             :float            not null
 #  date_geocoded     :datetime         not null
 #  date_standardized :datetime         not null
 #  area_id           :integer
-#  geocode_service   :string(50)       not null
+#  geocode_service   :varchar(50)      not null
 #  geocode_status    :integer          not null
-#  route             :string(50)       not null
-#  dpbc              :string(50)       not null
-#  lot               :string(50)       not null
-#  endorsement_line  :string(50)       not null
-#  container_label   :string(50)       not null
-#  country           :string(2)        not null
+#  route             :varchar(50)      not null
+#  dpbc              :varchar(50)      not null
+#  lot               :varchar(50)      not null
+#  endorsement_line  :varchar(50)      not null
+#  container_label   :varchar(50)      not null
+#  country           :varchar(2)       not null
 #
 
 class Arena::Address < Arena::Base

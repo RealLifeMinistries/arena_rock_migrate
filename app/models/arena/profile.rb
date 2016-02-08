@@ -5,19 +5,19 @@
 #  profile_id                  :integer          not null, primary key
 #  date_created                :datetime         not null
 #  date_modified               :datetime         not null
-#  created_by                  :string(50)       not null
-#  modified_by                 :string(50)       not null
+#  created_by                  :varchar(50)      not null
+#  modified_by                 :varchar(50)      not null
 #  profile_type                :integer          not null
 #  organization_id             :integer          not null
 #  department_id               :integer
 #  parent_profile_id           :integer
 #  owner_id                    :integer
-#  profile_name                :string(100)      not null
-#  profile_desc                :string(5000)     not null
-#  notes                       :string(2000)     not null
+#  profile_name                :varchar(100)     not null
+#  profile_desc                :varchar(5000)    not null
+#  notes                       :varchar(2000)    not null
 #  active                      :boolean          not null
 #  display_order               :integer          not null
-#  foreign_key                 :string(50)
+#  foreign_key                 :varchar(50)
 #  category_level              :boolean          not null
 #  blob_id                     :integer
 #  qualifier                   :integer

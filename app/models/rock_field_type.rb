@@ -5,7 +5,7 @@
 #  Id                      :integer          not null, primary key
 #  IsSystem                :boolean          not null
 #  Name                    :string(100)      not null
-#  Description             :text
+#  Description             :text(2147483647)
 #  Assembly                :string(100)      not null
 #  Class                   :string(100)      not null
 #  Guid                    :uuid             not null
@@ -13,7 +13,9 @@
 #  ModifiedDateTime        :datetime
 #  CreatedByPersonAliasId  :integer
 #  ModifiedByPersonAliasId :integer
-#  ForeignId               :string(50)
+#  ForeignKey              :string(100)
+#  ForeignGuid             :uuid
+#  ForeignId               :integer
 #
 
 class RockFieldType < RockBase

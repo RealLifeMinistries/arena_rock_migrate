@@ -7,15 +7,17 @@
 #  FieldTypeId             :integer
 #  Order                   :integer          not null
 #  Name                    :string(100)      not null
-#  Description             :text
+#  Description             :text(2147483647)
 #  Guid                    :uuid             not null
 #  CreatedDateTime         :datetime
 #  ModifiedDateTime        :datetime
 #  CreatedByPersonAliasId  :integer
 #  ModifiedByPersonAliasId :integer
-#  ForeignId               :string(50)
-#  HelpText                :text
+#  ForeignKey              :string(100)
+#  HelpText                :text(2147483647)
 #  CategoryId              :integer
+#  ForeignGuid             :uuid
+#  ForeignId               :integer
 #
 
 class RockDefinedType < RockBase
