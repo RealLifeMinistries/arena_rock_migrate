@@ -10,15 +10,17 @@
 #  NumberTypeValueId       :integer
 #  IsMessagingEnabled      :boolean          not null
 #  IsUnlisted              :boolean          not null
-#  Description             :text
+#  Description             :text(2147483647)
 #  Guid                    :uuid             not null
 #  CreatedDateTime         :datetime
 #  ModifiedDateTime        :datetime
 #  CreatedByPersonAliasId  :integer
 #  ModifiedByPersonAliasId :integer
 #  CountryCode             :string(3)
-#  ForeignId               :string(50)
+#  ForeignKey              :string(100)
 #  NumberFormatted         :string(50)
+#  ForeignGuid             :uuid
+#  ForeignId               :integer
 #
 
 class Rock::PhoneNumber < Rock::Base

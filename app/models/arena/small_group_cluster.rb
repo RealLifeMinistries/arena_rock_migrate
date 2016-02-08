@@ -5,16 +5,16 @@
 #  group_cluster_id      :integer          not null, primary key
 #  date_created          :datetime         not null
 #  date_modified         :datetime         not null
-#  created_by            :string(50)       not null
-#  modified_by           :string(50)       not null
+#  created_by            :varchar(50)      not null
+#  modified_by           :varchar(50)      not null
 #  organization_id       :integer          not null
 #  parent_cluster_id     :integer
 #  leader_person_id      :integer
 #  admin_person_id       :integer
-#  cluster_name          :string(100)      not null
-#  cluster_url           :string(100)      not null
-#  cluster_desc          :string(1000)     not null
-#  cluster_notes         :string(2000)     not null
+#  cluster_name          :varchar(100)     not null
+#  cluster_url           :varchar(100)     not null
+#  cluster_desc          :varchar(1000)    not null
+#  cluster_notes         :varchar(2000)    not null
 #  foreign_region_key    :integer          not null
 #  foreign_subregion_key :integer          not null
 #  cluster_type_id       :integer          not null

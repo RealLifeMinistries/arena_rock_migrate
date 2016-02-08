@@ -10,9 +10,11 @@
 #  IsSecured              :boolean          not null
 #  IsCommon               :boolean          not null
 #  Guid                   :uuid             not null
-#  ForeignId              :string(50)
+#  ForeignKey             :string(100)
 #  SingleValueFieldTypeId :integer
 #  MultiValueFieldTypeId  :integer
+#  ForeignGuid            :uuid
+#  ForeignId              :integer
 #
 
 class Rock::EntityType < Rock::Base

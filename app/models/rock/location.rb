@@ -7,8 +7,8 @@
 #  Name                            :string(100)
 #  IsActive                        :boolean          not null
 #  LocationTypeValueId             :integer
-#  GeoPoint                        :geography
-#  GeoFence                        :geography
+#  GeoPoint                        :string
+#  GeoFence                        :string
 #  Street1                         :string(100)
 #  Street2                         :string(100)
 #  City                            :string(50)
@@ -30,9 +30,12 @@
 #  CreatedByPersonAliasId          :integer
 #  ModifiedByPersonAliasId         :integer
 #  IsGeoPointLocked                :boolean
-#  ForeignId                       :string(50)
+#  ForeignKey                      :string(100)
 #  ImageId                         :integer
 #  PostalCode                      :string(50)
+#  ForeignGuid                     :uuid
+#  ForeignId                       :integer
+#  County                          :string(50)
 #
 
 class Rock::Location < Rock::Base

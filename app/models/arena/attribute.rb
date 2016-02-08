@@ -6,15 +6,15 @@
 #  guid               :uuid             not null
 #  date_created       :datetime         not null
 #  date_modified      :datetime         not null
-#  created_by         :string(50)       not null
-#  modified_by        :string(50)       not null
+#  created_by         :varchar(50)      not null
+#  modified_by        :varchar(50)      not null
 #  attribute_group_id :integer
-#  attribute_name     :string(50)       not null
+#  attribute_name     :varchar(50)      not null
 #  attribute_type     :integer          not null
 #  attribute_order    :integer          not null
 #  visible            :boolean          not null
 #  required           :boolean          not null
-#  type_qualifier     :string(100)      not null
+#  type_qualifier     :varchar(100)     not null
 #  readonly           :boolean          not null
 #  system_flag        :boolean          not null
 #

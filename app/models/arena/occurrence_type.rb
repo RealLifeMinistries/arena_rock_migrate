@@ -5,14 +5,14 @@
 #  occurrence_type_id            :integer          not null, primary key
 #  date_created                  :datetime         not null
 #  date_modified                 :datetime         not null
-#  created_by                    :string(50)       not null
-#  modified_by                   :string(50)       not null
+#  created_by                    :varchar(50)      not null
+#  modified_by                   :varchar(50)      not null
 #  type_order                    :integer          not null
-#  type_name                     :string(50)       not null
+#  type_name                     :varchar(50)      not null
 #  min_age                       :decimal(9, 2)    not null
 #  max_age                       :decimal(9, 2)    not null
-#  age_range_text                :string(50)       not null
-#  schema_file_path              :string(1000)     not null
+#  age_range_text                :varchar(50)      not null
+#  schema_file_path              :varchar(1000)    not null
 #  photo_confirmation            :boolean          not null
 #  location_specific_occurrences :boolean          not null
 #  sync_with_profile             :integer

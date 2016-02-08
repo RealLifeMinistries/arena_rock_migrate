@@ -12,13 +12,15 @@
 #  ModifiedDateTime        :datetime
 #  CreatedByPersonAliasId  :integer
 #  ModifiedByPersonAliasId :integer
-#  ForeignId               :string(50)
-#  PhoneNumber             :text
+#  ForeignKey              :string(100)
+#  PhoneNumber             :text(2147483647)
 #  LeaderPersonAliasId     :integer
 #  ServiceTimes            :string(500)
-#  Description             :text
+#  Description             :text(2147483647)
 #  IsActive                :boolean
-#  Url                     :text
+#  Url                     :text(2147483647)
+#  ForeignGuid             :uuid
+#  ForeignId               :integer
 #
 
 class Rock::Campus < Rock::Base

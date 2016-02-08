@@ -7,13 +7,15 @@
 #  DefinedTypeId           :integer          not null
 #  Order                   :integer          not null
 #  Value                   :string(100)      not null
-#  Description             :text
+#  Description             :text(2147483647)
 #  Guid                    :uuid             not null
 #  CreatedDateTime         :datetime
 #  ModifiedDateTime        :datetime
 #  CreatedByPersonAliasId  :integer
 #  ModifiedByPersonAliasId :integer
-#  ForeignId               :string(50)
+#  ForeignKey              :string(100)
+#  ForeignGuid             :uuid
+#  ForeignId               :integer
 #
 
 class Rock::DefinedValue < Rock::Base

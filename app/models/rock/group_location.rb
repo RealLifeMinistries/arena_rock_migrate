@@ -13,8 +13,10 @@
 #  ModifiedDateTime         :datetime
 #  CreatedByPersonAliasId   :integer
 #  ModifiedByPersonAliasId  :integer
-#  ForeignId                :string(50)
+#  ForeignKey               :string(100)
 #  GroupMemberPersonAliasId :integer
+#  ForeignGuid              :uuid
+#  ForeignId                :integer
 #
 
 class Rock::GroupLocation < Rock::Base

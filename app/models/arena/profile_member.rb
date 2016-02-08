@@ -6,11 +6,11 @@
 #  person_id     :integer          not null, primary key
 #  date_created  :datetime         not null
 #  date_modified :datetime         not null
-#  created_by    :string(50)       not null
-#  modified_by   :string(50)       not null
+#  created_by    :varchar(50)      not null
+#  modified_by   :varchar(50)      not null
 #  source_luid   :integer
 #  status_luid   :integer
-#  notes         :string(2000)     not null
+#  notes         :varchar(2000)    not null
 #  date_pending  :datetime
 #  date_inreview :datetime
 #  date_active   :datetime

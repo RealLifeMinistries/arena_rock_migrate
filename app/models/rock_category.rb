@@ -12,13 +12,15 @@
 #  IconCssClass              :string(100)
 #  Guid                      :uuid             not null
 #  Order                     :integer          not null
-#  Description               :text
+#  Description               :text(2147483647)
 #  CreatedDateTime           :datetime
 #  ModifiedDateTime          :datetime
 #  CreatedByPersonAliasId    :integer
 #  ModifiedByPersonAliasId   :integer
-#  ForeignId                 :string(50)
+#  ForeignKey                :string(100)
 #  HighlightColor            :string(50)
+#  ForeignGuid               :uuid
+#  ForeignId                 :integer
 #
 
 class RockCategory < RockBase

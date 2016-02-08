@@ -6,9 +6,11 @@
 #  IsSystem    :boolean          not null
 #  AttributeId :integer          not null
 #  Key         :string(100)      not null
-#  Value       :text
+#  Value       :text(2147483647)
 #  Guid        :uuid             not null
-#  ForeignId   :string(50)
+#  ForeignKey  :string(100)
+#  ForeignGuid :uuid
+#  ForeignId   :integer
 #
 
 class Rock::AttributeQualifier < Rock::Base

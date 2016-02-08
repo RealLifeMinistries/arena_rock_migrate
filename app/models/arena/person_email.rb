@@ -5,13 +5,13 @@
 #  email_id      :integer          not null, primary key
 #  date_created  :datetime         not null
 #  date_modified :datetime         not null
-#  created_by    :string(50)       not null
-#  modified_by   :string(50)       not null
+#  created_by    :varchar(50)      not null
+#  modified_by   :varchar(50)      not null
 #  person_id     :integer          not null
 #  active        :boolean          not null
 #  email_order   :integer          not null
-#  email         :string(80)       not null
-#  notes         :string(500)      not null
+#  email         :varchar(80)      not null
+#  notes         :varchar(500)     not null
 #
 
 class Arena::PersonEmail < Arena::Base

@@ -6,16 +6,18 @@
 #  IsSystem                :boolean          not null
 #  AttributeId             :integer          not null
 #  EntityId                :integer
-#  Value                   :text
+#  Value                   :text(2147483647)
 #  Guid                    :uuid             not null
 #  CreatedDateTime         :datetime
 #  ModifiedDateTime        :datetime
 #  CreatedByPersonAliasId  :integer
 #  ModifiedByPersonAliasId :integer
-#  ForeignId               :string(50)
-#  ValueAsNumeric          :decimal(38, 10)
+#  ForeignKey              :string(100)
 #  ValueAsPersonId         :integer
 #  ValueAsDateTime         :datetime
+#  ValueAsNumeric          :decimal(38, 10)
+#  ForeignGuid             :uuid
+#  ForeignId               :integer
 #
 
 class RockAttributeValue < RockBase

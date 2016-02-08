@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150515204242) do
+ActiveRecord::Schema.define(version: 20160207234958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,18 @@ ActiveRecord::Schema.define(version: 20150515204242) do
     t.string   "type_qualifier"
     t.boolean  "readonly"
     t.boolean  "system_flag"
+  end
+
+  create_table "arena_blobs", primary_key: "blob_id", force: :cascade do |t|
+    t.uuid     "guid"
+    t.datetime "date_created"
+    t.datetime "date_modified"
+    t.string   "created_by"
+    t.string   "modified_by"
+    t.string   "file_ext"
+    t.string   "mime_type"
+    t.binary   "blob"
+    t.string   "original_file_name"
   end
 
   create_table "arena_campuses", primary_key: "campus_id", force: :cascade do |t|
