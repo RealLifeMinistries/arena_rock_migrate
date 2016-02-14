@@ -3,7 +3,7 @@ class ArenaRecordSync
   sidekiq_options queue: :arena, unique: :until_and_while_executing
 
   def perform(klass1,klass2,*keys)
-    klass1.constantize.find_each do |record1|
+    klass1.constantize.find_each(:batch_size => 50) do |record1|
 
       attrs = keys.each_with_object({}) do |key,hsh|
         hsh[key] = record1.send(key)
