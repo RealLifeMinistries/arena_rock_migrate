@@ -31,7 +31,7 @@ class ArenaLookup < ArenaBase
 
     rock.IsSystem ||= false # required
     rock.Guid ||= guid
-    rock.Value = lookup_value
+    rock.Value ||= lookup_value
     rock.Order ||= lookup_order
     rock.DefinedTypeId ||= lookup_type.mapped_id  
     rock.save!

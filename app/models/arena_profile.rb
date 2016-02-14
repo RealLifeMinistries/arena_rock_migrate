@@ -45,18 +45,18 @@ class ArenaProfile < ArenaBase
       rock.Guid ||= (guid || SecureRandom.uuid)
       rock.IsSystem ||= false
       if parent_profile_id?
-        rock.ParentGroupId = parent.mapped_id
+        rock.ParentGroupId ||= parent.mapped_id
       else
-        rock.ParentGroupId = profile_type_record.default_rock_parent_group_id
+        rock.ParentGroupId ||= profile_type_record.default_rock_parent_group_id
       end
-      rock.GroupTypeId = profile_type_record.mapped_id
-      rock.Name = profile_name
-      rock.Description = profile_desc
-      rock.IsActive = active?
-      rock.IsSecurityRole = false
-      rock.Order = display_order || 0 
-      rock.CreatedDateTime = date_created
-      rock.ModifiedDateTime = date_modified 
+      rock.GroupTypeId ||= profile_type_record.mapped_id
+      rock.Name ||= profile_name
+      rock.Description ||= profile_desc
+      rock.IsActive ||= active?
+      rock.IsSecurityRole ||= false
+      rock.Order ||= display_order || 0 
+      rock.CreatedDateTime ||= date_created
+      rock.ModifiedDateTime ||= date_modified 
       rock.save!
       map.save!
       # add owner to group

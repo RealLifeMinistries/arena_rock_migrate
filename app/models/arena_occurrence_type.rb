@@ -56,11 +56,11 @@ class ArenaOccurrenceType < ArenaBase
     map = mapping || build_mapping
     rock = mapping.rock_record ||= RockSchedule.new
 
-    rock.Name = type_name
-    rock.Description = "Imported from Arena"
+    rock.Name ||= type_name
+    rock.Description ||= "Imported from Arena"
     rock.Guid ||= SecureRandom.uuid
-    rock.CreatedDateTime = date_created
-    rock.ModifiedDateTime = date_modified
+    rock.CreatedDateTime ||= date_created
+    rock.ModifiedDateTime ||= date_modified
     rock.EffectiveStartDate ||= effective_start_date
     rock.save!
     map.save!
