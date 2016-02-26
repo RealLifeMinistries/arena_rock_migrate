@@ -52,6 +52,7 @@ GEM
     erubis (2.7.0)
     hike (1.2.3)
     hitimes (1.2.2)
+    hitimes (1.2.2-x86-mingw32)
     i18n (0.7.0)
     json (1.8.3)
     mail (2.6.3)
@@ -61,6 +62,7 @@ GEM
     minitest (5.5.1)
     multi_json (1.11.0)
     pg (0.18.1)
+    pg (0.18.1-x86-mingw32)
     puma (2.15.3)
     rack (1.5.2)
     rack-protection (1.5.3)
@@ -144,11 +146,16 @@ GEM
       hitimes
     tiny_tds (0.7.0)
       mini_portile (= 0.6.2)
+    tiny_tds (0.7.0-x86-mingw32)
+      mini_portile (= 0.6.2)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    tzinfo-data (1.2016.1)
+      tzinfo (>= 1.0.0)
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
   activerecord-sqlserver-adapter (~> 4.1)
@@ -169,6 +176,8 @@ DEPENDENCIES
   sinatra
   spring
   tiny_tds
+  tzinfo
+  tzinfo-data
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

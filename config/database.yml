@@ -5,7 +5,7 @@ development:
   host: <%= ENV['DB_HOST'] %>
   port: <%= ENV['DB_PORT'] %>
   username: <%= ENV['DB_USER'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
+  password: <%= ENV['DB_PASS'] %>
   database: <%= ENV['DB_DATABASE'] %>
 production:
   adapter: postgresql
@@ -14,7 +14,7 @@ production:
   host: <%= ENV['DB_HOST'] %>
   port: <%= ENV['DB_PORT'] %>
   username: <%= ENV['DB_USER'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
+  password: <%= ENV['DB_PASS'] %>
   database: <%= ENV['DB_DATABASE'] %>
 
 development_rock:
