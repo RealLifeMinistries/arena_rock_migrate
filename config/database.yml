@@ -7,6 +7,14 @@ test:
   username: <%= ENV['DB_USER'] %>
   password: <%= ENV['DB_PASS'] %>
   database: <%= ENV['DB_DATABASE'] %>
+test_rock:
+    adapter: sqlserver
+    pool: 5
+    host: <%= ENV['ROCK_DB_HOST'] %>
+    port: <%= ENV['ROCK_DB_PORT'] %>
+    username: <%= ENV['ROCK_DB_USER'] %>
+    password: <%= ENV['ROCK_DB_PASS'] %>
+    database: <%= ENV['ROCK_DB_DATABASE'] %>
 development:
   adapter: postgresql
   encoding: unicode
