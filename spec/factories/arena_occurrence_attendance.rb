@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :ArenaOccurrenceAttendance do
-    occurrence_id 1
-    person_id 1
+    association :occurrence_type, factory: :ArenaOccurrence
+    association :person_id, factory: :ArenaPerson
     attended true
     type '1'
   end

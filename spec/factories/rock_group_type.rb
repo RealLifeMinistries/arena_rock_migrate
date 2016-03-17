@@ -1,7 +1,6 @@
 
 FactoryGirl.define do
   factory :RockGroupType do
-    Id 1
     IsSystem false
     Name 'RockGroupType'
     GroupTerm 'GroupTerm'

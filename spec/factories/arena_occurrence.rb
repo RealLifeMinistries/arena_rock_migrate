@@ -2,6 +2,6 @@
 FactoryGirl.define do
   factory :ArenaOccurrence do
     occurrence_name 'Monday'
-    occurrence_type 4
+    association :occurrence_type, factory: :ArenaOccurrenceType
   end
 end

@@ -5,15 +5,10 @@ describe Mapping, '#rock_record' do
       mapping = Mapping.new(nil, nil)
       expect(mapping.rock_record).to be_nil
     end
-    it '@rock_record should be 1 when using ArenaOccurrenceAttendance' do
-      record = create(:ArenaOccurrenceAttendance)
+    it '@rock_record should be Post Falls when using RockDefinedValue as mapping record' do
+      record = create(:RockDefinedValue)
       mapping = Mapping.new(rock_record: record)
-      expect(mapping.rock_record.occurrence_id).to be 1
-    end
-    it '@rock_record should be 4 when using ArenaOccurrence as mapping record' do
-      record = create(:ArenaOccurrence)
-      mapping = Mapping.new(rock_record: record)
-      expect(mapping.rock_record.occurrence_type).to be 4
+      expect(mapping.rock_record.Value).to eq('Post Falls')
     end
 end
 

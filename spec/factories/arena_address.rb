@@ -1,7 +1,6 @@
 
 FactoryGirl.define do
   factory :ArenaAddress do
-    address_id 1
     date_created (Time.new)
     date_modified (Time.new)
     created_by 'created by'
