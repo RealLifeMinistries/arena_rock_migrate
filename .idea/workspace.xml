@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="336ad8d5-0dca-41d4-8ecf-5913093461f0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Arena-SqlNew.iml" afterPath="$PROJECT_DIR$/.idea/Arena-SqlNew.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/factories/arena_address.rb" afterPath="$PROJECT_DIR$/spec/factories/arena_address.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/factories/arena_occurrence.rb" afterPath="$PROJECT_DIR$/spec/factories/arena_occurrence.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/factories/arena_occurrence_attendance.rb" afterPath="$PROJECT_DIR$/spec/factories/arena_occurrence_attendance.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/factories/arena_occurrence_attendence_profiles.rb" afterPath="$PROJECT_DIR$/spec/factories/arena_occurrence_attendence_profiles.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/factories/rock_defined_type.rb" afterPath="$PROJECT_DIR$/spec/factories/rock_defined_type.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/factories/rock_defined_value.rb" afterPath="$PROJECT_DIR$/spec/factories/rock_defined_value.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/factories/rock_group.rb" afterPath="$PROJECT_DIR$/spec/factories/rock_group.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/factories/rock_group_location.rb" afterPath="$PROJECT_DIR$/spec/factories/rock_group_location.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/factories/rock_group_type.rb" afterPath="$PROJECT_DIR$/spec/factories/rock_group_type.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/arena_address_spec.rb" afterPath="$PROJECT_DIR$/spec/models/arena_address_spec.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/arena_occurrence_attendance_spec.rb" afterPath="$PROJECT_DIR$/spec/models/arena_occurrence_attendance_spec.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/mapping_spec.rb" afterPath="$PROJECT_DIR$/spec/models/mapping_spec.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/rails_helper.rb" afterPath="$PROJECT_DIR$/spec/rails_helper.rb" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Arena-SqlNew.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,11 +22,11 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Arena-SqlNew@sidekiq.coverage" NAME="sidekiq Coverage Results" MODIFIED="1457200105510" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="Arena-SqlNew" />
-    <SUITE FILE_PATH="coverage/Arena-SqlNew@rspec.coverage" NAME="rspec Coverage Results" MODIFIED="1458237180895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="Arena-SqlNew" />
-    <SUITE FILE_PATH="coverage/Arena-SqlNew@Mapping_Test_should_set_rock_record_to_nil_if_rock_record_id_nil__Arena_SqlNew.coverage" NAME="Mapping Test should set rock record to nil if rock_record_id nil: Arena-SqlNew Coverage Results" MODIFIED="1457893083902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="Arena-SqlNew" />
     <SUITE FILE_PATH="coverage/Arena-SqlNew@db_schema_load__Arena_SqlNew.coverage" NAME="db:schema:load: Arena-SqlNew Coverage Results" MODIFIED="1457896759312" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="Arena-SqlNew" />
     <SUITE FILE_PATH="coverage/Arena-SqlNew@ArenaAddress_can_sync_to_rock_should_set_map_to_new_mapping_if_mapping_is_nil__Arena_SqlNew.coverage" NAME="ArenaAddress can sync to rock should set map to new mapping if mapping is nil: Arena-SqlNew Coverage Results" MODIFIED="1458184108956" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="Arena-SqlNew" />
+    <SUITE FILE_PATH="coverage/Arena-SqlNew@Mapping_Test_should_set_rock_record_to_nil_if_rock_record_id_nil__Arena_SqlNew.coverage" NAME="Mapping Test should set rock record to nil if rock_record_id nil: Arena-SqlNew Coverage Results" MODIFIED="1457893083902" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="Arena-SqlNew" />
+    <SUITE FILE_PATH="coverage/Arena-SqlNew@rspec.coverage" NAME="rspec Coverage Results" MODIFIED="1458354037232" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="Arena-SqlNew" />
+    <SUITE FILE_PATH="coverage/Arena-SqlNew@sidekiq.coverage" NAME="sidekiq Coverage Results" MODIFIED="1457200105510" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="Arena-SqlNew" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -51,11 +39,21 @@
     <splitter split-orientation="horizontal" split-proportion="0.5286385">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="mapping_spec.rb" pinned="false" current-in-tab="true">
+          <file leaf-file-name="mapping_spec.rb" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/spec/models/mapping_spec.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.04249292">
-                  <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+                <state vertical-scroll-proportion="0.0">
+                  <caret line="24" column="3" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="arena_address_spec.rb" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/spec/models/arena_address_spec.rb">
+              <provider selected="true" editor-type-id="text-editor">
+                <state vertical-scroll-proportion="0.22149837">
+                  <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
                   <folding />
                 </state>
               </provider>
@@ -108,7 +106,7 @@
           <file leaf-file-name="rock_group.rb" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/spec/factories/rock_group.rb">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.19263457">
+                <state vertical-scroll-proportion="0.07383279">
                   <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
                   <folding />
                 </state>
@@ -221,6 +219,7 @@
         <option value="$PROJECT_DIR$/spec/factories/arena_occurrence_attendance.rb" />
         <option value="$PROJECT_DIR$/spec/factories/arena_occurrence_attendence_profiles.rb" />
         <option value="$PROJECT_DIR$/spec/factories/rock_group.rb" />
+        <option value="$PROJECT_DIR$/spec/models/LICENSE" />
       </list>
     </option>
   </component>
@@ -239,8 +238,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -288,6 +287,7 @@
     </navigator>
     <panes>
       <pane id="RailsProjectView" />
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -303,7 +303,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Arena-SqlNew" />
+              <option name="myItemId" value="arena_rock_migrate_sqlnew" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -313,7 +313,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Arena-SqlNew" />
+              <option name="myItemId" value="arena_rock_migrate_sqlnew" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -327,7 +327,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Arena-SqlNew" />
+              <option name="myItemId" value="arena_rock_migrate_sqlnew" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -345,7 +345,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Arena-SqlNew" />
+              <option name="myItemId" value="arena_rock_migrate_sqlnew" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -359,7 +359,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -371,14 +370,15 @@
     <property name="RakeTaksPopup.undocumentedIncluded" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Programming\RLM\arena_rock_migrate_sqlnew" />
+      <recent name="E:\Programming\RLM\arena_rock_migrate_sqlnew\spec\support" />
+      <recent name="C:\Users\kcraviotto\RLM\Arena-SqlNew\spec\models" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Programming\RLM\arena_rock_migrate_sqlnew\spec\factories" />
       <recent name="E:\Programming\RLM\arena_rock_migrate_sqlnew\spec\models" />
       <recent name="C:\Users\kcraviotto\RLM\Arena-SqlNew" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Programming\RLM\arena_rock_migrate_sqlnew\spec\support" />
-      <recent name="C:\Users\kcraviotto\RLM\Arena-SqlNew\spec\models" />
     </key>
   </component>
   <component name="RunManager" selected="RSpec.rspec">
@@ -665,9 +665,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="rspec - 2016.03.17 at 10h 37m 20s.xml">
-      <configuration name="rspec" configurationId="RSpecRunConfigurationType" />
-    </history-entry>
     <history-entry file="rspec - 2016.03.17 at 10h 38m 16s.xml">
       <configuration name="rspec" configurationId="RSpecRunConfigurationType" />
     </history-entry>
@@ -695,20 +692,23 @@
     <history-entry file="rspec - 2016.03.17 at 10h 53m 28s.xml">
       <configuration name="rspec" configurationId="RSpecRunConfigurationType" />
     </history-entry>
+    <history-entry file="rspec - 2016.03.18 at 19h 21m 22s.xml">
+      <configuration name="rspec" configurationId="RSpecRunConfigurationType" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28330892" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13432837" sideWeight="0.4937107" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32665965" sideWeight="0.36460555" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4236006" sideWeight="0.63539445" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="true" show_stripe_button="true" weight="1.0" sideWeight="0.63539445" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982087" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13432837" sideWeight="0.5062893" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.408472" sideWeight="0.87115663" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -748,6 +748,46 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/spec/factories/arena_occurrence_attendance.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="36" selection-start-line="3" selection-start-column="36" selection-end-line="3" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/arena_address.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="47" column="16" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/factories/rock_defined_value.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="5" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/factories/rock_defined_type.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/factories/rock_attendance.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/workers/conversion_starter.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -801,7 +841,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -816,7 +855,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -852,7 +890,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="33" selection-start-line="0" selection-start-column="33" selection-end-line="0" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -874,7 +911,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="7" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -954,7 +990,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="31" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -962,7 +997,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="9" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -998,14 +1032,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/models/arena_address_spec.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/spec/factories/rock_group_location.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1022,19 +1048,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spec/models/arena_occurrence_attendance_spec.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/rock_defined_value.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.47592068">
           <caret line="18" column="1" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1096,7 +1113,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/factories/rock_group.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19263457">
+        <state vertical-scroll-proportion="0.07383279">
           <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
           <folding />
         </state>
@@ -1104,8 +1121,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/spec/models/mapping_spec.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.04249292">
-          <caret line="4" column="34" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="3" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/models/arena_occurrence_attendance_spec.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36916396">
+          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spec/models/arena_address_spec.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22149837">
+          <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
           <folding />
         </state>
       </provider>
