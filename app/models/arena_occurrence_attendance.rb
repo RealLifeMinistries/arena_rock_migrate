@@ -37,34 +37,34 @@ class ArenaOccurrenceAttendance < ArenaBase
   end
   
   def sync_to_rock!(only_new = true)
-    map = self.mapping || build_mapping
-    rock = map.rock_record ||= RockAttendance.new
+    @map = self.mapping || build_mapping
+    @rock = @map.rock_record ||= RockAttendance.new
 
-    return if only_new && rock.persisted? && map.persisted?
+    return if only_new && @rock.persisted? && @map.persisted?
 
-    rock.PersonAliasId ||= person.mapped_record.person_alias.Id
-    rock.StartDateTime ||= check_in_time
+    @rock.PersonAliasId ||= person.mapped_record.person_alias.Id
+    @rock.StartDateTime ||= check_in_time
 
     if check_out_time
-      rock.EndDateTime ||= check_out_time 
+      @rock.EndDateTime ||= check_out_time
     else
-      rock.EndDateTime ||= check_in_time
+      @rock.EndDateTime ||= check_in_time
     end
 
-    rock.DidAttend ||= attended?
-    rock.Note ||= notes
-    rock.Guid ||= SecureRandom.uuid
+    @rock.DidAttend ||= attended?
+    @rock.Note ||= notes
+    @rock.Guid ||= SecureRandom.uuid
     #if !rock.GroupId? && g = group_id
     if g = group_id
-      rock.GroupId ||= g
+      @rock.GroupId ||= g
     end
 
     if occurrence.occurrence_type == 1
-      rock.CampusId ||= RockCampus::PF 
+      @rock.CampusId ||= RockCampus::PF
     end
 
-    rock.save!
-    map.save!
+    @rock.save!
+    @map.save!
   end
 
   def check_out_time
