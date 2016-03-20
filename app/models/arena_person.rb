@@ -120,7 +120,11 @@ class ArenaPerson < ArenaBase
     end
 
     if gender
-      @rock.Gender = gender_record.mapped_id
+      begin
+        @rock.Gender = gender_record.mapped_id
+      rescue
+        @rock.Gender = 1
+      end
     end
 
     if marital_status

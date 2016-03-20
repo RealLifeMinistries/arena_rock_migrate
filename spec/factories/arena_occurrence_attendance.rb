@@ -4,12 +4,13 @@ FactoryGirl.define do
     association :person, factory: :ArenaPerson
     attended true
     type '1'
+    check_in_time Time.new
 
     factory :PFWorshipWeekendAttendee do
-      association :occurrence_type, factory: :PFWOccurrence
+      association :occurrence, factory: :PFWOccurrence
     end
     factory :CDAWorshipWeekendAttendee do
-      association :occurrence_type, factory: :CDAWOccurrence
+      association :occurrence, factory: :CDAWOccurrence
     end
   end
 end

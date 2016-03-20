@@ -83,9 +83,10 @@ class ArenaOccurrenceAttendance < ArenaBase
     elsif occurrence.type_record.sync_with_group?
       group = ArenaSmallGroup.find(occurrence.type_record.sync_with_group)
       return @group_id = group.mapped_id
+    elsif occurrence.occurrence_id == ArenaOccurrence::RLM_CDA_WEEKEND_WORSHIP
+      return @group_id = RockAttendance::CDA_WEEKEND_WORSHIP_SERVICE_GROUP
     else
       return @group_id = RockAttendance::WEEKEND_WORSHIP_SERVICE_GROUP
     end
   end
-  
 end
