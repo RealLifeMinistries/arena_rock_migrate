@@ -59,8 +59,10 @@ class ArenaOccurrenceAttendance < ArenaBase
       @rock.GroupId ||= g
     end
 
-    if occurrence.occurrence_type == 1
+    if occurrence.occurrence_type == ArenaOccurrence::ALL_POST_FALLS_WEEKEND_WORSHIP_SERVICES ||  occurrence.occurrence_type == ArenaOccurrence::POST_FALLS_WEEKEND_WS_LIVE_ONLINE
       @rock.CampusId ||= RockCampus::PF
+    elsif occurrence.occurrence_type == ArenaOccurrence::RLM_CDA_WEEKEND_WORSHIP
+      @rock.CampusId ||= RockCampus::CDA
     end
 
     @rock.save!
@@ -83,10 +85,14 @@ class ArenaOccurrenceAttendance < ArenaBase
     elsif occurrence.type_record.sync_with_group?
       group = ArenaSmallGroup.find(occurrence.type_record.sync_with_group)
       return @group_id = group.mapped_id
-    elsif occurrence.occurrence_id == ArenaOccurrence::RLM_CDA_WEEKEND_WORSHIP
+    elsif occurrence.occurrence_type == ArenaOccurrence::RLM_CDA_WEEKEND_WORSHIP
       return @group_id = RockAttendance::CDA_WEEKEND_WORSHIP_SERVICE_GROUP
     else
       return @group_id = RockAttendance::WEEKEND_WORSHIP_SERVICE_GROUP
     end
+  end
+  # this method creates a group member of a given group
+  def add_group_member
+    group_member = RockGroupMember.new
   end
 end

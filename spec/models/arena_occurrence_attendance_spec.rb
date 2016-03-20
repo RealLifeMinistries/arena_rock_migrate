@@ -2,7 +2,6 @@ require 'rspec'
 
 describe 'ArenaOccurrenceAttendance can sync to rock' do
   it 'Should create a RockAttendance from ArenaOccurrenceAttendance PFWorshipOnline' do
-    #create(:RockCampus)
     attendee = create(:PFWorshipOnlineAttendee)
     attendee.sync_to_rock!
     expect(attendee.instance_variable_get(:@rock)).to be_a(RockAttendance)
@@ -25,5 +24,11 @@ describe 'CDAWorshipAttendance ArenaOccurrenceAttendance can sync to rock' do
     attendee.sync_to_rock!
     expect(attendee.instance_variable_get(:@rock)).to be_a(RockAttendance)
     expect(attendee.instance_variable_get(:@rock).GroupId).to be RockAttendance::CDA_WEEKEND_WORSHIP_SERVICE_GROUP
+  end
+end
+
+describe 'ArenaOccurrenceAttendees get added to the correct group in rock' do
+  it 'Should create a RockMember' do
+    #attendee = create(:CDAWorshipWeekendAttendee)
   end
 end

@@ -123,7 +123,7 @@ class ArenaPerson < ArenaBase
       begin
         @rock.Gender = gender_record.mapped_id
       rescue
-        @rock.Gender = 1
+        @rock.Gender = gender
       end
     end
 
