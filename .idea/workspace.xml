@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="336ad8d5-0dca-41d4-8ecf-5913093461f0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/factories/arena_lookup.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/factories/arena_lookup_type.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/factories/arena_small_group.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/factories/arena_small_group_cluster.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/factories/arena_small_group_member.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/models/arena_small_group_cluster_spec.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/spec/models/arena_small_group_spec.rb" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/spec/factories/arena_gender.rb" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Arena-SqlNew.iml" afterPath="$PROJECT_DIR$/.idea/Arena-SqlNew.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/arena_occurrence_attendance.rb" afterPath="$PROJECT_DIR$/app/models/arena_occurrence_attendance.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/arena_small_group.rb" afterPath="$PROJECT_DIR$/app/models/arena_small_group.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/arena_small_group_cluster.rb" afterPath="$PROJECT_DIR$/app/models/arena_small_group_cluster.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/rock_group_member.rb" afterPath="$PROJECT_DIR$/app/models/rock_group_member.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/rock_group_type.rb" afterPath="$PROJECT_DIR$/app/models/rock_group_type.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/rock_group_type_role.rb" afterPath="$PROJECT_DIR$/app/models/rock_group_type_role.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/factories/arena_person.rb" afterPath="$PROJECT_DIR$/spec/factories/arena_person.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/arena_occurrence_attendance_spec.rb" afterPath="$PROJECT_DIR$/spec/models/arena_occurrence_attendance_spec.rb" />
-    </list>
+    <list default="true" id="336ad8d5-0dca-41d4-8ecf-5913093461f0" name="Default" comment="" />
     <ignored path="Arena-SqlNew.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.bundle/" />
@@ -841,7 +822,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32982087" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13432837" sideWeight="0.5062893" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3570348" sideWeight="0.63909227" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3570348" sideWeight="0.63909227" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
