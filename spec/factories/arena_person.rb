@@ -4,8 +4,15 @@ FactoryGirl.define do
     u.sequence(:guid) { SecureRandom.uuid }
     first_name 'Bob'
     last_name 'Fake'
-    #association :gender_record, factory: :ArenaGender
     gender 1
     Notes 'test note'
+    factory :ArenaPersonLeader do |u|
+      last_name 'Leader'
+      gender 2
+    end
+    factory :ArenaPersonAdmin do |u|
+      last_name 'Admin'
+      gender 1
+    end
   end
 end

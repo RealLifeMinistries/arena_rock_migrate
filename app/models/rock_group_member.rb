@@ -31,11 +31,4 @@ class RockGroupMember < RockBase
   belongs_to :status, class_name: "RockGroupMemberStatus", foreign_key: 'GroupMemberStatus'  
 
   has_arena_mapping
-
-  def sync_to_rock!(only_new = true)
-    @map = self.mapping || build_mapping
-    @rock = @map.rock_record ||= RockGroupMember.new
-
-    return if only_new && @rock.persisted? && @map.persisted?
-  end
 end

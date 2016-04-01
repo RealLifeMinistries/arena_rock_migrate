@@ -55,48 +55,59 @@ class ArenaSmallGroup < ArenaBase
   MEET_SATURDAY = 15
 
   def sync_to_rock!
-    map = mapping || build_mapping
-    rock = map.rock_record ||= RockGroup.new 
+    @map = mapping || build_mapping
+    @rock = @map.rock_record ||= RockGroup.new
 
-    rock.IsSystem ||= false
-    rock.ParentGroupId ||= cluster.mapped_id
-    rock.GroupTypeId ||= RockGroupType::SMALL_GROUP
-    rock.Name ||= group_name
-    rock.Description ||= group_desc
-    rock.IsSecurityRole ||= false
-    rock.IsActive ||= active?
-    rock.Order ||= 0
-    rock.Guid ||= guid
-    rock.CreatedDateTime ||= date_created
-    rock.ModifiedDateTime ||= date_modified
+    @rock.IsSystem ||= false
+    @rock.ParentGroupId ||= cluster.mapped_id
+    @rock.GroupTypeId ||= get_group_type
+    @rock.Name ||= group_name
+    @rock.Description ||= group_desc
+    @rock.IsSecurityRole ||= false
+    @rock.IsActive ||= active?
+    @rock.Order ||= 0
+    @rock.Guid ||= guid
+    @rock.CreatedDateTime ||= date_created
+    @rock.ModifiedDateTime ||= date_modified
 
     if meeting_day_luid?
-      rock.schedule ||= RockSchedule.new
-      rock.schedule.Guid ||= SecureRandom.uuid
-      rock.schedule.WeeklyDayOfWeek = rock_meeting_day
+      @rock.schedule ||= RockSchedule.new
+      @rock.schedule.Guid ||= SecureRandom.uuid
+      @rock.schedule.WeeklyDayOfWeek = rock_meeting_day
     end
     
-    rock.save!
-    map.save!
+    @rock.save!
+    @map.save!
     sync_roles!
     #sync_memberships!
     sync_location!
   end
 
+  def get_group_type
+    # If parent cluster is attendance
+    case cluster.cluster_name
+      when "PFRLM All Region Home Groups", "CDARLM Campus Home Groups"
+        return RockGroupType::ATTENDANCE_SMALL_GROUP
+      #when 145, 1223, 196, 459
+      else
+        return RockGroupType::SMALL_GROUP
+    end
+  end
+
   def sync_roles!
     if leader
-      rock_group = mapped_record
-      leader_role = RockGroupMember.find_or_initialize_by({
-        GroupId: rock_group.Id,
+      @rock_group = mapped_record
+      @leader_role = RockGroupMember.find_or_initialize_by({
+        GroupId: @rock_group.Id,
         PersonId: leader.mapped_id,
         GroupRoleId: RockGroupTypeRole::SMALL_GROUP_LEADER  
       })
 
-      leader_role.IsSystem ||= false
-      leader_role.GroupMemberStatus ||= RockGroupMemberStatus::ACTIVE
-      leader_role.Guid ||= SecureRandom.uuid
+      @leader_role.IsSystem ||= false
+      @leader_role.GroupMemberStatus ||= RockGroupMemberStatus::ACTIVE
+      @leader_role.Guid ||= SecureRandom.uuid
        
-      leader_role.save!
+      @leader_role.save!
     end
   end
 
@@ -106,21 +117,21 @@ class ArenaSmallGroup < ArenaBase
 
   def sync_location!
     if address = primary_address
-      rock_group = mapped_record
+      @rock_group = mapped_record
 
-      gloc = RockGroupLocation.find_or_initialize_by({
-          GroupId: rock_group.Id,
+      @gloc = RockGroupLocation.find_or_initialize_by({
+          GroupId: @rock_group.Id,
           GroupLocationTypeValueId: RockGroupLocation::MEETING_LOCATION_TYPE
       })
 
-      gloc.location ||= RockLocation.new
-      gloc.location.copy_arena_address(address)
-      gloc.location.save
+      @gloc.location ||= RockLocation.new
+      @gloc.location.copy_arena_address(address)
+      @gloc.location.save
 
-      gloc.Guid ||= SecureRandom.uuid
-      gloc.IsMailingLocation ||= true
-      gloc.IsMappedLocation ||= !!(address.Latitude && address.Latitude > 0)
-      gloc.save!
+      @gloc.Guid ||= SecureRandom.uuid
+      @gloc.IsMailingLocation ||= true
+      @gloc.IsMappedLocation ||= !!(address.Latitude && address.Latitude > 0)
+      @gloc.save!
     end
   end
 

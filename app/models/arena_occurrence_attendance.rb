@@ -65,6 +65,9 @@ class ArenaOccurrenceAttendance < ArenaBase
       @rock.CampusId ||= RockCampus::CDA
     end
 
+    # add member to attendance group
+    add_group_member
+
     @rock.save!
     @map.save!
   end
@@ -93,6 +96,16 @@ class ArenaOccurrenceAttendance < ArenaBase
   end
   # this method creates a group member of a given group
   def add_group_member
-    group_member = RockGroupMember.new
+    @group_member = RockGroupMember.new
+    @group_member.IsSystem = false
+    @group_member.GroupId = @group_id
+    @group_member.PersonId = person.mapped_record.person_alias.PersonId
+    @group_member.GroupRoleId = 266 # member for worship services
+    @group_member.GroupMemberStatus = 1 #
+    @group_member.Guid = SecureRandom.uuid
+    @group_member.CreatedDateTime = Time.new
+    @group_member.Note = 'Imported From Arena'
+
+    @group_member.save!
   end
 end
