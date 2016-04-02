@@ -13,6 +13,12 @@ FactoryGirl.define do
         create_list :OtherSmallGroupMember, 5, group: g
       end
     end
+    trait :leader_role do
+      association :leader, factory: :ArenaPersonLeader
+    end
+    trait :location_person do
+      association :target_location_person, :add_locations, factory: :ArenaPerson
+    end
     factory :CDAArenaSmallGroup do
       group_name 'CDA sample small group'
       association :cluster, factory: :CDARegionCluster

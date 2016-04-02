@@ -12,5 +12,9 @@ FactoryGirl.define do
     factory :SmallGroupAdminLookup do
       lookup_value 'Group Admin'
     end
+    factory :AddressLookup do
+      lookup_value 'Main/Home Address'
+      association :lookup_type, factory: :AddressLookupType
+    end
   end
 end

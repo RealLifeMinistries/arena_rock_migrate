@@ -27,4 +27,14 @@ describe 'ArenaSmallGroup can sync to rock' do
     sg.sync_to_rock!
     expect(sg.memberships.first).to be_a(ArenaSmallGroupMember)
   end
+  it 'should have leader role' do
+    sg = create(:OtherSmallGroup, :leader_role)
+    sg.sync_to_rock!
+    expect(sg.instance_variable_get(:@leader_role).GroupRoleId).to be(RockGroupTypeRole::SMALL_GROUP_LEADER)
+  end
+  it 'should set primary address' do
+    sg = create(:OtherSmallGroup, :location_person)
+    sg.sync_to_rock!
+    expect(sg.instance_variable_get(:@gloc).location.Street1).to eq('1234 main st')
+  end
 end

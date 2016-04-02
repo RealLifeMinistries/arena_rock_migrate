@@ -6,6 +6,12 @@ FactoryGirl.define do
     last_name 'Fake'
     gender 1
     Notes 'test note'
+    trait :add_locations do
+      after :create do |p|
+        create_list :ArenaPersonAddress, 1, person: p
+      end
+      #association :locations, factory: :ArenaPersonAddress
+    end
     factory :ArenaPersonLeader do |u|
       last_name 'Leader'
       gender 2
