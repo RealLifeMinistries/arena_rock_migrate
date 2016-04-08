@@ -42,12 +42,12 @@ class ArenaAddress < ArenaBase
   end
 
   def sync_to_rock!
-    map = self.mapping || build_mapping
-    rock = mapping.rock_record ||= RockLocation.new
+    @map = self.mapping || build_mapping
+    @rock = mapping.rock_record ||= RockLocation.new
 
-    rock.copy_arena_address(self)
+    @rock.copy_arena_address(self)
 
-    rock.save!
-    map.save!
+    @rock.save!
+    @map.save!
   end
 end

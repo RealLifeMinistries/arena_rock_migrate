@@ -28,20 +28,24 @@ require 'factory_girl'
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.include FactoryGirl::Syntax::Methods
+  FactoryGirl.definition_file_paths = [File.expand_path('../factories', __FILE__)]
+  FactoryGirl.find_definitions
 
   config.before(:suite) do
+    #DatabaseCleaner[:active_record,{:connection => :test_rock}].strategy = :transaction
     DatabaseCleaner.strategy = :transaction
+    #DatabaseCleaner[:active_record,{:connection => :test_rock}].clean_with(:truncation)
     DatabaseCleaner.clean_with(:truncation)
   end
-
-  config.around(:each) do |example|
-    DatabaseCleaner.cleaning do
-      example.run
-    end
+  config.before(:each)do
+    DatabaseCleaner.start
+    DatabaseCleaner[:active_record,{:connection => :test_rock}].start
   end
-
+  config.after(:each) do
+    DatabaseCleaner.clean
+    DatabaseCleaner[:active_record,{:connection => :test_rock}].clean
+  end
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false

@@ -13,6 +13,7 @@ class ConversionStarter
       ArenaSmallGroupMember,
       ArenaProfile,
       ArenaProfileMember,
+      ArenaCampus,
     ].each {|klass| queue_record_sync klass}
   end
 

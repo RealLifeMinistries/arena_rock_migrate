@@ -38,49 +38,58 @@ class ArenaSmallGroupCluster < ArenaBase
   has_rock_mapping
 
   def sync_to_rock!
-    map = mapping || build_mapping
-    rock = map.rock_record ||= RockGroup.new
+    @map = mapping || build_mapping
+    @rock = @map.rock_record ||= RockGroup.new
 
-    rock.IsSystem ||= false
-    rock.GroupTypeId ||= RockGroupType::SMALL_GROUP_CLUSTER
-    rock.ParentGroupId = (parent ? parent.mapped_id : RockGroup::SMALL_GROUPS ) 
-    rock.Name ||= cluster_name
-    rock.Description ||= cluster_desc
-    rock.IsSecurityRole ||= false
-    rock.IsActive ||= active?
-    rock.Order ||= 0
-    rock.Guid ||= guid
-    rock.CreatedDateTime ||= date_created
-    rock.ModifiedDateTime ||= date_modified
+    @rock.IsSystem ||= false
+    @rock.GroupTypeId ||= sync_group_type
+    @rock.ParentGroupId = (parent ? parent.mapped_id : RockGroup::SMALL_GROUPS )
+    @rock.Name ||= cluster_name
+    @rock.Description ||= cluster_desc
+    @rock.IsSecurityRole ||= false
+    @rock.IsActive ||= active?
+    @rock.Order ||= 0
+    @rock.Guid ||= guid
+    @rock.CreatedDateTime ||= date_created
+    @rock.ModifiedDateTime ||= date_modified
 
-    rock.save!
-    map.save!
+    @rock.save!
+    @map.save!
     sync_roles!
   end
 
+  def sync_group_type
+    case cluster_name
+      when "PFRLM All Region Home Groups", "CDARLM Campus Home Groups"
+        RockGroupType::HOME_GROUP_ORG_UNIT
+      else
+        RockGroupType::SMALL_GROUP_CLUSTER
+    end
+  end
+
   def sync_roles!
-    rock_group = mapped_record
+    @rock_group = mapped_record
     if leader
-      leader_role = RockGroupMember.find_or_initialize_by({
-        GroupId: rock_group.Id,
-        PersonId: leader_role.mapped_id,
+      @leader_role = RockGroupMember.find_or_initialize_by({
+        GroupId: @rock_group.Id,
+        PersonId: leader.mapped_id,
         GroupRoleId: RockGroupTypeRole::SMALL_GROUP_CLUSTER_LEADER  
       })
-      leader_role.IsSystem ||= false
-      leader_role.GroupMemberStatus ||= RockGroupMemberStatus::ACTIVE
-      leader_role.Guid ||= SecureRandom.uuid
-      leader_role.save!
+      @leader_role.IsSystem ||= false
+      @leader_role.GroupMemberStatus ||= RockGroupMemberStatus::ACTIVE
+      @leader_role.Guid ||= SecureRandom.uuid
+      @leader_role.save!
     end
 
     if admin
-      admin_role = RockGroupMember.find_or_initialize_by({
-        GroupId: rock_group.Id,
+      @admin_role = RockGroupMember.find_or_initialize_by({
+        GroupId: @rock_group.Id,
         PersonId: admin.mapped_id,
         GroupRoleId: RockGroupTypeRole::SMALL_GROUP_CLUSTER_LEADER  
       })
-      admin_role.IsSystem ||= false
-      admin_role.GroupMemberStatus ||= RockGroupMemberStatus::ACTIVE
-      admin_role.Guid ||= SecureRandom.uuid
+      @admin_role.IsSystem ||= false
+      @admin_role.GroupMemberStatus ||= RockGroupMemberStatus::ACTIVE
+      @admin_role.Guid ||= SecureRandom.uuid
     end
 
   end
