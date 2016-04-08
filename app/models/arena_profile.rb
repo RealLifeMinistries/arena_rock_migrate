@@ -40,27 +40,45 @@ class ArenaProfile < ArenaBase
 
   def sync_to_rock!
     if profile_type_record && profile_type_record.mapping # only sync if mapped type
-      map = mapping || build_mapping
-      rock = mapping.rock_record ||= RockGroup.new
-      rock.Guid ||= (guid || SecureRandom.uuid)
-      rock.IsSystem ||= false
+      @map = mapping || build_mapping
+      @rock = mapping.rock_record ||= RockGroup.new
+      @rock.Guid ||= (guid || SecureRandom.uuid)
+      @rock.IsSystem ||= false
       if parent_profile_id?
-        rock.ParentGroupId ||= parent.mapped_id
+        @rock.ParentGroupId ||= parent.mapped_id
       else
-        rock.ParentGroupId ||= profile_type_record.default_rock_parent_group_id
+        @rock.ParentGroupId ||= profile_type_record.default_rock_parent_group_id
       end
-      rock.GroupTypeId ||= profile_type_record.mapped_id
-      rock.Name ||= profile_name
-      rock.Description ||= profile_desc
-      rock.IsActive ||= active?
-      rock.IsSecurityRole ||= false
-      rock.Order ||= display_order || 0 
-      rock.CreatedDateTime ||= date_created
-      rock.ModifiedDateTime ||= date_modified 
-      rock.save!
-      map.save!
+      @rock.GroupTypeId ||= get_group_type_id#profile_type_record.mapping.#profile_type_record.mapped_id
+      @rock.Name ||= profile_name
+      @rock.Description ||= profile_desc
+      @rock.IsActive ||= active?
+      @rock.IsSecurityRole ||= false
+      @rock.Order ||= display_order || 0
+      @rock.CreatedDateTime ||= date_created
+      @rock.ModifiedDateTime ||= date_modified
+      @rock.save!
+      @map.save!
       # add owner to group
       #sync_members
+    end
+  end
+  
+  def get_group_type_id
+    case profile_type_record.id
+      when 1
+        return RockGroupType::PARTICIPANT_MINISTRY
+      when 2
+        return RockGroupType::SERVING
+      when 4# 3258, 3075, 1282, 1676, 2428, 2801, 2862, 2772, 1279, 1378, 2824, 1149, 1779, 1843, 2460, 1462, 1406, 3311, 1886, 1833, 3226, 1456, 1831, 1700, 3041, 1464, 1283, 1674, 1412, 1448, 1626, 3152, 3044
+        if [3258, 3075, 1282, 1676, 2428, 2801, 2862, 2772, 1279, 1378, 2824, 1149, 1779, 1843, 2460, 1462, 1406, 3311, 1886, 1833, 3226, 1456, 1831, 1700, 3041, 1464, 1283, 1674, 1412, 1448, 1626, 3152, 3044].include? parent_profile_id
+          return RockGroupType::CLASS
+        end
+        if [1281, 2695, 1731, 1421, 2554, 2643, 2241, 1556, 2251, 1973, 2966, 1946, 3022, 1679, 1753].include? parent_profile_id
+          return RockGroupType::EVENTS
+        end
+      else
+        return nil
     end
   end
 
