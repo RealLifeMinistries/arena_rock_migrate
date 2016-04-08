@@ -1,3 +1,0 @@
-#!/bin/bash
-docker build -t dregistry.viciware.com/rlm/arena_migrator:sqlnew .
-docker push dregistry.viciware.com/rlm/arena_migrator:sqlnew
