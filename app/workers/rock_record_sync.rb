@@ -1,6 +1,6 @@
 class RockRecordSync
   include Sidekiq::Worker
-  sidekiq_options queue: :rock, unique: true
+  sidekiq_options queue: :rock, unique: :until_and_while_executing
 
   def perform(klass1,klass2,*keys)
     sync(klass2,klass1,*keys)
@@ -10,7 +10,7 @@ class RockRecordSync
   def sync(klass1,klass2,*keys)
     if keys.size > 1
       klass1.constantize.find_each do |record1|
-        attrs = keys.each_with_object({}) do |key,hsh| 
+        attrs = keys.each_with_object({}) do |key,hsh|
           hsh[key] = record1.send(key)
         end
 
@@ -20,7 +20,7 @@ class RockRecordSync
       end
     else
       klass1.constantize.all.each do |record1|
-        attrs = keys.each_with_object({}) do |key,hsh| 
+        attrs = keys.each_with_object({}) do |key,hsh|
           hsh[key] = record1.send(key)
         end
 

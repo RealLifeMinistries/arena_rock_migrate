@@ -1,7 +1,8 @@
 require 'sidekiq'
 require 'sidekiq/web'
 require 'sidekiq-cron'
-  
+require 'sidekiq/cron/web'
+
 schedule_file = "config/schedule.yml"
 
 if File.exists?(schedule_file)

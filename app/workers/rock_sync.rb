@@ -1,8 +1,8 @@
 class RockSync
   include Sidekiq::Worker
-  sidekiq_options queue: :rock, unique: true
- 
-  def perform 
+  sidekiq_options queue: :rock, unique: :until_and_while_executing
+
+  def perform
     [
       [RockDefinedType,Rock::DefinedType,["Id"]],
       [RockDefinedValue,Rock::DefinedValue,["Id"]],
@@ -21,6 +21,15 @@ class RockSync
       [RockGroupMember,Rock::GroupMember,["Id"]],
       [RockSchedule,Rock::Schedule,["Id"]],
       [RockAttendance,Rock::Attendance,["Id"]],
+      [RockCampus, Rock::Campus,["Id"]],
+      # Photos
+      # Prayer Request
+      # Campuses
+      # Weekend Service Migration
+      # Relationships
+      # Notes
+      # Baptisms
+      # Previous Names
     ].each do |klass1,klass2,keys|
       RockRecordSync.perform_async(klass1.name,klass2.name,*keys)
     end

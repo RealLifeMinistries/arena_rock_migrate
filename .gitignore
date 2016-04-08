@@ -9,6 +9,7 @@
 vendor/bundle
 .env
 *.swp
+/.idea/
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -17,3 +18,4 @@ vendor/bundle
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+Gemfile.lock
