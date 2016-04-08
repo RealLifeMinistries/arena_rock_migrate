@@ -41,5 +41,5 @@ class RockAttendance < RockBase
   belongs_to :person_alias, class_name: "RockPersonAlias", foreign_key: 'PersonAliasId', primary_key: 'Id'
 
   WEEKEND_WORSHIP_SERVICE_GROUP = 34316
-  CDA_WEEKEND_WORSHIP_SERVICE_GROUP = 33587
+  CDA_WEEKEND_WORSHIP_SERVICE_GROUP = 37897
 end

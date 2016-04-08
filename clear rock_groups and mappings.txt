@@ -1,0 +1,67 @@
+delete rock members associated with CDA Campus Attendance
+cda_group_members.each{ |record| puts record.destroy; record.mapping.destroy if record.mapping}
+
+delete mapping
+cda_group.mapping.destroy if cda_group.mapping
+
+use rock3
+delete [Group]
+  where ParentGroupId = 33587
+
+pf_group_members.each{ |record| puts record.destroy; record.mapping.destroy if record.mapping}
+
+home_group_members.each{ |record| puts record.destroy; record.mapping.destroy if record.mapping}
+
+home_groups = RockGroup.where(GroupTypeId: 41)
+home_groups.each{ |record| puts record.destroy; record.mapping.destroy if record.mapping}
+
+home_groups = RockGroup.where(GroupTypeId: 25)
+home_groups.each{ |record| puts record.destroy; record.mapping.destroy if record.mapping}
+
+
+groups = RockGroup.where(GroupTypeId: 33)
+
+groups.each{ |record| puts record.destroy; record.mapping.destroy if record.mapping}
+
+groups = RockGroup.where(GroupTypeId: 27)
+
+group_members = RockGroupMember.where(GroupId: groups)
+group_members.each{ |record| puts record.destroy; record.mapping.destroy if record.mapping}
+
+groups.each{ |record| puts record.destroy; record.mapping.destroy if record.mapping}
+
+groups = RockGroup.where(GroupTypeId: 35)
+
+group_members = RockGroupMember.where(GroupId: groups)
+group_members.each{ |record| puts record.destroy; record.mapping.destroy if record.mapping}
+
+group_children = RockGroup.where(ParentGroupId: groups)
+
+group_children.each{ |record| puts record.child_groups.destroy if record.child_groups; puts record.destroy; record.mapping.destroy if record.mapping}
+
+groups.each{ |record|record.child_groups.destroy if record.child_groups; puts record.destroy; record.mapping.destroy if record.mapping}
+
+delete from [Group] where Id = 32698 
+
+groups = RockGroup.where(GroupTypeId: 34)
+
+group_members = RockGroupMember.where(GroupId: groups)
+group_members.each{ |record| puts record.destroy; record.mapping.destroy if record.mapping}
+
+group_children = RockGroup.where(ParentGroupId: groups)
+
+group_children.each{ |record| puts record.child_groups.destroy if record.child_groups; puts record.destroy; record.mapping.destroy if record.mapping}
+
+groups.each{ |record|record.child_groups.destroy if record.child_groups; puts record.destroy; record.mapping.destroy if record.mapping}
+
+
+groups = RockGroup.where(GroupTypeId: 32)
+
+group_members = RockGroupMember.where(GroupId: groups)
+group_members.each{ |record| puts record.destroy; record.mapping.destroy if record.mapping}
+
+group_children = RockGroup.where(ParentGroupId: groups)
+
+group_children.each{ |record| puts record.child_groups.destroy if record.child_groups; puts record.destroy; record.mapping.destroy if record.mapping}
+
+groups.each{ |record|record.child_groups.destroy if record.child_groups; puts record.destroy; record.mapping.destroy if record.mapping}
