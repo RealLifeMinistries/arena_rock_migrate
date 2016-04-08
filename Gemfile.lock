@@ -216,7 +216,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  activerecord-sqlserver-adapter
+  activerecord-sqlserver-adapter (~> 4.1)
   airbrake
   annotate
   byebug
