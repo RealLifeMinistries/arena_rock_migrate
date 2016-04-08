@@ -10,7 +10,6 @@ vendor/bundle
 .env
 *.swp
 /.idea/
-/bin/
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
