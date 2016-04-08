@@ -31,5 +31,4 @@ class RockGroupMember < RockBase
   belongs_to :status, class_name: "RockGroupMemberStatus", foreign_key: 'GroupMemberStatus'  
 
   has_arena_mapping
-
 end

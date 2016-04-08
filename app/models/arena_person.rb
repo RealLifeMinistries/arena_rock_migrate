@@ -71,65 +71,69 @@ class ArenaPerson < ArenaBase
 
 
   def sync_to_rock!
-    map = mapping || build_mapping
-    rock = map.rock_record ||= RockPerson.new
+    @map = mapping || build_mapping
+    @rock = @map.rock_record ||= RockPerson.new
 
     ###############
     # Rock RecordType doesn't have a concept in Arena
     # Rock Person Defined Value is: 1
-    rock.RecordTypeValueId = 1
-    rock.IsSystem ||= false
+    @rock.RecordTypeValueId = 1
+    @rock.IsSystem ||= false
 
     if record_status
-      rock.RecordStatusValueId = record_status_record.mapped_id
+      @rock.RecordStatusValueId = record_status_record.mapped_id
     end
 
     if inactive_reason
-      rock.RecordStatusReasonValueId = inactive_reason.mapped_id
+      @rock.RecordStatusReasonValueId = inactive_reason.mapped_id
     end
 
     if member_status
-      rock.ConnectionStatusValueId = member_status_record.mapped_id
+      @rock.ConnectionStatusValueId = member_status_record.mapped_id
     end
 
-    rock.IsDeceased = is_deceased?
+    @rock.IsDeceased = is_deceased?
 
     if title
-      rock.TitleValueId = title.mapped_id
+      @rock.TitleValueId = title.mapped_id
     end
 
-    rock.NickName = nick_name
-    rock.FirstName = first_name
-    rock.MiddleName = middle_name
-    rock.LastName = last_name
+    @rock.NickName = nick_name
+    @rock.FirstName = first_name
+    @rock.MiddleName = middle_name
+    @rock.LastName = last_name
 
     if suffix
-      rock.SuffixValueId = suffix.mapped_id
+      @rock.SuffixValueId = suffix.mapped_id
     end
 
     # @TODO: rock.PhotoId
 
     unless birth_date
-      rock.BirthDay = nil
-      rock.BirthMonth = nil
-      rock.BirthYear = nil
+      @rock.BirthDay = nil
+      @rock.BirthMonth = nil
+      @rock.BirthYear = nil
     else
-      rock.BirthDay = birth_date.mday
-      rock.BirthMonth = birth_date.month
-      rock.BirthYear = birth_date.year
+      @rock.BirthDay = birth_date.mday
+      @rock.BirthMonth = birth_date.month
+      @rock.BirthYear = birth_date.year
     end
 
     if gender
-      rock.Gender = gender_record.mapped_id
+      begin
+        @rock.Gender = gender_record.mapped_id
+      rescue
+        @rock.Gender = gender
+      end
     end
 
     if marital_status
-      rock.MaritalStatusValueId = marital_status_record.mapped_id
+      @rock.MaritalStatusValueId = marital_status_record.mapped_id
     end
 
-    rock.AnniversaryDate = nil_if_1900 anniversary_date
+    @rock.AnniversaryDate = nil_if_1900 anniversary_date
     gradDate = nil_if_1900 graduation_date
-    rock.GraduationYear = gradDate ? gradDate.year : nil
+    @rock.GraduationYear = gradDate ? gradDate.year : nil
 
     # @TODO: rock.GivingGroupId, giving_unit_id
 
@@ -137,25 +141,25 @@ class ArenaPerson < ArenaBase
     # ARENA has multiple emails,
     # Rock has one?
     arena_email = emails.where(active: true).first
-    rock.EmailPreference ||= 0 # EmailAllowed - What is arena spec?
+    @rock.EmailPreference ||= 0 # EmailAllowed - What is arena spec?
     if arena_email
-      rock.Email = arena_email.email
-      rock.IsEmailActive = true
-      rock.EmailNote = arena_email.notes
+      @rock.Email = arena_email.email
+      @rock.IsEmailActive = true
+      @rock.EmailNote = arena_email.notes
     else
-      rock.IsEmailActive = false
+      @rock.IsEmailActive = false
     end
 
-    rock.SystemNote = self.Notes
-    rock.Guid = guid
-    rock.CreatedDateTime = date_created
-    rock.ModifiedDateTime = date_modified
+    @rock.SystemNote = self.Notes
+    @rock.Guid = guid
+    @rock.CreatedDateTime = date_created
+    @rock.ModifiedDateTime = date_modified
 
-    rock.save!
-    self.mapping = map
+    @rock.save!
+    self.mapping = @map
     mapping.save!
 
-    rock.make_alias
+    @rock.make_alias
 
     # HasMany
     # ################

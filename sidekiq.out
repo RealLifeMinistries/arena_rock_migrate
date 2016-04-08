@@ -1,0 +1,30 @@
+Your Gemfile lists the gem airbrake (>= 0) more than once.
+You should probably keep only one of them.
+While it's not a problem now, it could cause errors if you change the version of just one of them later.
+2016-03-04T02:37:45.287Z 10144 TID-9lqe0 INFO: Booting Sidekiq 3.5.3 with redis options {:url=>nil}
+2016-03-04T02:37:45.303Z 10144 TID-9lqe0 INFO: Cron Jobs - add job with name: TaskStarter
+Signal USR1 not supported
+Signal USR2 not supported
+Signal TTIN not supported
+2016-03-04T02:37:47.207Z 10144 TID-9lqe0 INFO: Running in ruby 2.1.8p440 (2015-12-16 revision 53160) [i386-mingw32]
+2016-03-04T02:37:47.207Z 10144 TID-9lqe0 INFO: See LICENSE and the LGPL-3.0 for licensing details.
+2016-03-04T02:37:47.207Z 10144 TID-9lqe0 INFO: Upgrade to Sidekiq Pro for more features and support: http://sidekiq.org
+2016-03-04T02:37:47.207Z 10144 TID-9lqe0 INFO: Starting processing, hit Ctrl-C to stop
+2016-03-04T02:52:30.709Z 10144 TID-tdrg0 WARN: {:context=>"Manager#processor_died died"}
+2016-03-04T02:52:30.709Z 10144 TID-tdrg0 WARN: Celluloid::TaskTerminated: task was terminated
+2016-03-04T02:52:30.709Z 10144 TID-tdrg0 WARN: C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/celluloid-0.17.2/lib/celluloid/task/fibered.rb:35:in `terminate'
+C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/celluloid-0.17.2/lib/celluloid/actor.rb:323:in `block in cleanup'
+C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/celluloid-0.17.2/lib/celluloid/actor.rb:321:in `each'
+C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/celluloid-0.17.2/lib/celluloid/actor.rb:321:in `cleanup'
+C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/celluloid-0.17.2/lib/celluloid/actor.rb:307:in `shutdown'
+C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/celluloid-0.17.2/lib/celluloid/actor.rb:169:in `run'
+C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/celluloid-0.17.2/lib/celluloid/actor.rb:131:in `block in start'
+C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/celluloid-essentials-0.20.5/lib/celluloid/internals/thread_handle.rb:14:in `block in initialize'
+C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/celluloid-0.17.2/lib/celluloid/actor/system.rb:78:in `block in get_thread'
+C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/celluloid-0.17.2/lib/celluloid/group/spawner.rb:50:in `call'
+C:/RailsInstaller/Ruby2.1.0/lib/ruby/gems/2.1.0/gems/celluloid-0.17.2/lib/celluloid/group/spawner.rb:50:in `block in instantiate'
+** [Airbrake] Notice was not sent due to configuration:         
+  Environment Monitored? false         
+  API key set? false
+Terminate batch job (Y/N)? 
+Terminate batch job (Y/N)? 

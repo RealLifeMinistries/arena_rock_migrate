@@ -53,17 +53,17 @@ class ArenaOccurrenceType < ArenaBase
   has_rock_mapping
 
   def sync_to_rock!
-    map = mapping || build_mapping
-    rock = mapping.rock_record ||= RockSchedule.new
+    @map = mapping || build_mapping
+    @rock = mapping.rock_record ||= RockSchedule.new
 
-    rock.Name ||= type_name
-    rock.Description ||= "Imported from Arena"
-    rock.Guid ||= SecureRandom.uuid
-    rock.CreatedDateTime ||= date_created
-    rock.ModifiedDateTime ||= date_modified
-    rock.EffectiveStartDate ||= effective_start_date
-    rock.save!
-    map.save!
+    @rock.Name ||= type_name
+    @rock.Description ||= "Imported from Arena"
+    @rock.Guid ||= SecureRandom.uuid
+    @rock.CreatedDateTime ||= date_created
+    @rock.ModifiedDateTime ||= date_modified
+    @rock.EffectiveStartDate ||= effective_start_date
+    @rock.save!
+    @map.save!
   end
 
   def effective_start_date

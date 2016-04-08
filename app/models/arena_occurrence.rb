@@ -32,4 +32,7 @@ class ArenaOccurrence < ArenaBase
   has_one :small_group_occurrence, class_name: "ArenaOccurrenceAttendanceSmallGroup", foreign_key: :occurrence_id
   has_one :profile_occurrence, class_name: "ArenaOccurrenceAttendanceProfile", foreign_key: :occurrence_id
 
+  POST_FALLS_WEEKEND_WS_LIVE_ONLINE = 821
+  ALL_POST_FALLS_WEEKEND_WORSHIP_SERVICES = 1
+  RLM_CDA_WEEKEND_WORSHIP = 524
 end
