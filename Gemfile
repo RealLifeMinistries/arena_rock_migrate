@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'rails', "4.1.10"
+gem 'airbrake'
+gem 'rails'#, "4.1.10"
 gem 'rails_12factor'
 gem 'dotenv-rails'
 gem 'pg'
@@ -20,3 +21,7 @@ gem 'redis-rails'
 gem 'puma'
 gem 'tzinfo'
 gem 'tzinfo-data'
+gem 'rspec-rails'
+gem 'rspec'
+gem 'database_cleaner'
+gem 'factory_girl'
