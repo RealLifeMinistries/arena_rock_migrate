@@ -24,6 +24,7 @@ class ArenaSync
     ArenaRecordSync.perform_async(Arena::PersonPhone.name,ArenaPersonPhone.name, :person_id, :phone_luid)
     ArenaRecordSync.perform_async(Arena::Profile.name,ArenaProfile.name, :profile_id)
     ArenaRecordSync.perform_async(Arena::ProfileMember.name,ArenaProfileMember.name, :profile_id, :person_id)
+    ArenaRecordSync.perform_async(Arena::PrayerRequest.name, ArenaPrayerRequest.name, :request_id)
     ArenaRecordSync.perform_async(Arena::RelationshipType.name,ArenaRelationshipType.name, :relationship_type_id)
     ArenaRecordSync.perform_async(Arena::Relationship.name,ArenaRelationship.name, :relationship_id)
     ArenaRecordSync.perform_async(Arena::SmallGroup.name,ArenaSmallGroup.name, :group_id)

@@ -11,8 +11,8 @@
 #  role_luid      :integer
 #  date_joined    :datetime         not null
 #  notes          :varchar(255)     not null
-#  uniform_number :integer          not null
-#  active         :boolean          not null
+#  uniform_number :integer          default(-1), not null
+#  active         :boolean          default(TRUE), not null
 #
 
 class Arena::SmallGroupMember < Arena::Base
