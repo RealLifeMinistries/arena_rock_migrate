@@ -216,7 +216,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  activerecord-sqlserver-adapter (~> 4.1)
+  activerecord-sqlserver-adapter
   airbrake
   annotate
   byebug
@@ -242,4 +242,4 @@ DEPENDENCIES
   tzinfo-data
 
 BUNDLED WITH
-   1.11.2
+   1.12.0.pre.1
