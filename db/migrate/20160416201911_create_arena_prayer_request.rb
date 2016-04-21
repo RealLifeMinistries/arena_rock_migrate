@@ -13,15 +13,16 @@ class CreateArenaPrayerRequest < ActiveRecord::Migration
       t.string :last_name
       t.string :email
       t.string :postal_code
-      t.integer :is_public
+      t.boolean :request_response
+      t.boolean :is_public
       t.datetime :expire_date
       t.integer :renewal_count
       t.integer :source_luid
       t.integer :category_luid
       t.datetime :approved_datetime
-      t.integer :answer_updated
-      t.text :answer_text
+      t.boolean :answer_updated
       t.text :request_text
+      t.text :answer_text
       t.integer :foreign_key
       t.uuid :guid
       t.integer :expire_notified
