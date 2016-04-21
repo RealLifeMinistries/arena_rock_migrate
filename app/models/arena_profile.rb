@@ -89,7 +89,7 @@ class ArenaProfile < ArenaBase
         return RockGroup::SERVING_MINISTRY
       when ArenaProfileType::CLASSES_EVENTS
         if [3258, 3075, 1282, 1676, 2428, 2801, 2862, 2772, 1279, 1378, 2824, 1149, 1779, 1843, 2460, 1462, 1406, 3311, 1886, 1833, 3226, 1456, 1831, 1700, 3041, 1464, 1283, 1674, 1412, 1448, 1626, 3152, 3044].include? id
-          return RockGroup::CLASS
+          return RockGroup::CLASSES
         end
         if [1281, 2695, 1731, 1421, 2554, 2643, 2241, 1556, 2251, 1973, 2966, 1946, 3022, 1679, 1753].include? id
           return RockGroup::EVENTS
