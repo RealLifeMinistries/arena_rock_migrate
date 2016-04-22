@@ -1,6 +1,6 @@
 class ArenaSync
   include Sidekiq::Worker
-  sidekiq_options queue: :arena, unique: :until_and_while_executing
+  sidekiq_options queue: :arena, unique: :true
 
   def perform
     ArenaRecordSync.perform_async(Arena::Address.name,ArenaAddress.name, :address_id)

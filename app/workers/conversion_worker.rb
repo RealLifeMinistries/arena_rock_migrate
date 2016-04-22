@@ -1,6 +1,6 @@
 class ConversionWorker
   include Sidekiq::Worker
-  sidekiq_options queue: :conversion, unique: :until_and_while_executing
+  sidekiq_options queue: :conversion, unique: :true
 
   def perform(*args)
     klass_name,id = args.slice!(0..1)
