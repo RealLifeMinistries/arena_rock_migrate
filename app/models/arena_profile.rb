@@ -75,7 +75,7 @@ class ArenaProfile < ArenaBase
           return RockGroupType::CLASS
         end
         if [1281, 2695, 1731, 1421, 2554, 2643, 2241, 1556, 2251, 1973, 2966, 1946, 3022, 1679, 1753].include? parent_profile_id
-          return RockGroupType::EVENTS
+          return RockGroupType::EVENT
         end
       else
         return nil
