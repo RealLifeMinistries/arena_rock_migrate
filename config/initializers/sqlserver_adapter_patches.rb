@@ -11,5 +11,4 @@
 #   end
 # end
 
-# SEE https://github.com/rails-sqlserver/activerecord-sqlserver-adapter/issues/381
-ActiveRecord::ConnectionAdapters::SQLServerAdapter.use_output_inserted = false
+
