@@ -10,21 +10,21 @@ delete [Group]
 
 pf_group_members.each{ |record| puts record.destroy; record.mapping.destroy if record.mapping}
 
-home_group_members.each{ |record| puts record.destroy; record.mapping.destroy if record.mapping}
-
 home_groups = RockGroup.where(GroupTypeId: 41)
 home_groups.each{ |record| puts record.destroy; record.mapping.destroy if record.mapping}
+
+home_group_members = RockGroupMember.where(GroupId: home_groups)
+home_group_members.each{ |record| puts record.destroy; record.mapping.destroy if record.mapping}
 
 home_groups = RockGroup.where(GroupTypeId: 25)
 home_groups.each{ |record| puts record.destroy; record.mapping.destroy if record.mapping}
 
 
 groups = RockGroup.where(GroupTypeId: 33)
-
 groups.each{ |record| puts record.destroy; record.mapping.destroy if record.mapping}
+group_members = RockGroupMember.where(GroupId: groups)
 
 groups = RockGroup.where(GroupTypeId: 27)
-
 group_members = RockGroupMember.where(GroupId: groups)
 group_members.each{ |record| puts record.destroy; record.mapping.destroy if record.mapping}
 

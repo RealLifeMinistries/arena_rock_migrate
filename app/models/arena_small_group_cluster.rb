@@ -59,8 +59,11 @@ class ArenaSmallGroupCluster < ArenaBase
   end
 
   def sync_group_type
-    case cluster_name
-      when "PFRLM All Region Home Groups", "CDARLM Campus Home Groups"
+    if (parent && parent.mapped_record)
+        return parent.mapped_record.GroupTypeId
+    end
+    case group_cluster_id
+      when 144, 1323
         return RockGroupType::HOME_GROUP_ORG_UNIT
       else
         return RockGroupType::SMALL_GROUP_CLUSTER
