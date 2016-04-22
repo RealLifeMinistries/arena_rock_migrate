@@ -73,10 +73,10 @@ class ArenaProfile < ArenaBase
       when ArenaProfileType::SERVING
         return RockGroupType::SERVING
       when ArenaProfileType::CLASSES_EVENTS
-        if ARENA_CLASSES.include? parent_profile_id
+        if ARENA_CLASSES.include? id
           return RockGroupType::CLASS
         end
-        if ARENA_EVENTS.include? parent_profile_id
+        if ARENA_EVENTS.include? id
           return RockGroupType::EVENT
         end
       else
