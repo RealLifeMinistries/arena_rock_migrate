@@ -1,6 +1,6 @@
 class ConversionStarter
   include Sidekiq::Worker
-  sidekiq_options queue: :conversion, unique: :true
+  sidekiq_options queue: :conversion, unique: :until_and_while_executing
 
   def perform
     [
