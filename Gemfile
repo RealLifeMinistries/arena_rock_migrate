@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'airbrake'
-gem 'rails'#, "4.1.10"
+gem 'airbrake', "4.3.6"
+gem 'rails', "4.1.10"
 gem 'rails_12factor'
 gem 'dotenv-rails'
 gem 'pg'

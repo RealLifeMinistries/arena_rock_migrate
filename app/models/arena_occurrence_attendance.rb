@@ -66,8 +66,9 @@ class ArenaOccurrenceAttendance < ArenaBase
     end
 
     # add member to attendance group
-    add_group_member
-
+    if ([RockAttendance::CDA_WEEKEND_WORSHIP_SERVICE_GROUP,RockAttendance::WEEKEND_WORSHIP_SERVICE_GROUP].include? @group_id)
+      add_group_member
+    end
     @rock.save!
     @map.save!
   end
@@ -90,16 +91,17 @@ class ArenaOccurrenceAttendance < ArenaBase
       return @group_id = group.mapped_id
     elsif occurrence.occurrence_type == ArenaOccurrence::RLM_CDA_WEEKEND_WORSHIP
       return @group_id = RockAttendance::CDA_WEEKEND_WORSHIP_SERVICE_GROUP
-    else
+    elsif occurrence.occurrence_type == ArenaOccurrence::ALL_POST_FALLS_WEEKEND_WORSHIP_SERVICES || occurrence.occurrence_type == ArenaOccurrence::POST_FALLS_WEEKEND_WS_LIVE_ONLINE
       return @group_id = RockAttendance::WEEKEND_WORSHIP_SERVICE_GROUP
     end
   end
   # this method creates a group member of a given group
   def add_group_member
-    @group_member = RockGroupMember.new
+    @group_member = RockGroupMember.find_or_initialize_by({
+        GroupId: @group_id,
+        PersonId: person.mapped_record.person_alias.PersonId
+                                                          })
     @group_member.IsSystem = false
-    @group_member.GroupId = @group_id
-    @group_member.PersonId = person.mapped_record.person_alias.PersonId
     @group_member.GroupRoleId = 266 # member for worship services
     @group_member.GroupMemberStatus = 1 #
     @group_member.Guid = SecureRandom.uuid
