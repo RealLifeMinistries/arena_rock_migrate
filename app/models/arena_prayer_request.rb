@@ -18,10 +18,9 @@ class ArenaPrayerRequest < ArenaBase
       @rock.FirstName ||= first_name
       @rock.LastName ||= last_name
       @rock.Email ||= email
-      @rock.RequestedByPersonAliasId ||= person.mapped_id
+      @rock.RequestedByPersonAliasId ||= person.mapped_record.person_alias.PersonId
       @rock.CategoryId = get_category_from_source
       @rock.Text ||= request_text
-      @rock.Description ||= profile_desc
       @rock.IsActive ||= false
       @rock.CreatedDateTime ||= date_created
       @rock.ModifiedDateTime ||= date_modified

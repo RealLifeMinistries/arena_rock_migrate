@@ -20,7 +20,8 @@ class CreateArenaPrayerRequest < ActiveRecord::Migration
       t.integer :source_luid
       t.integer :category_luid
       t.datetime :approved_datetime
-      t.boolean :answer_updated
+      t.datetime :answer_updated
+      t.boolean :answer_approved
       t.text :request_text
       t.text :answer_text
       t.integer :foreign_key
