@@ -83,16 +83,16 @@ class ArenaOccurrenceAttendance < ArenaBase
       return @group_id = occurrence.small_group_occurrence.small_group.mapped_id
     elsif occurrence.profile_occurrence
       return @group_id = occurrence.profile_occurrence.profile.mapped_id
+    elsif occurrence.occurrence_type == ArenaOccurrence::RLM_CDA_WEEKEND_WORSHIP
+      return @group_id = RockAttendance::CDA_WEEKEND_WORSHIP_SERVICE_GROUP
+    elsif occurrence.occurrence_type == ArenaOccurrence::ALL_POST_FALLS_WEEKEND_WORSHIP_SERVICES || occurrence.occurrence_type == ArenaOccurrence::POST_FALLS_WEEKEND_WS_LIVE_ONLINE
+      return @group_id = RockAttendance::WEEKEND_WORSHIP_SERVICE_GROUP
     elsif occurrence.type_record.sync_with_profile?
       profile = ArenaProfile.find(occurrence.type_record.sync_with_profile)
       return @group_id = profile.mapped_id
     elsif occurrence.type_record.sync_with_group?
       group = ArenaSmallGroup.find(occurrence.type_record.sync_with_group)
       return @group_id = group.mapped_id
-    elsif occurrence.occurrence_type == ArenaOccurrence::RLM_CDA_WEEKEND_WORSHIP
-      return @group_id = RockAttendance::CDA_WEEKEND_WORSHIP_SERVICE_GROUP
-    elsif occurrence.occurrence_type == ArenaOccurrence::ALL_POST_FALLS_WEEKEND_WORSHIP_SERVICES || occurrence.occurrence_type == ArenaOccurrence::POST_FALLS_WEEKEND_WS_LIVE_ONLINE
-      return @group_id = RockAttendance::WEEKEND_WORSHIP_SERVICE_GROUP
     end
   end
   # this method creates a group member of a given group
