@@ -91,7 +91,7 @@ class ArenaOccurrenceAttendance < ArenaBase
       return @group_id = group.mapped_id
     elsif occurrence.occurrence_type == ArenaOccurrence::RLM_CDA_WEEKEND_WORSHIP
       return @group_id = RockAttendance::CDA_WEEKEND_WORSHIP_SERVICE_GROUP
-    elsif occurrence.occurrence_type == ALL_POST_FALLS_WEEKEND_WORSHIP_SERVICES || occurrence.occurrence_type == POST_FALLS_WEEKEND_WS_LIVE_ONLINE
+    elsif occurrence.occurrence_type == ArenaOccurrence::ALL_POST_FALLS_WEEKEND_WORSHIP_SERVICES || occurrence.occurrence_type == ArenaOccurrence::POST_FALLS_WEEKEND_WS_LIVE_ONLINE
       return @group_id = RockAttendance::WEEKEND_WORSHIP_SERVICE_GROUP
     end
   end
