@@ -86,10 +86,10 @@ class ArenaSmallGroup < ArenaBase
   def get_group_type
     # If parent cluster is attendance
     if cluster
-      case cluster.cluster_name
-        when "PFRLM All Region Home Groups", "CDARLM Campus Home Groups"
+      case cluster.mapped_record.GroupTypeId
+        when RockGroupType::HOME_GROUP_ORG_UNIT
           return RockGroupType::ATTENDANCE_SMALL_GROUP
-        #when 145, 1223, 196, 459
+        when RockGroupType::SMALL_GROUP
         else
           return RockGroupType::SMALL_GROUP
       end

@@ -66,7 +66,7 @@ class ArenaOccurrenceAttendance < ArenaBase
     end
 
     # add member to attendance group
-    if ([RockAttendance::CDA_WEEKEND_WORSHIP_SERVICE_GROUP,RockAttendance::WEEKEND_WORSHIP_SERVICE_GROUP].include? @group_id)
+    if ([RockAttendance::CDA_WEEKEND_WORSHIP_SERVICE_GROUP,RockAttendance::WEEKEND_WORSHIP_SERVICE_GROUP].include? @rock.GroupId)
       add_group_member
     end
     @rock.save!
