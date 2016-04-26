@@ -8,12 +8,12 @@
 #  date_modified      :datetime         not null
 #  created_by         :varchar(50)      not null
 #  modified_by        :varchar(50)      not null
-#  file_ext           :varchar(20)      not null
-#  mime_type          :varchar(100)     not null
+#  file_ext           :varchar(20)      default(""), not null
+#  mime_type          :varchar(100)     default(""), not null
 #  blob               :binary(214748364
-#  original_file_name :varchar(100)     not null
-#  title              :varchar(100)     not null
-#  description        :varchar(255)     not null
+#  original_file_name :varchar(100)     default(""), not null
+#  title              :varchar(100)     default(""), not null
+#  description        :varchar(255)     default(""), not null
 #  document_type_id   :integer
 #
 

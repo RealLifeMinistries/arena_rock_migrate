@@ -14,6 +14,7 @@ class ConversionStarter
       ArenaProfile,
       ArenaProfileMember,
       ArenaCampus,
+      ArenaPrayerRequest
     ].each {|klass| queue_record_sync klass}
   end
 

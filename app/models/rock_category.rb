@@ -27,4 +27,7 @@ class RockCategory < RockBase
   self.primary_key = :Id
   self.table_name = 'Category'
   belongs_to :entity_type, class_name: "RockEntityType", foreign_key: 'EntityTypeId', primary_key: 'Id'
+
+  PR_POST_FALLS = 1097
+  PR_CDA = 1098
 end

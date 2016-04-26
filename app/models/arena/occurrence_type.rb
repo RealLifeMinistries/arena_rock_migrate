@@ -5,40 +5,40 @@
 #  occurrence_type_id            :integer          not null, primary key
 #  date_created                  :datetime         not null
 #  date_modified                 :datetime         not null
-#  created_by                    :varchar(50)      not null
-#  modified_by                   :varchar(50)      not null
-#  type_order                    :integer          not null
-#  type_name                     :varchar(50)      not null
-#  min_age                       :decimal(9, 2)    not null
-#  max_age                       :decimal(9, 2)    not null
-#  age_range_text                :varchar(50)      not null
-#  schema_file_path              :varchar(1000)    not null
-#  photo_confirmation            :boolean          not null
-#  location_specific_occurrences :boolean          not null
+#  created_by                    :varchar(50)      default(""), not null
+#  modified_by                   :varchar(50)      default(""), not null
+#  type_order                    :integer          default(999), not null
+#  type_name                     :varchar(50)      default(""), not null
+#  min_age                       :decimal(9, 2)    default(0.0), not null
+#  max_age                       :decimal(9, 2)    default(0.0), not null
+#  age_range_text                :varchar(50)      default(""), not null
+#  schema_file_path              :varchar(1000)    default(""), not null
+#  photo_confirmation            :boolean          default(FALSE), not null
+#  location_specific_occurrences :boolean          default(FALSE), not null
 #  sync_with_profile             :integer
 #  sync_with_cluster             :integer
-#  membership_required           :boolean          not null
-#  use_altid_for_family          :boolean          not null
-#  is_service                    :boolean          not null
-#  group_id                      :integer          not null
-#  merge_days                    :integer          not null
-#  gender_preference             :integer          not null
+#  membership_required           :boolean          default(FALSE), not null
+#  use_altid_for_family          :boolean          default(TRUE), not null
+#  is_service                    :boolean          default(FALSE), not null
+#  group_id                      :integer          default(-1), not null
+#  merge_days                    :integer          default(-1), not null
+#  gender_preference             :integer          default(-1), not null
 #  sync_with_group               :integer
-#  checkout_required             :boolean          not null
-#  secured                       :boolean          not null
+#  checkout_required             :boolean          default(FALSE), not null
+#  secured                       :boolean          default(FALSE), not null
 #  theme_id                      :integer
-#  allow_unknown_age             :boolean          not null
-#  min_grade                     :integer          not null
-#  max_grade                     :integer          not null
-#  pager_required                :boolean          not null
+#  allow_unknown_age             :boolean          default(FALSE), not null
+#  min_grade                     :integer          default(-1), not null
+#  max_grade                     :integer          default(-1), not null
+#  pager_required                :boolean          default(FALSE), not null
 #  profile_source_luid           :integer
 #  profile_status_luid           :integer
-#  min_birth_date                :datetime         not null
-#  max_birth_date                :datetime         not null
-#  use_room_ratios               :boolean          not null
+#  min_birth_date                :datetime         default(Mon, 01 Jan 1900 00:00:00 UTC +00:00), not null
+#  max_birth_date                :datetime         default(Mon, 01 Jan 1900 00:00:00 UTC +00:00), not null
+#  use_room_ratios               :boolean          default(FALSE), not null
 #  leader_profile_id             :integer
-#  people_per_leader             :integer          not null
-#  min_leaders                   :integer          not null
+#  people_per_leader             :integer          default(0), not null
+#  min_leaders                   :integer          default(0), not null
 #
 
 class Arena::OccurrenceType < Arena::Base

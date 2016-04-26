@@ -5,12 +5,12 @@
 #  person_id         :integer          not null, primary key
 #  address_id        :integer          not null, primary key
 #  address_type_luid :integer          not null, primary key
-#  primary_address   :boolean          not null
+#  primary_address   :boolean          default(FALSE), not null
 #  active_date       :datetime
 #  inactive_date     :datetime
 #  from_month_day    :varchar(4)
 #  to_month_day      :varchar(4)
-#  notes             :varchar(255)     not null
+#  notes             :varchar(255)     default(""), not null
 #
 
 class Arena::PersonAddress < Arena::Base
