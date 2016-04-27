@@ -23,4 +23,3 @@ describe Mapping, '#arena_record' do
     expect(mapping.arena_record).to be_a(ArenaAddress)
   end
 end
-end
