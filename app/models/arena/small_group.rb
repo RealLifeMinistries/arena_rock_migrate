@@ -13,7 +13,7 @@
 #  group_url                   :varchar(100)     not null
 #  group_desc                  :varchar(1000)    not null
 #  group_notes                 :varchar(1000)    not null
-#  max_members                 :integer          not null
+#  max_members                 :integer          default(20), not null
 #  topic_luid                  :integer
 #  meeting_day_luid            :integer
 #  primary_age_luid            :integer
@@ -25,8 +25,8 @@
 #  group_type_luid             :integer
 #  image_blob_id               :integer
 #  guid                        :uuid             not null
-#  is_group_private            :boolean          not null
-#  active                      :boolean          not null
+#  is_group_private            :boolean          default(FALSE), not null
+#  active                      :boolean          default(TRUE), not null
 #
 
 class Arena::SmallGroup < Arena::Base

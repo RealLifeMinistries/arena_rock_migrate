@@ -6,17 +6,17 @@
 #  guid              :uuid             not null
 #  lookup_type_id    :integer          not null
 #  lookup_value      :varchar(50)      not null
-#  lookup_qualifier  :varchar(50)      not null
-#  lookup_qualifier2 :varchar(50)      not null
-#  lookup_qualifier3 :varchar(50)      not null
-#  lookup_qualifier4 :varchar(50)      not null
-#  lookup_qualifier5 :varchar(50)      not null
-#  lookup_qualifier6 :varchar(50)      not null
-#  lookup_qualifier7 :varchar(50)      not null
-#  lookup_qualifier8 :varchar(2000)    not null
-#  lookup_order      :integer          not null
-#  active            :boolean          not null
-#  system_flag       :boolean          not null
+#  lookup_qualifier  :varchar(50)      default(""), not null
+#  lookup_qualifier2 :varchar(50)      default(""), not null
+#  lookup_qualifier3 :varchar(50)      default(""), not null
+#  lookup_qualifier4 :varchar(50)      default(""), not null
+#  lookup_qualifier5 :varchar(50)      default(""), not null
+#  lookup_qualifier6 :varchar(50)      default(""), not null
+#  lookup_qualifier7 :varchar(50)      default(""), not null
+#  lookup_qualifier8 :varchar(2000)    default(""), not null
+#  lookup_order      :integer          default(0), not null
+#  active            :boolean          default(TRUE), not null
+#  system_flag       :boolean          default(FALSE), not null
 #  foreign_key       :integer
 #
 
