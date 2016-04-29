@@ -22,6 +22,7 @@ class RockSync
       [RockSchedule,Rock::Schedule,["Id"]],
       [RockAttendance,Rock::Attendance,["Id"]],
       [RockCampus, Rock::Campus,["Id"]],
+      [RockPrayerRequest, Rock::PrayerRequest,["Id"]]
       # Photos
       # Prayer Request
       # Campuses
