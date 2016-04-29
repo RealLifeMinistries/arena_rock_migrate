@@ -18,7 +18,7 @@ class ArenaPrayerRequest < ArenaBase
       @rock.FirstName ||= first_name
       @rock.LastName ||= last_name
       @rock.Email ||= email
-      @rock.RequestedByPersonAliasId ||= person.mapped_record.person_alias.PersonId
+      @rock.RequestedByPersonAliasId ||= person.mapped_record.person_alias.Id
       @rock.CategoryId = get_category_from_source
       @rock.Text ||= request_text
       @rock.IsActive ||= false
