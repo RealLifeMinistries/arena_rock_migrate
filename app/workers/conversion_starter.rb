@@ -4,11 +4,9 @@ class ConversionStarter
 
   def perform
     [
-      ArenaOccurrenceAttendance,
       ArenaPerson,
       ArenaFamily,
       ArenaFamilyMember,
-      ArenaPersonAttribute,
       ArenaSmallGroup,
       ArenaSmallGroupMember,
       ArenaProfile,
