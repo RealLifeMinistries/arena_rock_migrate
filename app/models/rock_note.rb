@@ -23,6 +23,7 @@
 class RockNote < RockBase
   self.primary_key = :Id
   self.table_name = "Note"
+  has_arena_mapping
   
   belongs_to :entity, class_name: "RockPerson", foreign_key: 'EntityId'
   belongs_to :note_type, class_name: "RockNoteType", foreign_key: 'NoteTypeId'
