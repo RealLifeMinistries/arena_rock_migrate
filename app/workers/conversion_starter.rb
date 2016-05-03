@@ -4,6 +4,7 @@ class ConversionStarter
 
   def perform
     [
+      ArenaNote,
       ArenaPerson,
       ArenaFamily,
       ArenaFamilyMember,
