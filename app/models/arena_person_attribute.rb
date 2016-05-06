@@ -25,17 +25,20 @@ class ArenaPersonAttribute < ArenaBase
     unless arena_attribute.does_not_transfer?
 
       map = mapping || build_mapping
-      rock = map.rock_record ||= RockAttributeValue.new
+      rock = map.rock_record ||= RockAttributeValue.find_or_initialize_by({
+          EntityId: person.mapped_id,
+          AttributeId: arena_attribute.mapped_id
+                                                                          })
       
       rock.IsSystem ||= false
-      rock.EntityId = person.mapped_id 
+      #rock.EntityId = person.mapped_id
       rock.Guid ||= SecureRandom.uuid
       rock.CreatedDateTime ||= date_created
       rock.ModifiedDateTime ||= date_modified
-      rock.AttributeId = arena_attribute.mapped_id
+      #rock.AttributeId = arena_attribute.mapped_id
 
 
-      catch(:skip_attribute) do  
+      catch(:skip_attribute) do
         arena_attribute.set_rock_value(rock,self)    
         rock.save!
         map.save!

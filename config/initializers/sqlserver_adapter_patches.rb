@@ -10,5 +10,5 @@
 #     end
 #   end
 # end
-
+ActiveRecord::ConnectionAdapters::SQLServerAdapter.use_output_inserted = false
 

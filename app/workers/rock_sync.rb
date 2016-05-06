@@ -25,11 +25,7 @@ class RockSync
       [RockPrayerRequest, Rock::PrayerRequest,["Id"]],
       [RockNote, Rock::Note, ["Id"]],
       # Photos
-      # Prayer Request
-      # Campuses
-      # Weekend Service Migration
       # Relationships
-      # Notes
       # Baptisms
       # Previous Names
     ].each do |klass1,klass2,keys|

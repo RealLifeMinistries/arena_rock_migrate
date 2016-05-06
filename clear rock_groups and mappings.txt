@@ -80,7 +80,7 @@ Mapping.find_each do |map|
 	begin
 	  map.rock_record && map.arena_record
 	rescue ActiveRecord::RecordNotFound
-	  puts "deleted map record #{count++}""
+	  puts "deleted map record #{count++}"
 	  map.delete
 	end
 end
